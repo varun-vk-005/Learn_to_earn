@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cut-off Calculator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;700&display=swap');
+    
+    :root {
+      --bg-primary: #0c0e22;
+      --bg-secondary: #12153e;
+      --accent-primary: #4a9fff;
+      --accent-secondary: #7c4dff;
+      --accent-tertiary: #03dac6;
+      --text-primary: #ffffff;
+      --text-secondary: #b3e5fc;
+      --success: #00e676;
+      --warning: #ffab00;
+      --danger: #ff5252;
+    }
+    
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Exo 2', sans-serif;
+      display: flex;
+      margin: 0;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(74, 159, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(124, 77, 255, 0.05) 0%, transparent 20%);
+    }
+    
+    .grid-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .home-button {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    
+    .home-button:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 5px 20px rgba(74, 159, 255, 0.5);
+    }
+    
+    .container {
+      background-color: var(--bg-secondary);
+      border: 2px solid var(--accent-primary);
+      border-radius: 10px;
+      padding: 40px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(74, 159, 255, 0.3);
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1 {
+      color: var(--accent-tertiary);
+      text-align: center;
+      text-shadow: 0 0 10px rgba(3, 218, 198, 0.5);
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      font-family: 'Audiowide', cursive;
+      animation: pulse 2s infinite alternate;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-weight: bold;
+    }
+    
+    input {
+      width: 100%;
+      padding: 15px;
+      background-color: rgba(0, 20, 40, 0.7);
+      border: 2px solid rgba(74, 159, 255, 0.5);
+      border-radius: 5px;
+      color: var(--text-primary);
+      font-family: 'Exo 2', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s;
+      outline: none;
+      box-sizing: border-box;
+    }
+    
+    input:focus {
+      border-color: var(--accent-tertiary);
+      box-shadow: 0 0 10px rgba(3, 218, 198, 0.5);
+    }
+    
+    button {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to right, var(--accent-primary), var(--accent-tertiary));
+      border: none;
+      border-radius: 5px;
+      color: #000;
+      font-family: 'Audiowide', cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s;
+      font-weight: bold;
+    }
+    
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(3, 218, 198, 0.4);
+    }
+    
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(0, 30, 50, 0.8);
+      border: 2px solid var(--accent-tertiary);
+      border-radius: 5px;
+      display: none;
+    }
+    
+    .result h2 {
+      color: var(--accent-tertiary);
+      margin-top: 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-family: 'Audiowide', cursive;
+    }
+    
+    .score {
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--accent-primary);
+      text-shadow: 0 0 10px rgba(74, 159, 255, 0.5);
+      margin: 20px 0;
+      font-family: 'Audiowide', cursive;
+    }
+    
+    .guidance {
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+      display: none;
+    }
+    
+    .guidance-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Audiowide', cursive;
+    }
+    
+    .guidance-high {
+      background-color: rgba(0, 230, 118, 0.1);
+      border: 1px solid var(--success);
+    }
+    
+    .guidance-high .guidance-title {
+      color: var(--success);
+    }
+    
+    .guidance-medium {
+      background-color: rgba(255, 171, 0, 0.1);
+      border: 1px solid var(--warning);
+    }
+    
+    .guidance-medium .guidance-title {
+      color: var(--warning);
+    }
+    
+    .guidance-low {
+      background-color: rgba(255, 82, 82, 0.1);
+      border: 1px solid var(--danger);
+    }
+    
+    .guidance-low .guidance-title {
+      color: var(--danger);
+    }
+    
+    .guidance ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    
+    .guidance li {
+      margin-bottom: 5px;
+    }
+    
+    .error {
+      color: #ff4d6d;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .weights {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+    
+    @keyframes pulse {
+      0% {
+        text-shadow: 0 0 5px rgba(3, 218, 198, 0.3);
+      }
+      100% {
+        text-shadow: 0 0 15px rgba(3, 218, 198, 0.7);
+      }
+    }
+    
+    @keyframes glitch {
+      0% {
+        text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #7c4dff,
+          0.025em 0.05em 0 #ff4d6d;
+      }
+      14% {
+        text-shadow: 0.05em 0 0 #00fffc, -0.05em -0.025em 0 #7c4dff,
+          0.025em 0.05em 0 #ff4d6d;
+      }
+      15% {
+        text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #7c4dff,
+          -0.05em -0.05em 0 #ff4d6d;
+      }
+      49% {
+        text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.025em 0 #7c4dff,
+          -0.05em -0.05em 0 #ff4d6d;
+      }
+      50% {
+        text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #7c4dff,
+          0 -0.05em 0 #ff4d6d;
+      }
+      99% {
+        text-shadow: 0.025em 0.05em 0 #00fffc, 0.05em 0 0 #7c4dff,
+          0 -0.05em 0 #ff4d6d;
+      }
+      100% {
+        text-shadow: -0.025em 0 0 #00fffc, -0.025em -0.025em 0 #7c4dff,
+          -0.025em -0.05em 0 #ff4d6d;
+      }
+    }
+    
+    h1 {
+      animation: glitch 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-pattern"></div>
+  
+  <button class="home-button" onclick="window.location.href='index.html'">
+    <i class="fas fa-home"></i>
+    &#8592;
+  </button>
+  
+  <div class="container">
+    <h1>CUT-OFF CALCULATOR</h1>
+    
+    <div class="form-group">
+      <label for="math">MATHEMATICS (100%)</label>
+      <input type="number" id="math" placeholder="Enter Math Score (1-100)">
+      <div class="error" id="mathError">Score must be between 1 and 100</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="physics">PHYSICS (50%)</label>
+      <input type="number" id="physics" placeholder="Enter Physics Score (1-100)">
+      <div class="error" id="physicsError">Score must be between 1 and 100</div>
+    </div>
+    
+    <div class="form-group">
+      <label for="chemistry">CHEMISTRY (50%)</label>
+      <input type="number" id="chemistry" placeholder="Enter Chemistry Score (1-100)">
+      <div class="error" id="chemistryError">Score must be between 1 and 100</div>
+    </div>
+    
+    <button id="calculate">CALCULATE</button>
+    
+    <div class="result" id="result">
+      <h2>YOUR FINAL SCORE</h2>
+      <div class="score" id="finalScore">0.0</div>
+      
+      <div class="guidance guidance-high" id="guidanceHigh">
+        <div class="guidance-title">EXCELLENT PROSPECTS</div>
+        <p>With a cut-off score above 180, you may be eligible for Round-1 of counselling. You have excellent prospects for securing admission to prestigious institutions with competitive programs.</p>
+        <ul>
+          <li>You can get into top-tier colleges with premium courses</li>
+          <li>Your choice filling is crucial - prepare 250-300 choices</li>
+          <li>Prioritize premier engineering colleges and in-demand disciplines</li>
+          <li>Research college rankings and placement records</li>
+          <li>Consider specialized programs aligned with your interests</li>
+        </ul>
+      </div>
+      
+      <div class="guidance guidance-medium" id="guidanceMedium">
+        <div class="guidance-title">GOOD PROSPECTS</div>
+        <p>With a cut-off score between 140-180, you may be eligible for Round-2 of TNEA counselling. You still have good prospects for quality educational institutions.</p>
+        <ul>
+          <li>You can secure admission to good colleges through strategic choice filling</li>
+          <li>Prepare at least 200-250 college choices</li>
+          <li>Consider both college reputation and program quality</li>
+          <li>Research emerging fields with strong growth potential</li>
+          <li>Balance preferences between location, specialization, and college ranking</li>
+        </ul>
+      </div>
+      
+      <div class="guidance guidance-low" id="guidanceLow">
+        <div class="guidance-title">MODERATE PROSPECTS</div>
+        <p>With a cut-off score below 140, you may be eligible for later rounds of counselling. Focus on tier 2 and tier 3 colleges with potential for growth.</p>
+        <ul>
+          <li>Consider tier 2 and tier 3 colleges with solid academic foundations</li>
+          <li>Research colleges with strong industry connections</li>
+          <li>Look for programs with specialized focus areas</li>
+          <li>Explore colleges with good infrastructure and faculty</li>
+          <li>Consider colleges offering additional certifications or industry partnerships</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="weights">
+      WEIGHTS: MATH 100% | PHYSICS 50% | CHEMISTRY 50%
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('calculate').addEventListener('click', function() {
+      // Get input values
+      const mathScore = parseFloat(document.getElementById('math').value);
+      const physicsScore = parseFloat(document.getElementById('physics').value);
+      const chemistryScore = parseFloat(document.getElementById('chemistry').value);
+      
+      // Reset errors
+      document.getElementById('mathError').style.display = 'none';
+      document.getElementById('physicsError').style.display = 'none';
+      document.getElementById('chemistryError').style.display = 'none';
+      
+      // Reset guidance displays
+      document.getElementById('guidanceHigh').style.display = 'none';
+      document.getElementById('guidanceMedium').style.display = 'none';
+      document.getElementById('guidanceLow').style.display = 'none';
+      
+      // Validate inputs
+      let isValid = true;
+      
+      if (isNaN(mathScore) || mathScore < 1 || mathScore > 100) {
+        document.getElementById('mathError').style.display = 'block';
+        isValid = false;
+      }
+      
+      if (isNaN(physicsScore) || physicsScore < 1 || physicsScore > 100) {
+        document.getElementById('physicsError').style.display = 'block';
+        isValid = false;
+      }
+      
+      if (isNaN(chemistryScore) || chemistryScore < 1 || chemistryScore > 100) {
+        document.getElementById('chemistryError').style.display = 'block';
+        isValid = false;
+      }
+      
+      // Calculate if valid
+      if (isValid) {
+        const finalScore = (mathScore * 1.0) + (physicsScore * 0.50) + (chemistryScore * 0.50);
+        document.getElementById('finalScore').textContent = finalScore.toFixed(2);
+        document.getElementById('result').style.display = 'block';
+        
+        // Show appropriate guidance based on score
+        if (finalScore > 180) {
+          document.getElementById('guidanceHigh').style.display = 'block';
+        } else if (finalScore >= 140) {
+          document.getElementById('guidanceMedium').style.display = 'block';
+        } else {
+          document.getElementById('guidanceLow').style.display = 'block';
+        }
+      } else {
+        document.getElementById('result').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

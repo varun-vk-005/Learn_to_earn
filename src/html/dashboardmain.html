@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f6f5f7;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .dashboard {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            margin: 50px auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #FF416C;
+        }
+        
+        .user-info {
+            margin: 20px 0;
+        }
+        
+        .logout-btn {
+            border-radius: 20px;
+            border: 1px solid #FF4B2B;
+            background-color: #FF4B2B;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Welcome to Your Dashboard</h1>
+        <div class="user-info">
+            <h2>User Information</h2>
+            <div id="user-data">Loading...</div>
+        </div>
+        <button id="logout-btn" class="logout-btn">Logout</button>
+    </div>
+    
+    <footer>
+        <p>
+            Created with <i class="fa fa-heart"></i> by
+            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const userDataElement = document.getElementById('user-data');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            // Fetch user data
+            try {
+                const response = await fetch('/api/user');
+                
+                if (!response.ok) {
+                    // Not authenticated, redirect to login
+                    window.location.href = '/';
+                    return;
+                }
+                
+                const userData = await response.json();
+                
+                // Display user data
+                userDataElement.innerHTML = `
+                    <p><strong>Name:</strong> ${userData.name}</p>
+                    <p><strong>Email:</strong> ${userData.email}</p>
+                    <p><strong>Account Created:</strong> ${new Date(userData.createdAt).toLocaleDateString()}</p>
+                `;
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                userDataElement.innerHTML = 'Error loading user data.';
+            }
+            
+            // Handle logout
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    const response = await fetch('/api/logout');
+                    
+                    if (response.ok) {
+                        window.location.href = '/';
+                    }
+                } catch (error) {
+                    console.error('Error logging out:', error);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

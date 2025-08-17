@@ -1,0 +1,2803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WisePath - Complete College Admission Guide</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar styles */
+    .navbar {
+      background-color: white;
+      padding: 1rem 2rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: #4b5563;
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .nav-link:hover {
+      color: #1e40af;
+    }
+
+    .nav-link.active {
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    /* Header actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-left: auto;
+    }
+
+    /* Language toggle */
+    .language-toggle {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.375rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      color: #4b5563;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-right: 0.5rem;
+    }
+
+    .language-toggle:hover {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .language-toggle.tamil-active .current-lang {
+      color: #94a3b8;
+    }
+
+    .language-toggle.tamil-active .alt-lang {
+      color: #1e40af;
+      font-weight: 600;
+    }
+
+    .language-toggle:not(.tamil-active) .current-lang {
+      color: #1e40af;
+      font-weight: 600;
+    }
+
+    .language-toggle:not(.tamil-active) .alt-lang {
+      color: #94a3b8;
+    }
+
+    .lang-divider {
+      margin: 0 0.25rem;
+      color: #94a3b8;
+    }
+
+    /* Navbar container adjustments */
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      height: 4rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Mobile menu */
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #4b5563;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .mobile-menu-button {
+        display: block;
+      }
+    }
+
+    /* Tamil language class */
+    .tamil-content {
+      display: none;
+    }
+
+    body.tamil-active .english-content {
+      display: none;
+    }
+
+    body.tamil-active .tamil-content {
+      display: block;
+    }
+
+    /* Main content styles */
+    main {
+      flex-grow: 1;
+    }
+
+    section {
+      padding-top: 4rem;
+      scroll-margin-top: 4rem;
+    }
+
+    .hero-section {
+      background: linear-gradient(to bottom, #ebf4ff, #ffffff);
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+
+    .page-heading {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-description {
+      font-size: 1.125rem;
+      color: #4b5563;
+      text-align: center;
+      max-width: 768px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Hero specific */
+    .hero-heading {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subheading {
+      font-size: 1.5rem;
+      color: #4b5563;
+      margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    /* Feature section */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+
+    @media (min-width: 640px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-description {
+      color: #4b5563;
+      font-size: 0.875rem;
+    }
+
+    /* Testimonial section */
+    .testimonial-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-content {
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .author-avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      background-color: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+    }
+
+    .author-info h4 {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .author-info p {
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background-color: #1e40af;
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .cta-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .cta-description {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* About section */
+    .about-content {
+      max-width: 3xl;
+      margin: 0 auto;
+      background-color: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .about-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-heading {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 1rem;
+    }
+
+    .about-text {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-list {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tabs styles for AdmissionProcess */
+    .tabs {
+      margin-bottom: 2rem;
+    }
+
+    .tabs-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .tabs-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .tab-button {
+      padding: 0.75rem;
+      background-color: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.25rem;
+      text-align: center;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .tab-button:hover {
+      background-color: #e2e8f0;
+    }
+
+    .tab-button.active {
+      background-color: #1e40af;
+      color: white;
+      border-color: #1e40af;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Card styles */
+    .card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      color: #4b5563;
+      margin-bottom: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .process-step {
+      border-left: 4px solid #1e40af;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .process-step-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Anti-brainwash styles */
+    .accordion {
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      padding: 1rem;
+      background-color: #f8fafc;
+      border: none;
+      text-align: left;
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #0f172a;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-trigger:hover {
+      background-color: #f1f5f9;
+    }
+
+    .accordion-content {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+    }
+
+    .accordion-content.open {
+      padding: 1rem;
+      max-height: 500px;
+    }
+
+    .alert {
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .alert-yellow {
+      background-color: #fef9c3;
+      border: 1px solid #fde047;
+    }
+
+    .alert-title {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .alert-content {
+      font-size: 0.875rem;
+    }
+
+    .tactic-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .tactic-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .tactic-card {
+      background-color: white;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+    }
+
+    .tactic-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+    }
+
+    .rights-card {
+      background-color: #1e40af;
+      color: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .rights-header {
+      padding: 1.5rem;
+    }
+
+    .rights-content {
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .rights-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .rights-list {
+      list-style: none;
+    }
+
+    .rights-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .check-icon {
+      background-color: white;
+      color: #1e40af;
+      border-radius: 9999px;
+      width: 1.25rem;
+      height: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .red-flags {
+      background-color: #172554;
+      padding: 1.5rem;
+    }
+
+    .red-flags-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .red-flags-list {
+      list-style: none;
+    }
+
+    .red-flags-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .red-dot {
+      color: #fca5a5;
+      margin-right: 0.5rem;
+    }
+
+    /* DosDonts styles */
+    .do-card {
+      background-color: #dcfce7;
+      border: 1px solid #86efac;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .dont-card {
+      background-color: #fee2e2;
+      border: 1px solid #fca5a5;
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .do-title {
+      color: #166534;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .dont-title {
+      color: #b91c1c;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Resources styles */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .icon-wrapper {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      background-color: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .resources-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .resources-card-header {
+      padding: 1.5rem 1.5rem 0.5rem;
+    }
+
+    .resources-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+
+    .resources-card-description {
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+
+    .resources-card-content {
+      padding: 0.5rem 1.5rem 1.5rem;
+    }
+
+    .resources-card-text {
+      font-size: 0.875rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+    }
+
+    /* Button styles */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      border: none;
+      outline: none;
+    }
+
+    .button-primary {
+      background-color: #1e40af;
+      color: white;
+    }
+
+    .button-primary:hover {
+      background-color: #1e3a8a;
+    }
+
+    .button-secondary {
+      background-color: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .button-secondary:hover {
+      background-color: #cbd5e1;
+    }
+
+    .button-outline {
+      background-color: transparent;
+      border: 1px solid #e2e8f0;
+      color: #0f172a;
+    }
+
+    .button-outline:hover {
+      background-color: #f8fafc;
+    }
+
+    .button-full {
+      width: 100%;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #1e40af;
+      color: white;
+      padding: 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Toast notification styles */
+    .toast-container {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 50;
+    }
+
+    .toast {
+      background-color: white;
+      color: #0f172a;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 0.5rem;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      animation: slideIn 0.3s ease-out;
+      position: relative;
+    }
+
+    .toast-title {
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .toast-description {
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+
+    .toast-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #1e40af;
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 40;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">WisePath</div>
+      <div class="nav-links" id="navLinks">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#admission-process">Admission Process</a>
+        <a class="nav-link" href="#anti-brainwash">Anti-Brainwash</a>
+        <a class="nav-link" href="#dos-donts">Do's & Don'ts</a>
+        <a class="nav-link" href="#resources">Resources</a>
+      </div>
+      <div class="header-actions">
+        <button id="languageToggle" class="language-toggle">
+          <span class="current-lang">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="alt-lang">தமிழ்</span>
+        </button>
+        <button class="mobile-menu-button" id="mobileMenuButton">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HOME SECTION -->
+    <section id="home">
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="section-container">
+          <!-- English Content -->
+          <div class="english-content">
+            <h1 class="hero-heading">Navigate College Admissions with Confidence</h1>
+            <p class="hero-subheading">Clear, honest guidance for parents and students to make informed decisions</p>
+            <div class="hero-buttons">
+              <a href="#admission-process" class="button button-primary">Understand the Process</a>
+              <a href="#anti-brainwash" class="button button-outline">Avoid Common Traps</a>
+            </div>
+          </div>
+
+          <!-- Tamil Content -->
+          <div class="tamil-content">
+            <h1 class="hero-heading">கல்லூரி சேர்க்கையை நம்பிக்கையுடன் வழிநடத்துங்கள்</h1>
+            <p class="hero-subheading">பெற்றோர்கள் மற்றும் மாணவர்கள் தெளிவான முடிவுகளை எடுக்க உதவும் நேர்மையான வழிகாட்டுதல்</p>
+            <div class="hero-buttons">
+              <a href="#admission-process" class="button button-primary">செயல்முறையைப் புரிந்துகொள்ளுங்கள்</a>
+              <a href="#anti-brainwash" class="button button-outline">பொதுவான தந்திரங்களைத் தவிர்க்கவும்</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="section-container">
+        <!-- English Content -->
+        <div class="english-content">
+          <h2 class="page-heading">How We Help You</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+              </div>
+              <h3 class="feature-title">Clear Process Guidance</h3>
+              <p class="feature-description">Step-by-step explanation of the admission process across different states and courses.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.4 10.6a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2z"></path><path d="M11.3 12.4a4.2 4.2 0 1 0-5.8 0l2.8 3.6 3-3.6z"></path><path d="M15.6 6.4a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2z"></path><path d="M12.7 12.4a4.2 4.2 0 1 1 5.8 0l-2.8 3.6-3-3.6z"></path></svg>
+              </div>
+              <h3 class="feature-title">Manipulation Protection</h3>
+              <p class="feature-description">Tools to identify and counter common manipulation tactics used by some private colleges.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+              </div>
+              <h3 class="feature-title">Do's and Don'ts Guide</h3>
+              <p class="feature-description">Practical advice on what to do and what to avoid during the admission journey.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tamil Content -->
+        <div class="tamil-content">
+          <h2 class="page-heading">நாங்கள் எப்படி உதவுகிறோம்</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+              </div>
+              <h3 class="feature-title">தெளிவான செயல்முறை வழிகாட்டுதல்</h3>
+              <p class="feature-description">வெவ்வேறு மாநிலங்கள் மற்றும் படிப்புகளில் சேர்க்கை செயல்முறையின் படிப்படியான விளக்கம்.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.4 10.6a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2z"></path><path d="M11.3 12.4a4.2 4.2 0 1 0-5.8 0l2.8 3.6 3-3.6z"></path><path d="M15.6 6.4a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2z"></path><path d="M12.7 12.4a4.2 4.2 0 1 1 5.8 0l-2.8 3.6-3-3.6z"></path></svg>
+              </div>
+              <h3 class="feature-title">கையாளுதல் பாதுகாப்பு</h3>
+              <p class="feature-description">சில தனியார் கல்லூரிகள் பயன்படுத்தும் பொதுவான கையாளுதல் தந்திரங்களை அடையாளம் காணவும் எதிர்கொள்ளவும் கருவிகள்.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+              </div>
+              <h3 class="feature-title">செய்ய வேண்டியவை மற்றும் செய்யக்கூடாதவை வழிகாட்டி</h3>
+              <p class="feature-description">சேர்க்கை பயணத்தின் போது என்ன செய்ய வேண்டும், என்ன தவிர்க்க வேண்டும் என்பது குறித்த நடைமுறை ஆலோசனை.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 class="feature-title">Success Stories</h3>
+            <p class="feature-description">Real examples from parents and students who navigated the process successfully.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <h3 class="feature-title">Comprehensive Resources</h3>
+            <p class="feature-description">Downloadable guides, checklists, and tools to assist throughout the admission process.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            </div>
+            <h3 class="feature-title">Multilingual Support</h3>
+            <p class="feature-description">Information available in multiple languages to ensure accessibility for all families.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial Section -->
+      <div class="section-container" style="background-color: #f1f5f9;">
+        <h2 class="page-heading">What Parents & Students Say</h2>
+        <div class="card-grid">
+          <div class="testimonial-card">
+            <p class="testimonial-content">
+              "Thanks to WisePath, we avoided paying an excessive management quota fee. We waited for government counseling as advised and my daughter got her desired engineering seat at a fraction of the cost."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">R</div>
+              <div class="author-info">
+                <h4>Rajesh Kumar</h4>
+                <p>Parent of an Engineering Student</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <p class="testimonial-content">
+              "The anti-brainwash guide was eye-opening! A college representative was pressuring me with 'only 2 seats left' tactics, but I recognized it from your guide and made a more informed decision."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">P</div>
+              <div class="author-info">
+                <h4>Priya Sharma</h4>
+                <p>MBBS Aspirant</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section">
+        <div class="section-container">
+          <h2 class="cta-heading">Don't Navigate This Journey Alone</h2>
+          <p class="cta-description">
+            Get access to our comprehensive resources and join thousands of families making confident, informed decisions about higher education.
+          </p>
+          <a href="#resources" class="button button-secondary">Explore Our Resources</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-container">
+      <h1 class="page-heading">About WisePath</h1>
+      <div class="about-content">
+        <!-- English Content -->
+        <div class="english-content">
+          <div class="about-section">
+            <h2 class="about-heading">Our Mission</h2>
+            <p class="about-text">
+              WisePath was created with one clear mission: to empower parents and students with honest,
+              practical information about the post-12th admission process, helping them make confident,
+              informed decisions rather than fear-driven ones.
+            </p>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">Why We Started</h2>
+            <p class="about-text">
+              Every year, we witnessed countless families fall victim to manipulative tactics by certain
+              private colleges during admission season. Parents, in their desire to secure the best future
+              for their children, would often end up paying exorbitant fees through management quotas,
+              believing they had no other choice.
+            </p>
+            <p class="about-text">
+              We realized that this pattern continued because of a lack of clear, accessible information
+              about how the admission process actually works. Thus, WisePath was born—a comprehensive
+              resource that cuts through the confusion and manipulation.
+            </p>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">What We Offer</h2>
+            <ul class="about-list">
+              <li>Clear explanations of the admission process across different states</li>
+              <li>Tools to identify and counter manipulation tactics</li>
+              <li>Practical do's and don'ts for the admission journey</li>
+              <li>Real stories from parents and students who navigated the process successfully</li>
+              <li>Resources in multiple languages to ensure accessibility for all</li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">Our Vision</h2>
+            <p class="about-text">
+              We envision a future where every parent and student approaches the admission process with
+              confidence and clarity, where educational decisions are based on merit and preference rather
+              than fear and pressure, and where the path to higher education is transparent and fair for all.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tamil Content -->
+        <div class="tamil-content">
+          <div class="about-section">
+            <h2 class="about-heading">எங்கள் நோக்கம்</h2>
+            <p class="about-text">
+              வைஸ்பாத் ஒரு தெளிவான நோக்கத்துடன் உருவாக்கப்பட்டது: பெற்றோர்கள் மற்றும் மாணவர்களுக்கு 12-ஆம் வகுப்புக்குப் பிறகு சேர்க்கை செயல்முறை பற்றிய நேர்மையான, நடைமுறை தகவல்களை வழங்குவதன் மூலம், அவர்கள் அச்சத்தால் உந்தப்பட்ட முடிவுகளுக்குப் பதிலாக நம்பிக்கையுடன், தகவலறிந்த முடிவுகளை எடுக்க உதவுதல்.
+            </p>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">நாங்கள் ஏன் தொடங்கினோம்</h2>
+            <p class="about-text">
+              ஒவ்வொரு ஆண்டும், சேர்க்கை காலத்தில் சில தனியார் கல்லூரிகளின் கையாளுதல் தந்திரங்களால் எண்ணற்ற குடும்பங்கள் பாதிக்கப்படுவதை நாங்கள் கண்டோம். பெற்றோர்கள், தங்கள் குழந்தைகளுக்கு சிறந்த எதிர்காலத்தை உறுதிப்படுத்தும் விருப்பத்தில், வேறு வழியில்லை என்று நம்பி, மேலாண்மை கோட்டாக்கள் மூலம் அதிக கட்டணம் செலுத்துவார்கள்.
+            </p>
+            <p class="about-text">
+              சேர்க்கை செயல்முறை எவ்வாறு செயல்படுகிறது என்பது குறித்த தெளிவான, அணுகக்கூடிய தகவல்கள் இல்லாததால் இந்த முறை தொடர்ந்தது என்பதை நாங்கள் உணர்ந்தோம். எனவே, வைஸ்பாத் பிறந்தது - குழப்பம் மற்றும் கையாளுதலை வெட்டி செல்லும் ஒரு விரிவான வளம்.
+            </p>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">நாங்கள் என்ன வழங்குகிறோம்</h2>
+            <ul class="about-list">
+              <li>வெவ்வேறு மாநிலங்களில் சேர்க்கை செயல்முறை பற்றிய தெளிவான விளக்கங்கள்</li>
+              <li>கையாளுதல் தந்திரங்களை அடையாளம் காணவும் எதிர்கொள்ளவும் கருவிகள்</li>
+              <li>சேர்க்கை பயணத்திற்கான நடைமுறை செய்ய வேண்டியவை மற்றும் செய்யக்கூடாதவை</li>
+              <li>செயல்முறையை வெற்றிகரமாக வழிநடத்திய பெற்றோர்கள் மற்றும் மாணவர்களின் உண்மையான கதைகள்</li>
+              <li>அனைவருக்கும் அணுகல் உறுதி செய்ய பல மொழிகளில் வளங்கள்</li>
+            </ul>
+          </div>
+
+          <div class="about-section">
+            <h2 class="about-heading">எங்கள் தொலைநோக்கு</h2>
+            <p class="about-text">
+              ஒவ்வொரு பெற்றோரும் மாணவரும் சேர்க்கை செயல்முறையை நம்பிக்கையுடனும் தெளிவுடனும் அணுகும் எதிர்காலத்தை நாங்கள் கற்பனை செய்கிறோம், அங்கு கல்வி முடிவுகள் அச்சம் மற்றும் அழுத்தத்தைக் காட்டிலும் தகுதி மற்றும் விருப்பத்தின் அடிப்படையில் எடுக்கப்படுகின்றன, மேலும் உயர் கல்விக்கான பாதை அனைவருக்கும் வெளிப்படையானது மற்றும் நியாயமானது.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMISSION PROCESS SECTION -->
+    <section id="admission-process" class="section-container">
+      <h1 class="page-heading">Understanding the Admission Process</h1>
+      <p class="page-description">
+        Navigate the post-12th admission journey with confidence by understanding how the process actually works.
+      </p>
+
+      <div class="tabs">
+        <div class="tabs-list">
+          <button class="tab-button active" data-tab="overview">Overview</button>
+          <button class="tab-button" data-tab="govt-counseling">Government Counseling</button>
+          <button class="tab-button" data-tab="management-quota">Management Quota</button>
+          <button class="tab-button" data-tab="timeline">Timeline & Documents</button>
+        </div>
+
+        <div id="overview-tab" class="tab-content active">
+          <div class="card">
+            <div class="card-content">
+              <h2 class="card-title">Admission Process Overview</h2>
+              <p class="card-text">
+                After completing the 12th standard, students in India typically have two main pathways for college admissions:
+              </p>
+
+              <div class="card-grid">
+                <div style="background-color: #dbeafe; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #bfdbfe;">
+                  <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e40af; margin-bottom: 0.75rem;">Government Counseling</h3>
+                  <p style="color: #4b5563; margin-bottom: 1rem;">
+                    This is the official, merit-based admission process conducted by state or central authorities.
+                    Seats are allocated based on entrance exam scores (like NEET, JEE) or 12th standard marks.
+                  </p>
+                  <div style="margin-top: 1rem; color: #1e40af; font-weight: 500;">Benefits:</div>
+                  <ul style="list-style-type: disc; padding-left: 1.5rem; color: #4b5563; margin-top: 0.5rem;">
+                    <li>Transparent and merit-based</li>
+                    <li>Regulated fee structure</li>
+                    <li>Equal opportunity for all eligible candidates</li>
+                  </ul>
+                </div>
+
+                <div style="background-color: #fee2e2; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #fecaca;">
+                  <h3 style="font-size: 1.25rem; font-weight: 600; color: #b91c1c; margin-bottom: 0.75rem;">Management Quota</h3>
+                  <p style="color: #4b5563; margin-bottom: 1rem;">
+                    These are seats reserved by private institutions for direct admissions, often at higher fees.
+                    While legitimate, they're frequently misused to pressure students into paying more.
+                  </p>
+                  <div style="margin-top: 1rem; color: #b91c1c; font-weight: 500;">Cautions:</div>
+                  <ul style="list-style-type: disc; padding-left: 1.5rem; color: #4b5563; margin-top: 0.5rem;">
+                    <li>Significantly higher fees (3-5 times more)</li>
+                    <li>Often used with pressure tactics</li>
+                    <li>May not always guarantee quality education</li>
+                  </ul>
+                </div>
+              </div>
+
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-top: 2rem; margin-bottom: 0.75rem;">Key Points to Remember</h3>
+              <ul style="list-style-type: disc; padding-left: 1.5rem; color: #4b5563; margin-bottom: 1rem;">
+                <li>
+                  <strong>Wait for government counseling</strong> before committing to any private college offers
+                </li>
+                <li>
+                  <strong>Don't panic</strong> if colleges call claiming "seats are filling fast" - this is a common pressure tactic
+                </li>
+                <li>
+                  <strong>Research college credentials</strong> - check for proper approvals, accreditation, and reviews
+                </li>
+                <li>
+                  <strong>Understand your chances</strong> based on previous years' cutoff marks and seat availability
+                </li>
+                <li>
+                  <strong>Consider all factors</strong> beyond just getting a seat - location, facilities, placements, faculty
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="govt-counseling-tab" class="tab-content">
+          <div class="card">
+            <div class="card-content">
+              <h2 class="card-title">Government Counseling Process</h2>
+              <p class="card-text">
+                Government counseling is the official process for allocating seats in colleges based on merit.
+                Here's how it typically works:
+              </p>
+
+              <div style="margin-top: 1.5rem; margin-bottom: 2rem;">
+                <div class="process-step">
+                  <h3 class="process-step-title">Step 1: Registration</h3>
+                  <p style="color: #4b5563;">
+                    Students register on the official counseling website of the respective authority
+                    (state or central) with their entrance exam or 12th marks.
+                  </p>
+                </div>
+
+                <div class="process-step">
+                  <h3 class="process-step-title">Step 2: Choice Filling</h3>
+                  <p style="color: #4b5563;">
+                    Students enter their preferred colleges and courses in order of preference. This step is crucial
+                    as it determines where you might be placed.
+                  </p>
+                </div>
+
+                <div class="process-step">
+                  <h3 class="process-step-title">Step 3: Seat Allotment</h3>
+                  <p style="color: #4b5563;">
+                    Based on merit rank and choices filled, seats are allotted. Students can check their allotment
+                    on the official website.
+                  </p>
+                </div>
+
+                <div class="process-step">
+                  <h3 class="process-step-title">Step 4: Fee Payment</h3>
+                  <p style="color: #4b5563;">
+                    If satisfied with the allotment, students pay the specified fee to confirm their seat.
+                  </p>
+                </div>
+
+                <div class="process-step">
+                  <h3 class="process-step-title">Step 5: Reporting to College</h3>
+                  <p style="color: #4b5563;">
+                    Students report to their allotted college with the required documents to complete the admission process.
+                  </p>
+                </div>
+              </div>
+
+              <div style="background-color: #dbeafe; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #bfdbfe;">
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e40af; margin-bottom: 0.75rem;">Advantages of Government Counseling</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; color: #4b5563;">
+                  <div style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #bfdbfe; color: #1e40af; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">✓</span>
+                    <span>Transparent merit-based process</span>
+                  </div>
+                  <div style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #bfdbfe; color: #1e40af; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">✓</span>
+                    <span>Lower fees compared to management quota</span>
+                  </div>
+                  <div style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #bfdbfe; color: #1e40af; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">✓</span>
+                    <span>Government regulated and supervised</span>
+                  </div>
+                  <div style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #bfdbfe; color: #1e40af; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">✓</span>
+                    <span>Multiple rounds for better chances</span>
+                  </div>
+                  <div style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #bfdbfe; color: #1e40af; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">✓</span>
+                    <span>Reservation benefits for eligible categories</span>
+                  </div>
+                  <div style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #bfdbfe; color: #1e40af; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">✓</span>
+                    <span>Scholarship opportunities for meritorious students</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="management-quota-tab" class="tab-content">
+          <div class="card">
+            <div class="card-content">
+              <h2 class="card-title">Understanding Management Quota</h2>
+              <p class="card-text">
+                Management quota seats are a portion of seats reserved by private institutions for direct admissions.
+                While legitimate, they come with higher fees and are often used with pressure tactics.
+              </p>
+
+              <div style="background-color: #fff7ed; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #fed7aa; margin-top: 1.5rem; margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: #c2410c; margin-bottom: 0.75rem;">Warning Signs to Watch For</h3>
+                <ul style="color: #4b5563; margin-top: 0.5rem;">
+                  <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+                    <span style="background-color: #fed7aa; color: #c2410c; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">!</span>
+                    <span>Urgent calls claiming "last few seats remaining"</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+                    <span style="background-color: #fed7aa; color: #c2410c; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">!</span>
+                    <span>Statements like "you won't get this course in counseling"</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+                    <span style="background-color: #fed7aa; color: #c2410c; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">!</span>
+                    <span>Pressure to pay booking amount immediately</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start; margin-bottom: 0.75rem;">
+                    <span style="background-color: #fed7aa; color: #c2410c; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">!</span>
+                    <span>Reluctance to provide clear fee structure in writing</span>
+                  </li>
+                  <li style="display: flex; align-items: flex-start;">
+                    <span style="background-color: #fed7aa; color: #c2410c; border-radius: 9999px; width: 1.25rem; height: 1.25rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.5rem;">!</span>
+                    <span>Vague promises about facilities and placements</span>
+                  </li>
+                </ul>
+              </div>
+
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 1rem;">Questions to Ask Before Considering Management Quota</h3>
+              <div class="tactic-grid">
+                <div class="tactic-card">
+                  <p class="tactic-title">1. What is the total fee for the entire course?</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Get a clear breakdown of all fees, including tuition, development, hostel, etc.</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">2. Is this seat recognized by the appropriate authorities?</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Ensure the seat is approved by bodies like MCI, AICTE, UGC, etc.</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">3. What is your refund policy?</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Understand the conditions under which fees can be refunded.</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">4. Can I see the college's NIRF ranking and other credentials?</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Check official rankings to gauge the college's standing.</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">5. Can I visit the campus before deciding?</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Always visit to verify if facilities match what was promised.</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">6. Can I speak with current students or alumni?</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Get real feedback about the college experience.</p>
+                </div>
+              </div>
+
+              <div style="background-color: #fee2e2; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #fecaca; margin-top: 2rem;">
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: #b91c1c; margin-bottom: 0.75rem;">Important Reminder</h3>
+                <p style="color: #4b5563;">
+                  Management quota is a legitimate option, but it should be your informed choice, not a fear-driven decision.
+                  Always wait for government counseling results before committing large sums to private colleges.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="timeline-tab" class="tab-content">
+          <div class="card">
+            <div class="card-content">
+              <h2 class="card-title">Timeline & Required Documents</h2>
+              <p class="card-text">
+                Understanding the typical admission timeline and preparing the right documents in advance
+                can save you a lot of stress during the admission process.
+              </p>
+
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-top: 1.5rem; margin-bottom: 1rem;">General Timeline (Varies by State)</h3>
+              <div style="position: relative; border-left: 2px solid #1e40af; padding-left: 2rem; margin-left: 1rem; margin-bottom: 3rem;">
+                <div style="margin-bottom: 2rem; position: relative;">
+                  <div style="position: absolute; left: -2.5rem; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background-color: #1e40af; color: white; display: flex; align-items: center; justify-content: center;">1</div>
+                  <h4 style="font-size: 1.125rem; font-weight: 500; color: #1e40af; margin-bottom: 0.25rem;">May-June</h4>
+                  <p style="color: #4b5563;">12th Results & Entrance Exam Results Announced</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; position: relative;">
+                  <div style="position: absolute; left: -2.5rem; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background-color: #1e40af; color: white; display: flex; align-items: center; justify-content: center;">2</div>
+                  <h4 style="font-size: 1.125rem; font-weight: 500; color: #1e40af; margin-bottom: 0.25rem;">June-July</h4>
+                  <p style="color: #4b5563;">Application & Registration for Counseling</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; position: relative;">
+                  <div style="position: absolute; left: -2.5rem; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background-color: #1e40af; color: white; display: flex; align-items: center; justify-content: center;">3</div>
+                  <h4 style="font-size: 1.125rem; font-weight: 500; color: #1e40af; margin-bottom: 0.25rem;">July-August</h4>
+                  <p style="color: #4b5563;">Choice Filling & First Round of Counseling</p>
+                </div>
+
+                <div style="margin-bottom: 2rem; position: relative;">
+                  <div style="position: absolute; left: -2.5rem; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background-color: #1e40af; color: white; display: flex; align-items: center; justify-content: center;">4</div>
+                  <h4 style="font-size: 1.125rem; font-weight: 500; color: #1e40af; margin-bottom: 0.25rem;">August-September</h4>
+                  <p style="color: #4b5563;">Subsequent Rounds & Spot Counseling</p>
+                </div>
+
+                <div style="position: relative;">
+                  <div style="position: absolute; left: -2.5rem; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 9999px; background-color: #1e40af; color: white; display: flex; align-items: center; justify-content: center;">5</div>
+                  <h4 style="font-size: 1.125rem; font-weight: 500; color: #1e40af; margin-bottom: 0.25rem;">September-October</h4>
+                  <p style="color: #4b5563;">College Session Begins</p>
+                </div>
+              </div>
+
+              <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 1rem;">Essential Documents to Keep Ready</h3>
+              <div class="tactic-grid">
+                <div class="tactic-card">
+                  <p class="tactic-title">12th Mark Sheet (Original & Copies)</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Required for all admission processes</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">Entrance Exam Score Card</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">NEET, JEE, or state-level entrance exams</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">Transfer Certificate (TC)</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">From your 12th school</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">Character Certificate</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">From your 12th school</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">ID Proof</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Aadhaar, PAN, Passport, etc.</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">Passport Size Photographs</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">10-15 copies</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">Income Certificate</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">Required for scholarships and fee concessions</p>
+                </div>
+
+                <div class="tactic-card">
+                  <p class="tactic-title">Caste Certificate (if applicable)</p>
+                  <p style="font-size: 0.875rem; color: #64748b;">For reservation category students</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANTI-BRAINWASH SECTION -->
+    <section id="anti-brainwash" class="section-container">
+      <h1 class="page-heading">Anti-Brainwash Guide</h1>
+      <p class="page-description">
+        Learn to identify and counter common manipulation tactics used by some private colleges during admission season.
+      </p>
+
+      <div class="alert alert-yellow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ca8a04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <div>
+          <div class="alert-title">Important Notice</div>
+          <div class="alert-content">
+            While not all private colleges use manipulative tactics, it's important to be informed about these practices so you can make decisions based on facts, not fear.
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top: 2rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-bottom: 1.5rem;">Common Manipulation Tactics</h2>
+
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-trigger">
+                "Limited Seats" Urgency
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accordion-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-content">
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Tactic:</strong> Colleges call claiming "only 2-3 seats left" or "today is the last day"
+                  to create artificial urgency and rush your decision.
+                </p>
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Reality:</strong> Most colleges have multiple rounds of admissions, and seats often open
+                  up during later rounds. Government counseling ensures fair distribution of seats based on merit.
+                </p>
+                <p>
+                  <strong>Your Response:</strong> "Thank you for informing me. I'll first wait for the government
+                  counseling results before making any decisions."
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger">
+                "You Won't Get This Course in Counseling"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accordion-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-content">
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Tactic:</strong> Representatives make definitive statements about your chances in
+                  government counseling without knowing the actual cutoffs that will be declared later.
+                </p>
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Reality:</strong> Cutoffs vary each year based on many factors. No one can predict
+                  with certainty what the cutoffs will be this year.
+                </p>
+                <p>
+                  <strong>Your Response:</strong> "I appreciate your concern, but I'd like to see the official
+                  cutoffs when they're published and wait for my government counseling result."
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger">
+                "Pay Booking Amount Now to Secure Your Seat"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accordion-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-content">
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Tactic:</strong> Colleges ask for a "small" booking amount (often ₹10,000-50,000)
+                  to "reserve" your seat, creating a commitment that makes it harder to walk away later.
+                </p>
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Reality:</strong> These booking amounts often have unclear refund policies and
+                  are designed to lock you in early.
+                </p>
+                <p>
+                  <strong>Your Response:</strong> "Can you please send me your complete fee structure and refund
+                  policy in writing? I'll review it and get back to you after consulting with my family."
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger">
+                "Special Quota Just for You"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accordion-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-content">
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Tactic:</strong> Representatives claim they're offering a "special quota" or "special
+                  consideration" just for you, making you feel you're getting a unique opportunity.
+                </p>
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Reality:</strong> These are typically standard management quota seats available to anyone
+                  willing to pay the higher fees.
+                </p>
+                <p>
+                  <strong>Your Response:</strong> "Thank you for the offer. Could you explain exactly what this special
+                  quota is, how it's different from management quota, and provide this information in writing?"
+                </p>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-trigger">
+                "Our College Has 100% Placements"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="accordion-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <div class="accordion-content">
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Tactic:</strong> Vague claims about placement statistics without providing specific
+                  details about salary ranges, companies that hire, or actual placement percentages.
+                </p>
+                <p style="margin-bottom: 0.75rem;">
+                  <strong>The Reality:</strong> Many colleges inflate placement figures by counting even temporary
+                  or low-paying jobs, or by only considering students who registered for placements.
+                </p>
+                <p>
+                  <strong>Your Response:</strong> "That sounds impressive. Could you share detailed placement reports
+                  for the last 3 years? And can I speak with some recent alumni about their placement experiences?"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #0f172a; margin-top: 2rem; margin-bottom: 1.5rem;">How to Stay Strong Against Pressure</h2>
+          <div class="tactic-grid">
+            <div class="tactic-card">
+              <h3 class="tactic-title">Research Before Engaging</h3>
+              <p style="color: #4b5563;">
+                Look up college rankings, approvals, and reviews online before speaking with representatives. Knowledge
+                gives you confidence to counter manipulation.
+              </p>
+            </div>
+
+            <div class="tactic-card">
+              <h3 class="tactic-title">Always Get Details in Writing</h3>
+              <p style="color: #4b5563;">
+                Ask for all claims about fees, facilities, placements, and special offers to be sent to you in writing.
+                This creates accountability and gives you time to verify.
+              </p>
+            </div>
+
+            <div class="tactic-card">
+              <h3 class="tactic-title">Visit the Campus Personally</h3>
+              <p style="color: #4b5563;">
+                Never make a decision based solely on phone calls or brochures. Visit the campus, talk to current students,
+                and see if the reality matches what was promised.
+              </p>
+            </div>
+
+            <div class="tactic-card">
+              <h3 class="tactic-title">Wait for Government Counseling</h3>
+              <p style="color: #4b5563;">
+                Complete the government counseling process before committing to any management quota seat. You might get your
+                desired course through the official process at a much lower fee.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="rights-card">
+            <div class="rights-header">
+              <h3 class="rights-title">Your Rights as a Student</h3>
+              <ul class="rights-list">
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span>Right to accurate, complete information</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span>Right to transparent fee structures</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span>Right to refund as per regulatory guidelines</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span>Right to file complaints against malpractices</span>
+                </li>
+                <li>
+                  <span class="check-icon">✓</span>
+                  <span>Right to make decisions without undue pressure</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="red-flags">
+              <h3 class="red-flags-title">Red Flags to Watch For</h3>
+              <ul class="red-flags-list">
+                <li>
+                  <span class="red-dot">•</span>
+                  <span>Unwillingness to provide information in writing</span>
+                </li>
+                <li>
+                  <span class="red-dot">•</span>
+                  <span>Excessive focus on "limited time offers"</span>
+                </li>
+                <li>
+                  <span class="red-dot">•</span>
+                  <span>Discouraging you from exploring other options</span>
+                </li>
+                <li>
+                  <span class="red-dot">•</span>
+                  <span>Inconsistent information from different representatives</span>
+                </li>
+                <li>
+                  <span class="red-dot">•</span>
+                  <span>Reluctance to let you visit campus or talk to current students</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0;">
+            <h3 style="font-size: 1.25rem; font-weight: 600; color: #0f172a; margin-bottom: 1rem;">Have You Experienced This?</h3>
+            <p style="color: #4b5563; margin-bottom: 1rem;">
+              If you've encountered manipulative tactics from any educational institution, consider reporting it to help other students.
+            </p>
+            <div>
+              <p style="font-size: 0.875rem; font-weight: 500; color: #1e40af; margin-bottom: 0.5rem;">You can report to:</p>
+              <ul style="font-size: 0.875rem; color: #4b5563;">
+                <li style="margin-bottom: 0.25rem;">• State Education Department</li>
+                <li style="margin-bottom: 0.25rem;">• University Grants Commission (UGC)</li>
+                <li style="margin-bottom: 0.25rem;">• All India Council for Technical Education (AICTE)</li>
+                <li style="margin-bottom: 0.25rem;">• Medical Council of India (for medical colleges)</li>
+                <li>• Consumer Protection Forums</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOS AND DONTS SECTION -->
+    <section id="dos-donts" class="section-container">
+      <h1 class="page-heading">Do's and Don'ts for College Admission</h1>
+      <p class="page-description">
+        Follow these practical guidelines to navigate the college admission process successfully.
+      </p>
+
+      <div class="card-grid" style="margin-top: 2rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #15803d; margin-bottom: 1.5rem;">What To Do</h2>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Start Preparation Early
+            </div>
+            <p style="color: #4b5563;">
+              Begin researching colleges, courses, and admission requirements at least a year before your 12th standard exams. This gives you time to understand the process thoroughly.
+            </p>
+          </div>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Maintain a Document File
+            </div>
+            <p style="color: #4b5563;">
+              Keep all important documents (mark sheets, certificates, ID proofs) organized in a file. Make multiple photocopies and scan digital copies for easy access.
+            </p>
+          </div>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Verify College Credentials
+            </div>
+            <p style="color: #4b5563;">
+              Check if the college is approved by relevant authorities (UGC, AICTE, MCI, etc.). Look up NIRF rankings and accreditation status to ensure you're considering legitimate institutions.
+            </p>
+          </div>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Visit Campuses Before Deciding
+            </div>
+            <p style="color: #4b5563;">
+              Whenever possible, visit college campuses to see facilities firsthand and talk to current students. This gives you a much better feel for the institution than brochures or websites.
+            </p>
+          </div>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Complete Government Counseling
+            </div>
+            <p style="color: #4b5563;">
+              Always register and participate in government counseling processes. Even if you're considering management quota, government counseling often provides more affordable options.
+            </p>
+          </div>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Get Fee Details in Writing
+            </div>
+            <p style="color: #4b5563;">
+              Always ask for a complete breakdown of fees in writing, including tuition, development, hostel, and any other charges for the entire duration of the course.
+            </p>
+          </div>
+
+          <div class="do-card">
+            <div class="do-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              Explore Scholarship Options
+            </div>
+            <p style="color: #4b5563;">
+              Research and apply for relevant scholarships well in advance. Many government and private scholarships can significantly reduce your financial burden.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #b91c1c; margin-bottom: 1.5rem;">What Not To Do</h2>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Make Hasty Decisions Under Pressure
+            </div>
+            <p style="color: #4b5563;">
+              Never rush into paying fees or making commitments because of artificial urgency created by college representatives. Take your time to think through decisions.
+            </p>
+          </div>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Pay Cash Without Proper Receipts
+            </div>
+            <p style="color: #4b5563;">
+              Always insist on official receipts for any payments made. Use bank transfers or demand drafts rather than cash for better documentation and security.
+            </p>
+          </div>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Believe Vague Placement Claims
+            </div>
+            <p style="color: #4b5563;">
+              Be skeptical of broad statements like "100% placement" without specific details. Ask for placement records of previous years with company names and salary ranges.
+            </p>
+          </div>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Sign Documents Without Reading
+            </div>
+            <p style="color: #4b5563;">
+              Never sign any admission documents, especially those related to fees or refund policies, without reading and understanding them thoroughly.
+            </p>
+          </div>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Skip Researching Job Prospects
+            </div>
+            <p style="color: #4b5563;">
+              Don't choose a course or college solely based on its popularity without researching job prospects, industry demand, and growth opportunities in that field.
+            </p>
+          </div>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Trust Agents Without Verification
+            </div>
+            <p style="color: #4b5563;">
+              Be cautious of admission agents or consultants. Always verify their credentials and cross-check any information they provide directly with the college.
+            </p>
+          </div>
+
+          <div class="dont-card">
+            <div class="dont-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+              Don't Neglect Student Feedback
+            </div>
+            <p style="color: #4b5563;">
+              Don't rely solely on what college representatives tell you. Speak with current students and alumni to get authentic feedback about the institution.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 3rem; background-color: #f0f9ff; border-radius: 0.5rem; padding: 2rem; border: 1px solid #bae6fd;">
+        <h2 style="font-size: 1.5rem; font-weight: 600; color: #0369a1; margin-bottom: 1rem; text-align: center;">Remember</h2>
+        <p style="color: #4b5563; text-align: center; max-width: 768px; margin: 0 auto;">
+          The college admission process might seem overwhelming, but with proper planning and information, you can make confident decisions. Don't let fear or pressure dictate your choices—take your time, do your research, and trust the process.
+        </p>
+      </div>
+    </section>
+
+    <!-- RESOURCES SECTION -->
+    <section id="resources" class="section-container">
+      <h1 class="page-heading">Resources</h1>
+      <p class="page-description">
+        Helpful resources, tools, and information to guide you through the college admission process.
+      </p>
+
+      <div class="tabs">
+        <div class="tabs-list">
+          <button class="tab-button active" data-tab="official-links">Official Links</button>
+          <button class="tab-button" data-tab="guides">Guides & Downloads</button>
+          <button class="tab-button" data-tab="videos">Videos</button>
+          <button class="tab-button" data-tab="tools">Useful Tools</button>
+        </div>
+
+        <div id="official-links-tab" class="tab-content active">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e40af; margin-bottom: 1.5rem;">Official Government Websites</h2>
+          <div class="cards-grid">
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="resources-card-title">AICTE - All India Council for Technical Education</div>
+                <div class="resources-card-description">Official regulatory body for technical education in India</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Access information about approved institutions, courses, and various schemes for technical education.
+                </p>
+                <button class="button button-outline button-full" onclick="window.open('https://www.aicte-india.org/', '_blank')">
+                  Visit Website
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="resources-card-title">UGC - University Grants Commission</div>
+                <div class="resources-card-description">Statutory body for coordination, determination, and maintenance of higher education standards</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Find lists of recognized universities, regulations, and scholarship information.
+                </p>
+                <button class="button button-outline button-full" onclick="window.open('https://www.ugc.ac.in/', '_blank')">
+                  Visit Website
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="resources-card-title">NIRF - National Institutional Ranking Framework</div>
+                <div class="resources-card-description">Official ranking of higher education institutions in India</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Check rankings of colleges and universities across different categories and parameters.
+                </p>
+                <button class="button button-outline button-full" onclick="window.open('https://www.nirfindia.org/', '_blank')">
+                  Visit Website
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="resources-card-title">National Testing Agency (NTA)</div>
+                <div class="resources-card-description">Conducts entrance examinations for higher education institutions</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Access information about various entrance exams, schedules, results, and counseling.
+                </p>
+                <button class="button button-outline button-full" onclick="window.open('https://nta.ac.in/', '_blank')">
+                  Visit Website
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="resources-card-title">National Scholarship Portal</div>
+                <div class="resources-card-description">Single-window system for scholarship applications</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Apply for various government scholarships to support your higher education.
+                </p>
+                <button class="button button-outline button-full" onclick="window.open('https://scholarships.gov.in/', '_blank')">
+                  Visit Website
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="resources-card-title">Tamil Nadu Engineering Admissions (TNEA)</div>
+                <div class="resources-card-description">Official portal for engineering admissions in Tamil Nadu</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Register for counseling, check cutoffs, and complete the admission process for engineering courses.
+                </p>
+                <button class="button button-outline button-full" onclick="window.open('https://www.tneaonline.org/', '_blank')">
+                  Visit Website
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="guides-tab" class="tab-content">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e40af; margin-bottom: 1.5rem;">Helpful Guides & Downloads</h2>
+          <div class="cards-grid">
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16V4a2 2 0 0 1 2-2h11"/><path d="M5 14H4a2 2 0 1 0 0 4h1"/><path d="M22 18H11a2 2 0 1 0 0 4h11"/><path d="M11 22V10"/><path d="M7 10h12"/><path d="M22 10V4a2 2 0 0 0-2-2h-5"/></svg>
+                </div>
+                <div class="resources-card-title">Complete Guide to Engineering Admissions</div>
+                <div class="resources-card-description">Comprehensive handbook for engineering aspirants</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  This guide covers everything from entrance exams, counseling process, college selection, and important timelines for engineering admissions.
+                </p>
+                <button class="button button-secondary button-full download-btn" data-filename="engineering-admissions-guide.pdf">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16V4a2 2 0 0 1 2-2h11"/><path d="M5 14H4a2 2 0 1 0 0 4h1"/><path d="M22 18H11a2 2 0 1 0 0 4h11"/><path d="M11 22V10"/><path d="M7 10h12"/><path d="M22 10V4a2 2 0 0 0-2-2h-5"/></svg>
+                </div>
+                <div class="resources-card-title">Medical Education Admission Handbook</div>
+                <div class="resources-card-description">Guide for NEET-based medical and dental admissions</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Everything about medical and dental admission processes, reservation policies, and important documents required for the process.
+                </p>
+                <button class="button button-secondary button-full download-btn" data-filename="medical-admissions-guide.pdf">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                </div>
+                <div class="resources-card-title">Admission Timeline Calendar 2025</div>
+                <div class="resources-card-description">Printable calendar with important admission dates</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  A printable calendar highlighting all important dates for various entrance exams, counseling rounds, and result announcements.
+                </p>
+                <button class="button button-secondary button-full download-btn" data-filename="admission-timeline-2025.pdf">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16V4a2 2 0 0 1 2-2h11"/><path d="M5 14H4a2 2 0 1 0 0 4h1"/><path d="M22 18H11a2 2 0 1 0 0 4h11"/><path d="M11 22V10"/><path d="M7 10h12"/><path d="M22 10V4a2 2 0 0 0-2-2h-5"/></svg>
+                </div>
+                <div class="resources-card-title">College Comparison Worksheet</div>
+                <div class="resources-card-description">Tool to compare different colleges systematically</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  A structured worksheet to help you compare different colleges based on various parameters like fees, faculty, infrastructure, etc.
+                </p>
+                <button class="button button-secondary button-full download-btn" data-filename="college-comparison-worksheet.xlsx">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download XLSX
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16V4a2 2 0 0 1 2-2h11"/><path d="M5 14H4a2 2 0 1 0 0 4h1"/><path d="M22 18H11a2 2 0 1 0 0 4h11"/><path d="M11 22V10"/><path d="M7 10h12"/><path d="M22 10V4a2 2 0 0 0-2-2h-5"/></svg>
+                </div>
+                <div class="resources-card-title">Anti-Brainwash Handbook</div>
+                <div class="resources-card-description">Guide to counter common manipulation tactics</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Detailed guide on identifying and countering manipulation tactics used by some private colleges during admission season.
+                </p>
+                <button class="button button-secondary button-full download-btn" data-filename="anti-brainwash-handbook.pdf">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16V4a2 2 0 0 1 2-2h11"/><path d="M5 14H4a2 2 0 1 0 0 4h1"/><path d="M22 18H11a2 2 0 1 0 0 4h11"/><path d="M11 22V10"/><path d="M7 10h12"/><path d="M22 10V4a2 2 0 0 0-2-2h-5"/></svg>
+                </div>
+                <div class="resources-card-title">Documents Checklist</div>
+                <div class="resources-card-description">Comprehensive list of documents needed for admission</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  A printable checklist of all documents required during the admission process to ensure you don't miss anything important.
+                </p>
+                <button class="button button-secondary button-full download-btn" data-filename="admission-documents-checklist.pdf">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="videos-tab" class="tab-content">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e40af; margin-bottom: 1.5rem;">Educational Videos</h2>
+          <div class="cards-grid">
+            <div class="resources-card">
+              <div style="position: relative; padding-bottom: 56.25%; background-color: #f1f5f9;">
+                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+              </div>
+              <div class="resources-card-header">
+                <div class="resources-card-title">Understanding Government Counseling</div>
+                <div class="resources-card-description">5-minute guide to the counseling process</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  A clear explanation of how the government counseling process works, with step-by-step instructions.
+                </p>
+                <button class="button button-outline button-full">Watch Video</button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div style="position: relative; padding-bottom: 56.25%; background-color: #f1f5f9;">
+                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+              </div>
+              <div class="resources-card-header">
+                <div class="resources-card-title">How to Spot Fake Promises</div>
+                <div class="resources-card-description">Identifying college manipulation tactics</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Learn how to identify and counter common manipulation tactics used during admission season.
+                </p>
+                <button class="button button-outline button-full">Watch Video</button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div style="position: relative; padding-bottom: 56.25%; background-color: #f1f5f9;">
+                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+              </div>
+              <div class="resources-card-header">
+                <div class="resources-card-title">College Visit Checklist</div>
+                <div class="resources-card-description">What to look for during campus visits</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  A comprehensive guide on what to observe, ask, and verify when visiting a college campus.
+                </p>
+                <button class="button button-outline button-full">Watch Video</button>
+              </div>
+            </div>
+
+            <div class="resources-card">
+              <div style="position: relative; padding-bottom: 56.25%; background-color: #f1f5f9;">
+                <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+              </div>
+              <div class="resources-card-header">
+                <div class="resources-card-title">Understanding College Fee Structures</div>
+                <div class="resources-card-description">Making sense of different fees and charges</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Learn to decode complex fee structures and identify hidden charges in college fee documents.
+                </p>
+                <button class="button button-outline button-full">Watch Video</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tools-tab" class="tab-content">
+          <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e40af; margin-bottom: 1.5rem;">Useful Tools & Calculators</h2>
+          <div class="tactic-grid">
+            <div class="resources-card" style="grid-column: span 2;">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <div class="resources-card-title">College Finder Tool</div>
+                <div class="resources-card-description">Find colleges based on your preferences and marks</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Enter your details to discover colleges where you have a good chance of admission based on previous year cutoffs.
+                </p>
+                <div style="display: grid; gap: 1rem;">
+                  <div>
+                    <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem;">
+                      Entrance Exam / 12th Marks
+                    </label>
+                    <input
+                      type="number"
+                      placeholder="Enter your score"
+                      style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem;"
+                    />
+                  </div>
+                  <div>
+                    <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem;">
+                      Preferred Course
+                    </label>
+                    <select style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem;">
+                      <option value="">Select a course</option>
+                      <option value="engineering">Engineering</option>
+                      <option value="medical">Medical</option>
+                      <option value="arts">Arts & Science</option>
+                      <option value="commerce">Commerce</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem;">
+                      Preferred Location
+                    </label>
+                    <select style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem;">
+                      <option value="">Select a location</option>
+                      <option value="chennai">Chennai</option>
+                      <option value="coimbatore">Coimbatore</option>
+                      <option value="madurai">Madurai</option>
+                      <option value="trichy">Trichy</option>
+                      <option value="salem">Salem</option>
+                    </select>
+                  </div>
+                  <button class="button button-primary">Find Colleges</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="resources-card" style="grid-column: span 2;">
+              <div class="resources-card-header">
+                <div class="icon-wrapper">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div class="resources-card-title">Education Loan Calculator</div>
+                <div class="resources-card-description">Estimate your education loan EMI and total repayment</div>
+              </div>
+              <div class="resources-card-content">
+                <p class="resources-card-text">
+                  Calculate your potential education loan EMI based on loan amount, interest rate, and repayment period.
+                </p>
+                <div style="display: grid; gap: 1rem;">
+                  <div>
+                    <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem;">
+                      Loan Amount (₹)
+                    </label>
+                    <input
+                      type="number"
+                      placeholder="Enter loan amount"
+                      style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem;"
+                    />
+                  </div>
+                  <div>
+                    <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem;">
+                      Interest Rate (%)
+                    </label>
+                    <input
+                      type="number"
+                      placeholder="Enter interest rate"
+                      style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem;"
+                    />
+                  </div>
+                  <div>
+                    <label style="display: block; font-size: 0.875rem; font-weight: 500; color: #4b5563; margin-bottom: 0.25rem;">
+                      Loan Term (Years)
+                    </label>
+                    <input
+                      type="number"
+                      placeholder="Enter loan term"
+                      style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.375rem;"
+                    />
+                  </div>
+                  <button class="button button-primary">Calculate EMI</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e40af; margin-bottom: 1rem;">Upcoming Events & Webinars</h3>
+            <div style="background-color: #f8fafc; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e2e8f0;">
+              <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                  <div style="background-color: #1e40af; color: white; text-align: center; border-radius: 0.5rem; padding: 0.5rem; min-width: 60px;">
+                    <div style="font-size: 0.875rem; font-weight: 500;">MAY</div>
+                    <div style="font-size: 1.25rem; font-weight: 700;">15</div>
+                  </div>
+                  <div>
+                    <h4 style="font-size: 1.125rem; font-weight: 600; color: #0f172a;">Understanding Engineering Admissions</h4>
+                    <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 0.5rem;">6:00 PM - 7:30 PM</p>
+                    <p style="font-size: 0.875rem; color: #64748b;">
+                      A comprehensive webinar on the engineering admission process, cutoffs, and college selection.
+                    </p>
+                  </div>
+                </div>
+
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                  <div style="background-color: #1e40af; color: white; text-align: center; border-radius: 0.5rem; padding: 0.5rem; min-width: 60px;">
+                    <div style="font-size: 0.875rem; font-weight: 500;">MAY</div>
+                    <div style="font-size: 1.25rem; font-weight: 700;">22</div>
+                  </div>
+                  <div>
+                    <h4 style="font-size: 1.125rem; font-weight: 600; color: #0f172a;">Medical College Admission Guide</h4>
+                    <p style="font-size: 0.875rem; color: #64748b; margin-bottom: 0.5rem;">6:00 PM - 7:30 PM</p>
+                    <p style="font-size: 0.875rem; color: #64748b;">
+                      Expert panel discussing the medical college admission process, NEET counseling, and career prospects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem; text-align: center;">
+                <button class="button button-primary">Register for Webinars</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 WisePath. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <div class="back-to-top" id="backToTop">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobileMenuButton');
+      const navLinks = document.getElementById('navLinks');
+
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function() {
+          navLinks.classList.toggle('show');
+        });
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar-container')) {
+          navLinks.classList.remove('show');
+        }
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+
+            // Update active state in nav
+            document.querySelectorAll('.nav-link').forEach(link => {
+              link.classList.remove('active');
+            });
+            this.classList.add('active');
+
+            // Close mobile menu after click
+            navLinks.classList.remove('show');
+          }
+        });
+      });
+
+      // Tabs functionality in multiple sections
+      function setupTabs(tabsContainer) {
+        const tabButtons = tabsContainer.querySelectorAll('.tab-button');
+
+        tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const tabName = button.getAttribute('data-tab');
+
+            // Get the parent tab container
+            const parentTabContainer = button.closest('.tabs');
+
+            // Update active state for buttons in this tab group
+            parentTabContainer.querySelectorAll('.tab-button').forEach(btn => {
+              btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Find the tab contents within this tab group's parent section
+            const parentSection = parentTabContainer.closest('section');
+            const tabContents = parentSection.querySelectorAll('.tab-content');
+
+            // Hide all tab contents in this section
+            tabContents.forEach(content => {
+              content.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            const targetTab = parentSection.querySelector(`#${tabName}-tab`);
+            if (targetTab) {
+              targetTab.classList.add('active');
+            }
+          });
+        });
+      }
+
+      // Setup tabs for all tab containers on the page
+      document.querySelectorAll('.tabs').forEach(tabsContainer => {
+        setupTabs(tabsContainer);
+      });
+
+      // Accordion functionality
+      const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+      accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const content = trigger.nextElementSibling;
+
+          if (content.classList.contains('open')) {
+            content.classList.remove('open');
+          } else {
+            // Close all other accordion items first (optional)
+            // document.querySelectorAll('.accordion-content').forEach(item => {
+            //   if (item !== content) item.classList.remove('open');
+            // });
+
+            content.classList.add('open');
+          }
+        });
+      });
+
+      // Back to top button
+      const backToTopButton = document.getElementById('backToTop');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
+
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Download functionality
+      const downloadButtons = document.querySelectorAll('.download-btn');
+
+      downloadButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const filename = this.getAttribute('data-filename');
+          const originalText = this.innerHTML;
+
+          // Show downloading state
+          this.innerHTML = 'Downloading...';
+          this.disabled = true;
+
+          // Simulate download with timeout
+          setTimeout(() => {
+            // Show a toast notification
+            showToast('Download Started', `${filename} is being downloaded to your device.`);
+
+            // Reset button state
+            this.innerHTML = originalText;
+            this.disabled = false;
+
+            // Simulate file download
+            const blob = new Blob(['This is a simulated download file content'], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+          }, 1000);
+        });
+      });
+
+      // Toast notification function
+      window.showToast = function(title, message) {
+        const toastContainer = document.getElementById('toastContainer');
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+
+        toast.innerHTML = `
+          <button class="toast-close" onclick="this.parentElement.remove()">×</button>
+          <div class="toast-title">${title}</div>
+          <div class="toast-description">${message}</div>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+          if (toast.parentNode === toastContainer) {
+            toastContainer.removeChild(toast);
+          }
+        }, 5000);
+      };
+
+      // Update active nav link based on scroll position
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+
+        document.querySelectorAll('section').forEach(section => {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      });
+
+      // Language toggle functionality
+      const languageToggle = document.getElementById('languageToggle');
+
+      // Tamil translations for key elements
+      const tamilTranslations = {
+        // Navigation
+        'nav': {
+          'home': 'முகப்பு',
+          'about': 'எங்களைப் பற்றி',
+          'admission-process': 'சேர்க்கை செயல்முறை',
+          'anti-brainwash': 'மூளைச்சலவை எதிர்ப்பு',
+          'dos-donts': 'செய்ய வேண்டியவை & செய்யக்கூடாதவை',
+          'resources': 'வளங்கள்'
+        },
+        // Hero section
+        'hero': {
+          'heading': 'கல்லூரி சேர்க்கையை நம்பிக்கையுடன் வழிநடத்துங்கள்',
+          'subheading': 'பெற்றோர்கள் மற்றும் மாணவர்கள் தெளிவான முடிவுகளை எடுக்க உதவும் நேர்மையான வழிகாட்டுதல்',
+          'button1': 'செயல்முறையைப் புரிந்துகொள்ளுங்கள்',
+          'button2': 'பொதுவான தந்திரங்களைத் தவிர்க்கவும்'
+        },
+        // Features section
+        'features': {
+          'heading': 'நாங்கள் எப்படி உதவுகிறோம்',
+          'feature1': {
+            'title': 'தெளிவான செயல்முறை வழிகாட்டுதல்',
+            'description': 'வெவ்வேறு மாநிலங்கள் மற்றும் படிப்புகளில் சேர்க்கை செயல்முறையின் படிப்படியான விளக்கம்.'
+          },
+          'feature2': {
+            'title': 'கையாளுதல் பாதுகாப்பு',
+            'description': 'சில தனியார் கல்லூரிகள் பயன்படுத்தும் பொதுவான கையாளுதல் தந்திரங்களை அடையாளம் காணவும் எதிர்கொள்ளவும் கருவிகள்.'
+          },
+          'feature3': {
+            'title': 'செய்ய வேண்டியவை மற்றும் செய்யக்கூடாதவை வழிகாட்டி',
+            'description': 'சேர்க்கை பயணத்தின் போது என்ன செய்ய வேண்டும், என்ன தவிர்க்க வேண்டும் என்பது குறித்த நடைமுறை ஆலோசனை.'
+          }
+        },
+        // About section
+        'about': {
+          'heading': 'வைஸ்பாத் பற்றி',
+          'mission': 'எங்கள் நோக்கம்',
+          'mission_text': 'வைஸ்பாத் ஒரு தெளிவான நோக்கத்துடன் உருவாக்கப்பட்டது: பெற்றோர்கள் மற்றும் மாணவர்களுக்கு 12-ஆம் வகுப்புக்குப் பிறகு சேர்க்கை செயல்முறை பற்றிய நேர்மையான, நடைமுறை தகவல்களை வழங்குவதன் மூலம், அவர்கள் அச்சத்தால் உந்தப்பட்ட முடிவுகளுக்குப் பதிலாக நம்பிக்கையுடன், தகவலறிந்த முடிவுகளை எடுக்க உதவுதல்.',
+          'why_started': 'நாங்கள் ஏன் தொடங்கினோம்',
+          'why_started_text': 'ஒவ்வொரு ஆண்டும், சேர்க்கை காலத்தில் சில தனியார் கல்லூரிகளின் கையாளுதல் தந்திரங்களால் எண்ணற்ற குடும்பங்கள் பாதிக்கப்படுவதை நாங்கள் கண்டோம். பெற்றோர்கள், தங்கள் குழந்தைகளுக்கு சிறந்த எதிர்காலத்தை உறுதிப்படுத்தும் விருப்பத்தில், வேறு வழியில்லை என்று நம்பி, மேலாண்மை கோட்டாக்கள் மூலம் அதிக கட்டணம் செலுத்துவார்கள்.',
+          'what_offer': 'நாங்கள் என்ன வழங்குகிறோம்',
+          'vision': 'எங்கள் தொலைநோக்கு',
+          'vision_text': 'ஒவ்வொரு பெற்றோரும் மாணவரும் சேர்க்கை செயல்முறையை நம்பிக்கையுடனும் தெளிவுடனும் அணுகும் எதிர்காலத்தை நாங்கள் கற்பனை செய்கிறோம், அங்கு கல்வி முடிவுகள் அச்சம் மற்றும் அழுத்தத்தைக் காட்டிலும் தகுதி மற்றும் விருப்பத்தின் அடிப்படையில் எடுக்கப்படுகின்றன, மேலும் உயர் கல்விக்கான பாதை அனைவருக்கும் வெளிப்படையானது மற்றும் நியாயமானது.'
+        },
+        // Common elements
+        'common': {
+          'logo': 'வைஸ்பாத்',
+          'download': 'பதிவிறக்கம்',
+          'downloading': 'பதிவிறக்குகிறது...',
+          'success': 'வெற்றி',
+          'warning': 'எச்சரிக்கை',
+          'important': 'முக்கியம்',
+          'questions': 'கேள்விகள்',
+          'steps': 'படிகள்',
+          'advantages': 'நன்மைகள்',
+          'cautions': 'எச்சரிக்கைகள்',
+          'benefits': 'பலன்கள்',
+          'red_flags': 'எச்சரிக்கை அறிகுறிகள்',
+          'back_to_top': 'மேலே செல்லவும்'
+        }
+      };
+
+      // Function to toggle between English and Tamil
+      function toggleLanguage() {
+        const body = document.body;
+        const isCurrentlyTamil = body.classList.contains('tamil-active');
+
+        if (isCurrentlyTamil) {
+          // Switch to English
+          body.classList.remove('tamil-active');
+          languageToggle.classList.remove('tamil-active');
+
+          // Update logo
+          document.querySelector('.logo').textContent = 'WisePath';
+
+          // Update navigation text
+          document.querySelectorAll('.nav-link').forEach(link => {
+            const section = link.getAttribute('href').substring(1);
+            switch(section) {
+              case 'home': link.textContent = 'Home'; break;
+              case 'about': link.textContent = 'About'; break;
+              case 'admission-process': link.textContent = 'Admission Process'; break;
+              case 'anti-brainwash': link.textContent = 'Anti-Brainwash'; break;
+              case 'dos-donts': link.textContent = 'Do\'s & Don\'ts'; break;
+              case 'resources': link.textContent = 'Resources'; break;
+            }
+          });
+
+          // Show English content
+          document.querySelectorAll('.english-content').forEach(el => {
+            el.style.display = 'block';
+          });
+          document.querySelectorAll('.tamil-content').forEach(el => {
+            el.style.display = 'none';
+          });
+
+          // Update page headings
+          document.querySelectorAll('.page-heading').forEach(heading => {
+            if (heading.dataset.englishText) {
+              heading.textContent = heading.dataset.englishText;
+            }
+          });
+
+          // Update page descriptions
+          document.querySelectorAll('.page-description').forEach(desc => {
+            if (desc.dataset.englishText) {
+              desc.textContent = desc.dataset.englishText;
+            }
+          });
+
+          // Update buttons
+          document.querySelectorAll('button:not(.language-toggle)').forEach(btn => {
+            if (btn.dataset.englishText) {
+              btn.textContent = btn.dataset.englishText;
+            }
+          });
+
+          // Update back to top button
+          const backToTopBtn = document.getElementById('backToTop');
+          if (backToTopBtn) {
+            backToTopBtn.setAttribute('aria-label', 'Back to top');
+            backToTopBtn.title = 'Back to top';
+          }
+
+          showToast('Language Changed', 'Website content is now displayed in English');
+        } else {
+          // Switch to Tamil
+          body.classList.add('tamil-active');
+          languageToggle.classList.add('tamil-active');
+
+          // Update logo
+          document.querySelector('.logo').textContent = tamilTranslations.common.logo;
+
+          // Update navigation text
+          document.querySelectorAll('.nav-link').forEach(link => {
+            const section = link.getAttribute('href').substring(1);
+            if (tamilTranslations.nav[section]) {
+              // Save original English text if not already saved
+              if (!link.dataset.englishText) {
+                link.dataset.englishText = link.textContent;
+              }
+              link.textContent = tamilTranslations.nav[section];
+            }
+          });
+
+          // Show Tamil content
+          document.querySelectorAll('.english-content').forEach(el => {
+            el.style.display = 'none';
+          });
+          document.querySelectorAll('.tamil-content').forEach(el => {
+            el.style.display = 'block';
+          });
+
+          // Update page headings
+          document.querySelectorAll('.page-heading').forEach(heading => {
+            // Save original English text if not already saved
+            if (!heading.dataset.englishText) {
+              heading.dataset.englishText = heading.textContent;
+            }
+
+            // Apply Tamil translation based on section
+            const section = heading.closest('section')?.id;
+            if (section && tamilTranslations[section]?.heading) {
+              heading.textContent = tamilTranslations[section].heading;
+            } else if (heading.textContent === 'How We Help You') {
+              heading.textContent = tamilTranslations.features.heading;
+            } else if (heading.textContent === 'What Parents & Students Say') {
+              heading.textContent = 'பெற்றோர்கள் & மாணவர்கள் என்ன சொல்கிறார்கள்';
+            } else if (heading.textContent === 'Understanding the Admission Process') {
+              heading.textContent = 'சேர்க்கை செயல்முறையைப் புரிந்துகொள்ளுதல்';
+            } else if (heading.textContent === 'Do\'s and Don\'ts for College Admission') {
+              heading.textContent = 'கல்லூரி சேர்க்கைக்கான செய்ய வேண்டியவை மற்றும் செய்யக்கூடாதவை';
+            } else if (heading.textContent === 'Anti-Brainwash Guide') {
+              heading.textContent = 'மூளைச்சலவை எதிர்ப்பு வழிகாட்டி';
+            }
+          });
+
+          // Update page descriptions
+          document.querySelectorAll('.page-description').forEach(desc => {
+            // Save original English text if not already saved
+            if (!desc.dataset.englishText) {
+              desc.dataset.englishText = desc.textContent;
+            }
+
+            // Apply Tamil translation based on context
+            if (desc.closest('section')?.id === 'admission-process') {
+              desc.textContent = 'செயல்முறை எவ்வாறு செயல்படுகிறது என்பதைப் புரிந்துகொள்வதன் மூலம் 12-ஆம் வகுப்புக்குப் பிறகு சேர்க்கை பயணத்தை நம்பிக்கையுடன் வழிநடத்துங்கள்.';
+            } else if (desc.closest('section')?.id === 'anti-brainwash') {
+              desc.textContent = 'சேர்க்கை காலத்தில் சில தனியார் கல்லூரிகள் பயன்படுத்தும் பொதுவான கையாளுதல் தந்திரங்களை அடையாளம் காணவும் எதிர்கொள்ளவும் கற்றுக்கொள்ளுங்கள்.';
+            } else if (desc.closest('section')?.id === 'dos-donts') {
+              desc.textContent = 'கல்லூரி சேர்க்கை செயல்முறையை வெற்றிகரமாக வழிநடத்த இந்த நடைமுறை வழிகாட்டுதல்களைப் பின்பற்றவும்.';
+            }
+          });
+
+          // Update buttons
+          document.querySelectorAll('button.tab-button').forEach(btn => {
+            // Save original English text if not already saved
+            if (!btn.dataset.englishText) {
+              btn.dataset.englishText = btn.textContent;
+            }
+
+            // Apply Tamil translation based on tab
+            if (btn.textContent === 'Overview') {
+              btn.textContent = 'கண்ணோட்டம்';
+            } else if (btn.textContent === 'Government Counseling') {
+              btn.textContent = 'அரசு கலந்தாய்வு';
+            } else if (btn.textContent === 'Management Quota') {
+              btn.textContent = 'மேலாண்மை கோட்டா';
+            } else if (btn.textContent === 'Timeline & Documents') {
+              btn.textContent = 'காலவரிசை & ஆவணங்கள்';
+            }
+          });
+
+          // Update back to top button
+          const backToTopBtn = document.getElementById('backToTop');
+          if (backToTopBtn) {
+            backToTopBtn.setAttribute('aria-label', tamilTranslations.common.back_to_top);
+            backToTopBtn.title = tamilTranslations.common.back_to_top;
+          }
+
+          showToast('மொழி மாற்றப்பட்டது', 'இணையதள உள்ளடக்கம் இப்போது தமிழில் காட்டப்படுகிறது');
+        }
+      }
+
+      // Add event listener to language toggle button
+      languageToggle.addEventListener('click', toggleLanguage);
+    });
+  </script>
+</body>
+</html>

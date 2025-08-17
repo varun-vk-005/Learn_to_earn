@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Dashboard - Innovation Zone</title>
+    <link rel="stylesheet" href="/public/css/Innovation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <header class="dashboard-header">
+        <div class="container">
+            <div class="logo">
+                <h1>Innovation Zone</h1>
+            </div>
+            <div class="user-info">
+                <span>Welcome, Darshan</span>
+                <button id="logout-btn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+  
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h2>Dashboard</h2>
+                <div class="date">
+                    <i class="fas fa-calendar"></i>
+                    <span id="current-date"></span>
+                </div>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Ideas</h3>
+                        <p class="stat-number">42</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Users</h3>
+                        <p class="stat-number">128</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Events</h3>
+                        <p class="stat-number">8</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Feedback</h3>
+                        <p class="stat-number">96</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-ideas">
+                <div class="section-header">
+                    <h3>Recent Innovation Ideas</h3>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Submitted By</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ideas-table-body">
+                            <!-- Ideas will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+    <!-- Idea Details Modal -->
+    <div id="idea-details-modal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close">&times;</span>
+            <div id="idea-details-content">
+                <!-- Idea details will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/dashboard.js"></script>
+</body>
+</html>

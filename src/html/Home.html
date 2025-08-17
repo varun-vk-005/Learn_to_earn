@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Cutoff Ranking System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            margin-bottom: 15px;
+        }
+        
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #5e72e4;
+            box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.3);
+        }
+        
+        select option {
+            background-color: #302b63;
+            color: white;
+        }
+        
+        .btn-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #5e72e4, #825ee4);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+        
+        .results {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            display: none;
+        }
+        
+        .results h3 {
+            margin-bottom: 15px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        table th {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #302b63, #24243e);
+            border-radius: 15px;
+            padding: "30px";
+            width: 400px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .close-btn:hover {
+            color: white;
+        }
+        
+        .designer-section {
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        .designer-btn {
+            background: transparent;
+            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+        
+        .designer-btn:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .btn-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>College Cutoff Ranking System</h1>
+            <p>Find college cutoff marks based on category and rank</p>
+        </header>
+        
+        <div class="main-card">
+            <div class="form-group">
+                <label for="cutoff">Enter Cutoff (up to 200)</label>
+                <input type="number" id="cutoff" placeholder="Enter cutoff mark" min="0" max="200">
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Select Category</label>
+                <select id="category">
+                    <option value="">Select a category</option>
+                    <option value="OC">OC</option>
+                    <option value="BC">BC</option>
+                    <option value="MBC">MBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="BCM">BCM</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="tnea-rank">TNEA Rank (Optional)</label>
+                <input type="number" id="tnea-rank" placeholder="Enter your TNEA rank">
+            </div>
+            
+            <div class="btn-row">
+                <button class="btn btn-primary" id="check-eligibility">Check Eligibility</button>
+                <button class="btn btn-secondary" id="clear-form">Clear Form</button>
+            </div>
+        </div>
+        
+        <div class="results" id="results-section">
+            <h3>Eligible Colleges</h3>
+            <div id="results-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>College</th>
+                            <th>Course</th>
+                            <th>Cutoff</th>
+                            <th>Required Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-table">
+                        <!-- Results will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="designer-section">
+            <button class="designer-btn" id="designer-login">Designer Log In</button>
+        </div>
+    </div>
+    
+    <!-- Designer Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-login">&times;</span>
+            <div class="modal-header">
+                <h3>Designer Login</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="secret-code">Secret Code</label>
+                    <input type="password" id="secret-code" placeholder="Enter secret code">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-login">Cancel</button>
+                <button class="btn btn-primary" id="confirm-login">Login</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // DOM elements
+        const designerLoginBtn = document.getElementById('designer-login');
+        const loginModal = document.getElementById('login-modal');
+        const closeLoginBtn = document.getElementById('close-login');
+        const cancelLoginBtn = document.getElementById('cancel-login');
+        const confirmLoginBtn = document.getElementById('confirm-login');
+        const secretCodeInput = document.getElementById('secret-code');
+        const checkEligibilityBtn = document.getElementById('check-eligibility');
+        const clearFormBtn = document.getElementById('clear-form');
+        const resultsSection = document.getElementById('results-section');
+        
+        // Event listeners
+        designerLoginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'flex';
+        });
+        
+        closeLoginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+        
+        cancelLoginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+        
+        confirmLoginBtn.addEventListener('click', () => {
+            const secretCode = secretCodeInput.value;
+            if (secretCode === 'Born2win') {
+                window.location.href = 'just.html';
+            } else {
+                alert('Invalid secret code');
+            }
+        });
+        
+        checkEligibilityBtn.addEventListener('click', () => {
+            const cutoff = document.getElementById('cutoff').value;
+            const category = document.getElementById('category').value;
+            const tneaRank = document.getElementById('tnea-rank').value;
+            
+            if (!cutoff || !category) {
+                alert('Please enter cutoff and select a category');
+                return;
+            }
+            
+            // Get historical data from localStorage
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            const toughnessData = JSON.parse(localStorage.getItem('toughnessData') || '[]');
+            
+            // Filter data for the selected category and years 2020-2024
+            const categoryData = cutoffData.filter(item => 
+                item.category === category && 
+                parseInt(item.year) >= 2020 && 
+                parseInt(item.year) <= 2024
+            );
+            
+            // Group data by college
+            const collegeData = {};
+            categoryData.forEach(item => {
+                if (!collegeData[item.college]) {
+                    collegeData[item.college] = [];
+                }
+                collegeData[item.college].push(item);
+            });
+            
+            // Calculate predictions for each college
+            const predictions = [];
+            for (const college in collegeData) {
+                const data = collegeData[college];
+                if (data.length < 3) continue; // Skip if not enough historical data
+                
+                // Sort by year
+                data.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+                
+                // Calculate trend using linear regression
+                const n = data.length;
+                let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0;
+                
+                data.forEach((item, index) => {
+                    const x = parseInt(item.year);
+                    const y = parseFloat(item.cutoff);
+                    sumX += x;
+                    sumY += y;
+                    sumXY += x * y;
+                    sumXX += x * x;
+                });
+                
+                // Calculate slope (m) and intercept (b) for y = mx + b
+                const m = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX);
+                const b = (sumY - m * sumX) / n;
+                
+                // Predict 2025 cutoff
+                const predictedCutoff2025 = m * 2025 + b;
+                
+                // Calculate confidence score
+                const actualValues = data.map(item => parseFloat(item.cutoff));
+                const predictedValues = data.map(item => m * parseInt(item.year) + b);
+                const rSquared = calculateRSquared(actualValues, predictedValues);
+                const confidence = Math.round(rSquared * 100);
+                
+                // Calculate range based on historical variation
+                const variations = data.map((item, index) => 
+                    Math.abs(parseFloat(item.cutoff) - predictedValues[index])
+                );
+                const avgVariation = variations.reduce((a, b) => a + b, 0) / variations.length;
+                const range = avgVariation * 1.5; // 1.5 standard deviations
+                
+                // Check if user's cutoff is within range
+                const lowerBound = predictedCutoff2025 - range;
+                const upperBound = predictedCutoff2025 + range;
+                
+                if (parseFloat(cutoff) >= lowerBound && parseFloat(cutoff) <= upperBound) {
+                    predictions.push({
+                        college: college,
+                        course: college,
+                        predictedCutoff: predictedCutoff2025.toFixed(1),
+                        confidence: confidence,
+                        rank: data[data.length - 1].rank,
+                        range: `±${range.toFixed(1)}`
+                    });
+                }
+            }
+            
+            // Sort predictions by confidence
+            predictions.sort((a, b) => b.confidence - a.confidence);
+            
+            // Display results
+            resultsSection.style.display = 'block';
+            const resultsTable = document.getElementById('results-table');
+            resultsTable.innerHTML = '';
+            
+            if (predictions.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td colspan="4" style="text-align: center; padding: 20px;">
+                        No matching colleges found for your cutoff. Try adjusting your cutoff value.
+                    </td>
+                `;
+                resultsTable.appendChild(row);
+            } else {
+                predictions.forEach(prediction => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${prediction.college}</td>
+                        <td>${prediction.course}</td>
+                        <td>${prediction.predictedCutoff} (Range: ${prediction.range})</td>
+                        <td>${prediction.rank} (${prediction.confidence}% confidence)</td>
+                    `;
+                    resultsTable.appendChild(row);
+                });
+            }
+        });
+        
+        // Helper function to calculate R-squared value
+        function calculateRSquared(actual, predicted) {
+            const mean = actual.reduce((a, b) => a + b, 0) / actual.length;
+            const ssTotal = actual.reduce((a, b) => a + Math.pow(b - mean, 2), 0);
+            const ssResidual = actual.reduce((a, b, i) => a + Math.pow(b - predicted[i], 2), 0);
+            return Math.max(0, Math.min(1, 1 - (ssResidual / ssTotal)));
+        }
+        
+        clearFormBtn.addEventListener('click', () => {
+            document.getElementById('cutoff').value = '';
+            document.getElementById('category').selectedIndex = 0;
+            document.getElementById('tnea-rank').value = '';
+            resultsSection.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside of it
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

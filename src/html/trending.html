@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Innovations - Innovation Zone</title>
+    <link rel="stylesheet" href="/public/css/Innovation.css">
+    <link rel="stylesheet" href="/public/css/public/css/public/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Innovation Zone</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#innovations">Innovations</a></li>
+                    <li><a href="index.html#workshops">Workshops</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#" id="dev-login-btn" class="btn-login">Developer Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Trending Innovations</h1>
+            <p>Discover the latest trends and innovations in various fields after 12th grade.</p>
+        </div>
+    </section>
+
+    <section class="trending-innovations">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="edtech">EdTech</option>
+                        <option value="healthtech">HealthTech</option>
+                        <option value="agritech">AgriTech</option>
+                        <option value="fintech">FinTech</option>
+                        <option value="sustainability">Sustainability</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="impact-filter">Impact:</label>
+                    <select id="impact-filter">
+                        <option value="all">All Impacts</option>
+                        <option value="high">High Impact</option>
+                        <option value="medium">Medium Impact</option>
+                        <option value="low">Low Impact</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="search-input" placeholder="Search innovations...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div class="innovation-grid">
+                <!-- EdTech Innovations -->
+                <div class="innovation-card" data-category="edtech" data-impact="high">
+                    <div class="innovation-icon edtech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">EdTech</div>
+                    <div class="impact-tag high">High Impact</div>
+                    <h3>AI-Powered Personalized Learning</h3>
+                    <p>Machine learning algorithms that adapt educational content based on individual learning styles and pace.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 248</span>
+                        <span><i class="fas fa-comment"></i> 45</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <div class="innovation-card" data-category="edtech" data-impact="medium">
+                    <div class="innovation-icon edtech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">EdTech</div>
+                    <div class="impact-tag medium">Medium Impact</div>
+                    <h3>Virtual Reality Classrooms</h3>
+                    <p>Immersive learning environments that allow students to experience subjects in 3D, enhancing understanding and retention.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 186</span>
+                        <span><i class="fas fa-comment"></i> 32</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <!-- HealthTech Innovations -->
+                <div class="innovation-card" data-category="healthtech" data-impact="high">
+                    <div class="innovation-icon healthtech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">HealthTech</div>
+                    <div class="impact-tag high">High Impact</div>
+                    <h3>Remote Patient Monitoring Systems</h3>
+                    <p>IoT devices that allow healthcare providers to monitor patients' vital signs and health metrics remotely.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 312</span>
+                        <span><i class="fas fa-comment"></i> 58</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <div class="innovation-card" data-category="healthtech" data-impact="medium">
+                    <div class="innovation-icon healthtech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">HealthTech</div>
+                    <div class="impact-tag medium">Medium Impact</div>
+                    <h3>AI-Driven Diagnostic Tools</h3>
+                    <p>Machine learning algorithms that assist healthcare professionals in diagnosing diseases with higher accuracy.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 275</span>
+                        <span><i class="fas fa-comment"></i> 42</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <!-- AgriTech Innovations -->
+                <div class="innovation-card" data-category="agritech" data-impact="medium">
+                    <div class="innovation-icon agritech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">AgriTech</div>
+                    <div class="impact-tag medium">Medium Impact</div>
+                    <h3>Sustainable Urban Agriculture</h3>
+                    <p>Vertical farming systems that integrate with smart building infrastructure to grow food locally in urban environments.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 186</span>
+                        <span><i class="fas fa-comment"></i> 37</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <div class="innovation-card" data-category="agritech" data-impact="high">
+                    <div class="innovation-icon agritech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">AgriTech</div>
+                    <div class="impact-tag high">High Impact</div>
+                    <h3>Precision Agriculture Drones</h3>
+                    <p>Drones equipped with sensors and cameras to monitor crop health, optimize irrigation, and reduce pesticide use.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 224</span>
+                        <span><i class="fas fa-comment"></i> 41</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <!-- FinTech Innovations -->
+                <div class="innovation-card" data-category="fintech" data-impact="high">
+                    <div class="innovation-icon fintech">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">FinTech</div>
+                    <div class="impact-tag high">High Impact</div>
+                    <h3>Blockchain-Based Financial Systems</h3>
+                    <p>Decentralized financial platforms that provide secure, transparent transactions without traditional intermediaries.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 298</span>
+                        <span><i class="fas fa-comment"></i> 53</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+                
+                <!-- Sustainability Innovations -->
+                <div class="innovation-card" data-category="sustainability" data-impact="high">
+                    <div class="innovation-icon sustainability">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="innovation-tag">Sustainability</div>
+                    <div class="impact-tag high">High Impact</div>
+                    <h3>Ocean Plastic Recycling Technology</h3>
+                    <p>Systems that collect and process ocean plastic waste into reusable materials for manufacturing.</p>
+                    <div class="innovation-stats">
+                        <span><i class="fas fa-thumbs-up"></i> 342</span>
+                        <span><i class="fas fa-comment"></i> 67</span>
+                        <button class="share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovation Zone</h3>
+                    <p>Empowering students to make informed decisions and explore innovative paths after 12th grade.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#innovations">Innovations</a></li>
+                        <li><a href="index.html#workshops">Workshops</a></li>
+                        <li><a href="submit-idea.html">Submit Idea</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@innovationzone.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Innovation Zone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Developer Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/public/js/script.js"></script>
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryFilter = document.getElementById('category-filter');
+            const impactFilter = document.getElementById('impact-filter');
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const innovationCards = document.querySelectorAll('.innovation-card');
+            
+            // Filter function
+            function filterInnovations() {
+                const categoryValue = categoryFilter.value;
+                const impactValue = impactFilter.value;
+                const searchValue = searchInput.value.toLowerCase();
+                
+                innovationCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const impact = card.getAttribute('data-impact');
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    // Check if card matches all filters
+                    const matchesCategory = categoryValue === 'all' || category === categoryValue;
+                    const matchesImpact = impactValue === 'all' || impact === impactValue;
+                    const matchesSearch = searchValue === '' || 
+                                         title.includes(searchValue) || 
+                                         description.includes(searchValue);
+                    
+                    // Show or hide card
+                    if (matchesCategory && matchesImpact && matchesSearch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Add event listeners
+            categoryFilter.addEventListener('change', filterInnovations);
+            impactFilter.addEventListener('change', filterInnovations);
+            searchBtn.addEventListener('click', filterInnovations);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    filterInnovations();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Arena - Complete Preparation Platform</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --background: #1A1F2C;
+            --foreground: #F1F1F1;
+            --primary-purple: #9b87f5;
+            --secondary-blue: #1EAEDB;
+            --dark-purple: #7E69AB;
+            --gaming-darker: #1A1F2C;
+            --gaming-dark-gray: #221F26;
+            --accent-orange: #F97316;
+            --success-green: #4ADE80;
+            --error-red: #ea384c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(30, 174, 219, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(155, 135, 245, 0.15), transparent 25%);
+            background-size: 100% 100%;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--gaming-darker);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(155, 135, 245, 0.5);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(155, 135, 245, 0.8);
+        }
+
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 31, 44, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(155, 135, 245, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Audiowide', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            text-shadow: 0 0 10px rgba(155, 135, 245, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .coin-counter {
+            background: linear-gradient(135deg, #F59E0B, #F97316);
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid rgba(155, 135, 245, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-family: 'Audiowide', cursive;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: rgba(241, 241, 241, 0.8);
+        }
+
+        .progress-container {
+            background: rgba(26, 31, 44, 0.8);
+            border: 1px solid rgba(155, 135, 245, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid rgba(155, 135, 245, 0.2);
+            border-radius: 8px;
+            background: rgba(26, 31, 44, 0.5);
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            color: var(--secondary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: rgba(30, 30, 30, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary-blue), var(--primary-purple));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .module-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-btn {
+            background: rgba(26, 31, 44, 0.8);
+            border: 1px solid rgba(155, 135, 245, 0.3);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            color: var(--foreground);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-purple));
+            border-color: transparent;
+        }
+
+        .week-modules {
+            margin-bottom: 3rem;
+        }
+
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            background: rgba(26, 31, 44, 0.8);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-purple);
+            cursor: pointer;
+        }
+
+        .week-header h2 {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .week-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .week-progress-text {
+            font-size: 0.9rem;
+            color: rgba(241, 241, 241, 0.7);
+        }
+
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 0 0.5rem;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, rgba(30, 174, 219, 0.1), rgba(155, 135, 245, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(155, 135, 245, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(155, 135, 245, 0.4);
+        }
+
+        .module-card-header {
+            background: linear-gradient(135deg, rgba(30, 174, 219, 0.2), rgba(155, 135, 245, 0.2));
+            padding: 1rem;
+            border-bottom: 1px solid rgba(155, 135, 245, 0.3);
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-purple);
+        }
+
+        .module-subtitle {
+            font-size: 0.8rem;
+            color: var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .module-content {
+            padding: 1rem;
+        }
+
+        .resource-list {
+            list-style-type: none;
+        }
+
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(155, 135, 245, 0.2);
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .resource-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-blue);
+        }
+
+        .resource-link {
+            color: var(--foreground);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .resource-link:hover {
+            color: var(--primary-purple);
+        }
+
+        .module-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(26, 31, 44, 0.5);
+            border-top: 1px solid rgba(155, 135, 245, 0.2);
+        }
+
+        .difficulty {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        .difficulty.easy {
+            background-color: rgba(74, 222, 128, 0.2);
+            color: #4ADE80;
+        }
+
+        .difficulty.medium {
+            background-color: rgba(250, 204, 21, 0.2);
+            color: #FACC15;
+        }
+
+        .difficulty.hard {
+            background-color: rgba(234, 56, 76, 0.2);
+            color: #EA384C;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-purple));
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(155, 135, 245, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary-purple);
+            color: var(--primary-purple);
+        }
+
+        .btn-outline:hover {
+            background: rgba(155, 135, 245, 0.1);
+        }
+
+        .completed-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--success-green);
+            color: black;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        /* Reward modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(30, 174, 219, 0.2), rgba(155, 135, 245, 0.2));
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--primary-purple);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            animation: modalAppear 0.5s ease forwards;
+            box-shadow: 0 0 30px rgba(155, 135, 245, 0.5);
+        }
+
+        @keyframes modalAppear {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            text-shadow: 0 0 10px rgba(155, 135, 245, 0.5);
+        }
+
+        .reward-animation {
+            margin: 1.5rem 0;
+            position: relative;
+            height: 150px;
+        }
+
+        .coin {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #000;
+            animation: coinFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes coinFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .modal-actions {
+            margin-top: 2rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--foreground);
+            cursor: pointer;
+        }
+
+        /* Glow effects */
+        .glow-text {
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .glow-border {
+            box-shadow: 0 0 15px var(--secondary-blue);
+            animation: glowPulse 2s infinite alternate;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0 0 10px var(--secondary-blue);
+            }
+            100% {
+                box-shadow: 0 0 20px var(--primary-purple);
+            }
+        }
+
+        /* Reveal animation for cards */
+        .reveal-animation > * {
+            opacity: 0;
+            animation: reveal 0.7s ease-out forwards;
+        }
+
+        .reveal-animation > *:nth-child(1) { animation-delay: 0.1s; }
+        .reveal-animation > *:nth-child(2) { animation-delay: 0.2s; }
+        .reveal-animation > *:nth-child(3) { animation-delay: 0.3s; }
+        .reveal-animation > *:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes reveal {
+            0% { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .progress-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .week-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .week-progress {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>JEE</span>
+            <span style="color: var(--secondary-blue);">ARENA</span>
+        </div>
+        <div class="user-profile">
+            <div class="coin-counter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="8"></circle>
+                    <path d="M12 2v20"></path>
+                    <path d="M17 12H2"></path>
+                    <path d="M22 12h-3"></path>
+                </svg>
+                <span id="coin-count">750</span>
+            </div>
+            <div class="user-avatar">
+                S
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>JEE Complete Preparation</h1>
+            <p>Master JEE concepts with our structured 8-week program. Track your progress, earn rewards, and access quality resources to ace your exam.</p>
+            <button class="btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                    <rect x="9" y="9" width="6" height="6"></rect>
+                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                    <line x1="20" y1="9" x2="23" y2="9"></line>
+                    <line x1="20" y1="14" x2="23" y2="14"></line>
+                    <line x1="1" y1="9" x2="4" y2="9"></line>
+                    <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+                Start Preparation
+            </button>
+        </section>
+
+        <section class="progress-container">
+            <div class="progress-header">
+                <h2>Your Progress</h2>
+                <span>35% Complete</span>
+            </div>
+            <div class="progress-stats">
+                <div class="stat-box">
+                    <div class="stat-title">Physics</div>
+                    <div class="stat-value">42%</div>
+                    <div class="progress-track">
+                        <div class="progress-bar" style="width: 42%"></div>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Chemistry</div>
+                    <div class="stat-value">28%</div>
+                    <div class="progress-track">
+                        <div class="progress-bar" style="width: 28%"></div>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Mathematics</div>
+                    <div class="stat-value">35%</div>
+                    <div class="progress-track">
+                        <div class="progress-bar" style="width: 35%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="module-filter">
+            <button class="filter-btn active">All Topics</button>
+            <button class="filter-btn">Physics</button>
+            <button class="filter-btn">Chemistry</button>
+            <button class="filter-btn">Mathematics</button>
+            <button class="filter-btn">Completed</button>
+        </div>
+
+        <div class="week-modules">
+            <div class="week-header" onclick="toggleWeekContent(1)">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Week 1: Basic Mathematics & Physics
+                </h2>
+                <div class="week-progress">
+                    <div class="week-progress-text">3/5 completed</div>
+                    <div class="progress-track" style="width: 100px;">
+                        <div class="progress-bar" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="module-grid reveal-animation" id="week1-content">
+                <div class="module-card">
+                    <div class="completed-badge">✓</div>
+                    <div class="module-card-header">
+                        <h3 class="module-title">Algebra Fundamentals</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 3 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Practice Problems</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty easy">Easy</span>
+                        <button class="btn btn-outline" onclick="showReward()">Revisit</button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="completed-badge">✓</div>
+                    <div class="module-card-header">
+                        <h3 class="module-title">Kinematics</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 4 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">PYQ (2022-2023)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty medium">Medium</span>
+                        <button class="btn btn-outline" onclick="showReward()">Revisit</button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="completed-badge">✓</div>
+                    <div class="module-card-header">
+                        <h3 class="module-title">Chemical Bonding</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 3.5 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Practice Problems</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty medium">Medium</span>
+                        <button class="btn btn-outline" onclick="showReward()">Revisit</button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <h3 class="module-title">Coordinate Geometry</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 4.5 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">PYQ (2020-2023)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty hard">Hard</span>
+                        <button class="btn" onclick="completeModule(this)">Complete</button>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <h3 class="module-title">States of Matter</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 3 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Practice Problems</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty easy">Easy</span>
+                        <button class="btn" onclick="completeModule(this)">Complete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="week-modules">
+            <div class="week-header" onclick="toggleWeekContent(2)">
+                <h2>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    Week 2: Advanced Mechanics & Calculus
+                </h2>
+                <div class="week-progress">
+                    <div class="week-progress-text">0/5 completed</div>
+                    <div class="progress-track" style="width: 100px;">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="module-grid reveal-animation" id="week2-content" style="display: none;">
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <h3 class="module-title">Newton's Laws of Motion</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 5 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">PYQ (2018-2023)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty medium">Medium</span>
+                        <button class="btn" onclick="completeModule(this)">Complete</button>
+                    </div>
+                </div>
+
+                <!-- More Week 2 modules -->
+                <div class="module-card">
+                    <div class="module-card-header">
+                        <h3 class="module-title">Calculus Basics</h3>
+                        <div class="module-subtitle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Estimated: 4 hours
+                        </div>
+                    </div>
+                    <div class="module-content">
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Lecture Notes</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                        <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">Video Lecture</a>
+                            </li>
+                            <li class="resource-item">
+                                <div class="resource-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                                    </svg>
+                                </div>
+                                <a href="#" class="resource-link">PYQ (2020-2023)</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="module-footer">
+                        <span class="difficulty hard">Hard</span>
+                        <button class="btn" onclick="completeModule(this)">Complete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More weeks would follow the same pattern -->
+    </div>
+
+    <!-- Reward modal -->
+    <div class="modal" id="reward-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Module Completed!</h2>
+                <p>Congratulations! You've earned rewards</p>
+            </div>
+            <div class="reward-animation">
+                <div class="coin">+50</div>
+            </div>
+            <p>You've earned 50 coins for completing this module.</p>
+            <div class="modal-actions">
+                <button class="btn" onclick="claimReward()">Claim Reward</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle week content
+        function toggleWeekContent(weekNum) {
+            const content = document.getElementById(`week${weekNum}-content`);
+            if (content.style.display === "none") {
+                content.style.display = "grid";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        // Complete module function
+        function completeModule(button) {
+            // Add completed badge
+            const moduleCard = button.closest('.module-card');
+            const badge = document.createElement('div');
+            badge.className = 'completed-badge';
+            badge.innerHTML = '✓';
+            moduleCard.prepend(badge);
+            
+            // Change button to "Revisit"
+            button.innerText = 'Revisit';
+            button.classList.add('btn-outline');
+            button.setAttribute('onclick', 'showReward()');
+            
+            // Show reward modal
+            showReward();
+            
+            // Update progress (simplified)
+            updateProgress();
+        }
+        
+        // Show reward modal
+        function showReward() {
+            document.getElementById('reward-modal').style.display = 'flex';
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('reward-modal').style.display = 'none';
+        }
+        
+        // Claim reward
+        function claimReward() {
+            // Update coin count
+            const coinCount = document.getElementById('coin-count');
+            coinCount.innerText = parseInt(coinCount.innerText) + 50;
+            
+            // Flash animation
+            coinCount.parentElement.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                coinCount.parentElement.style.transform = 'scale(1)';
+            }, 300);
+            
+            // Close modal
+            closeModal();
+        }
+        
+        // Update overall progress
+        function updateProgress() {
+            // This would be more complex in a real app, connecting to backend
+            // Here we just demonstrate the concept
+            const completedModules = document.querySelectorAll('.completed-badge').length;
+            const totalModules = document.querySelectorAll('.module-card').length;
+            const progressPercent = Math.round((completedModules / totalModules) * 100);
+            
+            // Update physics progress (for demo)
+            const physicsProgressBar = document.querySelector('.progress-stats .progress-bar');
+            const physicsValue = document.querySelector('.progress-stats .stat-value');
+            
+            // Only update if physics was < 50%
+            if (parseInt(physicsValue.innerText) < 50) {
+                const newValue = parseInt(physicsValue.innerText) + 7;
+                physicsValue.innerText = `${newValue}%`;
+                physicsProgressBar.style.width = `${newValue}%`;
+            }
+        }
+        
+        // Initialize with week 1 open
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('week1-content').style.display = 'grid';
+        });
+        
+        // Filter buttons (simplified)
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                this.classList.add('active');
+                // Filter functionality would be more complex in a real app
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Developer Career Path | Dragon Warrior</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Audiowide&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --shadow-black: #0a0a12;
+            --neon-blue: #00f3ff;
+            --hyper-purple: #9d00ff;
+            --cyber-cyan: #05d9e8;
+            --magenta: #ff00ff;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--shadow-black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 2rem;
+            background: linear-gradient(135deg, rgba(10, 10, 18, 0.9), rgba(25, 25, 50, 0.9)), url('https://i.imgur.com/JZcyuQA.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .header-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 1200px;
+        }
+
+        h1 {
+            font-family: 'Audiowide', cursive;
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px var(--neon-blue), 0 0 30px rgba(0, 243, 255, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--cyber-cyan);
+        }
+
+        .tagline {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            color: var(--white);
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 243, 255, 0.2);
+        }
+
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Audiowide', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--hyper-purple), transparent);
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .skill-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--cyber-cyan);
+        }
+
+        .skill-description {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .roadmap {
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 50%;
+            padding: 0 2rem;
+        }
+
+        .roadmap-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .roadmap-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .roadmap-item:nth-child(odd)::before {
+            right: -12px;
+        }
+
+        .roadmap-item:nth-child(even)::before {
+            left: -12px;
+        }
+
+        .roadmap-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--cyber-cyan);
+        }
+
+        .roadmap-description {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        /* Video Grid Styles */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-item {
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 243, 255, 0.2);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--cyber-cyan);
+        }
+
+        .video-description {
+            font-family: 'VT323', monospace;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .roadmap::before {
+                left: 20px;
+            }
+
+            .roadmap-item {
+                width: 100%;
+                padding-left: 50px;
+                left: 0;
+                text-align: left;
+            }
+
+            .roadmap-item:nth-child(odd)::before,
+            .roadmap-item:nth-child(even)::before {
+                left: 8px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-btn" onclick="window.location.href="gamingguidance.html" ">Back</button>
+        <div class="header-content">
+            <h1>GAME DEVELOPER</h1>
+            <h2>MASTER OF DIGITAL REALMS</h2>
+            <p class="tagline">Forge the foundations of interactive worlds through code, logic, and technical wizardry.</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <h2 class="section-title">ESSENTIAL SKILLS</h2>
+        <p>As a Game Developer, you'll need to master a variety of technical skills to bring virtual worlds to life.</p>
+
+        <div class="skill-grid">
+            <div class="skill-card">
+                <h3 class="skill-title">Programming Languages</h3>
+                <p class="skill-description">Master C++, C#, or Python to build game systems and mechanics. These languages form the backbone of game development.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-title">Game Engines</h3>
+                <p class="skill-description">Learn Unity or Unreal Engine to streamline development. These powerful tools handle rendering, physics, and more.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-title">3D Mathematics</h3>
+                <p class="skill-description">Understand vectors, matrices, and quaternions to manipulate objects in 3D space and create realistic movement.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-title">Physics Simulation</h3>
+                <p class="skill-description">Implement realistic physics for object interactions, collisions, and environmental effects.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-title">AI Programming</h3>
+                <p class="skill-description">Create intelligent NPCs and enemies using pathfinding, state machines, and behavior trees.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3 class="skill-title">Networking</h3>
+                <p class="skill-description">Build multiplayer experiences with client-server architecture and synchronization techniques.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">RECOMMENDED TUTORIALS</h2>
+        <p>Start your journey with these essential game development tutorials.</p>
+
+        <div class="video-grid">
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XtQMytORBmM" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="video-title">Game Development Fundamentals</h3>
+                <p class="video-description">Learn the core concepts of game development in this comprehensive tutorial.</p>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/pCBqgREiSUE" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="video-title">3D Modeling for Games</h3>
+                <p class="video-description">Learn essential 3D modeling techniques specifically for game development.</p>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/gB1F9G0JXOo" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="video-title">Unity Engine Tutorial</h3>
+                <p class="video-description">Get started with Unity, one of the most popular game engines for indie developers.</p>
+            </div>
+
+            <div class="video-item">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PMXf0e8n2Oc" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <h3 class="video-title">Game Design Principles</h3>
+                <p class="video-description">Understand the fundamental principles that make games engaging and fun.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2 class="section-title">DEVELOPER ROADMAP</h2>
+        <p>Your journey from novice to master game developer.</p>
+
+        <div class="roadmap">
+            <div class="roadmap-item">
+                <h3 class="roadmap-title">Level 1: Foundations</h3>
+                <p class="roadmap-description">Learn a programming language (C#/C++), understand basic game development concepts, and create simple 2D games.</p>
+            </div>
+
+            <div class="roadmap-item">
+                <h3 class="roadmap-title">Level 2: Engine Mastery</h3>
+                <p class="roadmap-description">Master a game engine like Unity or Unreal, learn asset integration, and build more complex game mechanics.</p>
+            </div>
+
+            <div class="roadmap-item">
+                <h3 class="roadmap-title">Level 3: Specialization</h3>
+                <p class="roadmap-description">Focus on a specific area like gameplay programming, graphics programming, or AI development.</p>
+            </div>
+
+            <div class="roadmap-item">
+                <h3 class="roadmap-title">Level 4: Advanced Techniques</h3>
+                <p class="roadmap-description">Learn optimization, advanced rendering, networking, and platform-specific development.</p>
+            </div>
+
+            <div class="roadmap-item">
+                <h3 class="roadmap-title">Level 5: Professional Development</h3>
+                <p class="roadmap-description">Work on larger projects, collaborate with teams, and build a professional portfolio of games.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate elements on page load
+            const header = document.querySelector('header');
+            const skillCards = document.querySelectorAll('.skill-card');
+            const videoItems = document.querySelectorAll('.video-item');
+            const roadmapItems = document.querySelectorAll('.roadmap-item');
+
+            // Fade in header
+            setTimeout(() => {
+                header.style.opacity = 1;
+            }, 300);
+
+            // Animate skill cards
+            skillCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }, 500 + (index * 100));
+            });
+
+            // Animate video items
+            videoItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = 1;
+                    item.style.transform = 'translateY(0)';
+                }, 800 + (index * 150));
+            });
+
+            // Animate roadmap items
+            roadmapItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = 1;
+                    item.style.transform = 'translateX(0)';
+                }, 1200 + (index * 200));
+            });
+        });
+    </script>
+</body>
+</html>

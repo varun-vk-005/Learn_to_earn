@@ -1,0 +1,691 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedDomain Explorer - Your Guide to Medical Education</title>
+  <link rel="stylesheet" href="/public/css/public/css/public/css/index.css">
+  <link rel="stylesheet" href="/public/css/public/css/public/css/f.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/public/css/public/css/public/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <div class="logo"><i class="fas fa-stethoscope"></i> MedDomain Explorer</div>
+    <ul class="nav-links">
+      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#specialties"><i class="fas fa-user-md"></i> Medical Specialties</a></li>
+      <li><a href="#india-colleges"><i class="fas fa-graduation-cap"></i> Top Colleges - India</a></li>
+      <li><a href="#tn-colleges"><i class="fas fa-university"></i> Top Colleges - Tamil Nadu</a></li>
+      <li><a href="#exams"><i class="fas fa-book-reader"></i> NEET & Preparations</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="section">
+    <div class="hero">
+      <h1>Discover Your Path in <span class="highlight">Medical Education</span> <i class="fas fa-heartbeat pulse-icon"></i></h1>
+      <p><i class="fas fa-map-marked-alt"></i> Explore various medical specialties, top institutions, and exam preparation guidance</p>
+      <a href="#specialties" class="btn"><i class="fas fa-search"></i> Explore Medical Domains</a>
+      <div class="scroll-indicator">
+        <p>Scroll Down</p>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medical Specialties Section -->
+  <section id="specialties" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-stethoscope"></i> Medical Specialties</h2>
+      <p>Explore different domains in the medical field</p>
+    </div>
+    
+    <div class="specialties-container">
+      <!-- Specialty Cards -->
+      <div class="specialty-card" data-specialty="dermatology">
+        <div class="specialty-icon"><i class="fas fa-user-md"></i></div>
+        <h3>Dermatology</h3>
+        <p class="specialty-brief">Skin, Hair & Nail Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Dermatologists diagnose and treat conditions affecting the skin, hair, and nails. They handle everything from acne and psoriasis to skin cancer detection.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹12-30 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD/DNB in Dermatology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="cardiology">
+        <div class="specialty-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Cardiology</h3>
+        <p class="specialty-brief">Heart Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Cardiologists focus on diagnosing and treating heart diseases, including heart attacks, arrhythmias, and heart failure.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-40 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD in General Medicine + DM in Cardiology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="neurology">
+        <div class="specialty-icon"><i class="fas fa-brain"></i></div>
+        <h3>Neurology</h3>
+        <p class="specialty-brief">Brain & Nervous System Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Neurologists treat disorders of the brain and nervous system, including stroke, epilepsy, Alzheimer's, and Parkinson's disease.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-45 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD in General Medicine + DM in Neurology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="orthopedics">
+        <div class="specialty-icon"><i class="fas fa-bone"></i></div>
+        <h3>Orthopedics</h3>
+        <p class="specialty-brief">Bone & Joint Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Orthopedic surgeons focus on the musculoskeletal system, treating bone fractures, joint problems, sports injuries, and more.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-40 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MS/DNB in Orthopedics</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="ophthalmology">
+        <div class="specialty-icon"><i class="fas fa-eye"></i></div>
+        <h3>Ophthalmology</h3>
+        <p class="specialty-brief">Eye Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Ophthalmologists diagnose and treat eye diseases, perform surgeries, and prescribe corrective lenses for vision problems.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹12-35 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MS/DNB in Ophthalmology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="ent">
+        <div class="specialty-icon"><i class="fas fa-deaf"></i></div>
+        <h3>ENT</h3>
+        <p class="specialty-brief">Ear, Nose & Throat Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> ENT specialists (Otolaryngologists) treat conditions related to the ear, nose, throat, and related structures of the head and neck.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹12-30 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MS/DNB in ENT</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="gynecology">
+        <div class="specialty-icon"><i class="fas fa-venus"></i></div>
+        <h3>Gynecology</h3>
+        <p class="specialty-brief">Women's Health Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Gynecologists focus on women's reproductive health, providing care during pregnancy, menopause, and for reproductive disorders.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-40 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MS/MD in Gynecology & Obstetrics</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="pediatrics">
+        <div class="specialty-icon"><i class="fas fa-baby"></i></div>
+        <h3>Pediatrics</h3>
+        <p class="specialty-brief">Child Health Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Pediatricians provide healthcare for infants, children, and adolescents, focusing on growth, development, and childhood diseases.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹10-30 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD/DNB in Pediatrics</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="psychiatry">
+        <div class="specialty-icon"><i class="fas fa-brain"></i></div>
+        <h3>Psychiatry</h3>
+        <p class="specialty-brief">Mental Health Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Psychiatrists diagnose and treat mental disorders through a combination of psychotherapy, medication, and other treatments.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹12-35 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD/DNB in Psychiatry</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="radiology">
+        <div class="specialty-icon"><i class="fas fa-x-ray"></i></div>
+        <h3>Radiology</h3>
+        <p class="specialty-brief">Medical Imaging Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Radiologists use imaging technologies (X-rays, CT scans, MRIs) to diagnose and treat diseases and injuries.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-40 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD/DNB in Radiology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="gastroenterology">
+        <div class="specialty-icon"><i class="fas fa-stomach"></i></div>
+        <h3>Gastroenterology</h3>
+        <p class="specialty-brief">Digestive System Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Gastroenterologists focus on the digestive system and its disorders, including the esophagus, stomach, intestines, liver, and pancreas.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-40 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MD in Medicine + DM in Gastroenterology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="urology">
+        <div class="specialty-icon"><i class="fas fa-kidneys"></i></div>
+        <h3>Urology</h3>
+        <p class="specialty-brief">Urinary Tract Specialist</p>
+        <div class="specialty-details hidden">
+          <p><i class="fas fa-info-circle"></i> Urologists treat disorders of the urinary tract system in both men and women, as well as the male reproductive system.</p>
+          <p><i class="fas fa-rupee-sign"></i> <strong>Average Salary:</strong> â‚¹15-40 lakhs per annum</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MBBS + MS in General Surgery + MCh in Urology</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Colleges in India Section -->
+  <section id="india-colleges" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-graduation-cap"></i> Top Medical Colleges in India</h2>
+      <p>Premier institutions for medical education across the country</p>
+    </div>
+
+    <div class="colleges-container">
+      <!-- College Cards with unique icons -->
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-hospital-alt"></i> AIIMS, New Delhi</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1956</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #1</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 107 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 98+ percentile in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.aiims.edu" target="_blank">www.aiims.edu</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-clinic-medical"></i> JIPMER, Puducherry</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1823</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #3</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 200 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 97+ percentile in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://jipmer.edu.in" target="_blank">jipmer.edu.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-cross"></i> Christian Medical College, Vellore</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1900</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #4</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 100 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 96+ percentile in NEET + separate selection process</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.cmch-vellore.edu" target="_blank">www.cmch-vellore.edu</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-shield-alt"></i> AFMC, Pune</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1948</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #5</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 150 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 97+ percentile in NEET + separate selection process</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.afmc.nic.in" target="_blank">www.afmc.nic.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-landmark"></i> King George's Medical University, Lucknow</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1911</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #6</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 250 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 96+ percentile in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.kgmu.org" target="_blank">www.kgmu.org</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-hospital-user"></i> Kasturba Medical College, Manipal</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1953</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #8</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 250 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 95+ percentile in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://manipal.edu/kmc-manipal" target="_blank">manipal.edu/kmc-manipal</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-more-container">
+      <button id="view-more-india" class="view-more-btn"><i class="fas fa-plus"></i> View More Colleges</button>
+    </div>
+
+    <div id="more-india-colleges" class="hidden">
+      <!-- More colleges will be added dynamically with JavaScript -->
+    </div>
+  </section>
+
+  <!-- Top Colleges in Tamil Nadu Section -->
+  <section id="tn-colleges" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-university"></i> Top Medical Colleges in Tamil Nadu</h2>
+      <p>Leading medical institutions in the state of Tamil Nadu</p>
+    </div>
+
+    <div class="colleges-container">
+      <!-- Tamil Nadu College Cards with unique icons -->
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-hospital-symbol"></i> Madras Medical College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1835</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #12 Nationally</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 250 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 550+ marks in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.mmcchennai.ac.in" target="_blank">www.mmcchennai.ac.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-cross"></i> Christian Medical College, Vellore</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1900</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #4 Nationally</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh, PhD</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 100 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 570+ marks in NEET + separate selection process</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.cmch-vellore.edu" target="_blank">www.cmch-vellore.edu</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-notes-medical"></i> Stanley Medical College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1938</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #25 Nationally</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 250 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 520+ marks in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.stanleymedicalcollege.ac.in" target="_blank">www.stanleymedicalcollege.ac.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-ambulance"></i> Kilpauk Medical College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1960</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #30 Nationally</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS, DM, MCh</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 250 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 510+ marks in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.kmcchennai.ac.in" target="_blank">www.kmcchennai.ac.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-microscope"></i> Coimbatore Medical College, Coimbatore</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1966</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #35 Nationally</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 150 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 500+ marks in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.cmccoimbatoreaac.ac.in" target="_blank">www.cmccoimbatoreaac.ac.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-first-aid"></i> Tirunelveli Medical College, Tirunelveli</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1965</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #45 Nationally</p>
+          <p><i class="fas fa-book-medical"></i> <strong>Courses:</strong> MBBS, MD, MS</p>
+          <p><i class="fas fa-user-graduate"></i> <strong>Seats:</strong> 150 MBBS seats annually</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Cut-off:</strong> 490+ marks in NEET</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://tvmc.ac.in" target="_blank">tvmc.ac.in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-more-container">
+      <button id="view-more-tn" class="view-more-btn"><i class="fas fa-plus"></i> View More Colleges</button>
+    </div>
+
+    <div id="more-tn-colleges" class="hidden">
+      <!-- More colleges will be added dynamically with JavaScript -->
+    </div>
+  </section>
+
+  <!-- NEET & Exam Preparation Section -->
+  <section id="exams" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-book-reader"></i> NEET Examination & Preparation</h2>
+      <p>Everything you need to know about medical entrance exams in India</p>
+    </div>
+
+    <div class="exam-container">
+      <div class="exam-info">
+        <h3><i class="fas fa-info-circle"></i> About NEET-UG</h3>
+        <p>The National Eligibility cum Entrance Test (Undergraduate) is the qualifying entrance exam for MBBS and BDS programs in India. It is conducted by the National Testing Agency (NTA) once a year.</p>
+        
+        <div class="exam-details">
+          <div class="exam-detail-card">
+            <h4><i class="fas fa-clipboard-list"></i> Exam Pattern</h4>
+            <ul>
+              <li><i class="fas fa-file-alt"></i> <strong>Total Questions:</strong> 200 (180 to be attempted)</li>
+              <li><i class="fas fa-flask"></i> <strong>Subjects:</strong> Physics, Chemistry, Biology (Botany & Zoology)</li>
+              <li><i class="fas fa-plus-minus"></i> <strong>Marking Scheme:</strong> +4 for correct answer, -1 for incorrect</li>
+              <li><i class="fas fa-calculator"></i> <strong>Total Marks:</strong> 720</li>
+              <li><i class="fas fa-hourglass-half"></i> <strong>Duration:</strong> 3 hours 20 minutes</li>
+            </ul>
+          </div>
+
+          <div class="exam-detail-card">
+            <h4><i class="fas fa-user-check"></i> Eligibility Criteria</h4>
+            <ul>
+              <li><i class="fas fa-birthday-cake"></i> <strong>Age:</strong> Minimum 17 years as on December 31st of year of admission</li>
+              <li><i class="fas fa-graduation-cap"></i> <strong>Qualification:</strong> 10+2 with Physics, Chemistry, Biology/Biotechnology</li>
+              <li><i class="fas fa-percentage"></i> <strong>Minimum Marks:</strong> 50% for General, 40% for SC/ST/OBC</li>
+              <li><i class="fas fa-redo-alt"></i> <strong>Attempts:</strong> No limit on number of attempts</li>
+            </ul>
+          </div>
+
+          <div class="exam-detail-card">
+            <h4><i class="fas fa-calendar-alt"></i> Important Dates (2023 Cycle)</h4>
+            <ul>
+              <li><i class="fas fa-file-signature"></i> <strong>Application Form:</strong> March-April</li>
+              <li><i class="fas fa-calendar-day"></i> <strong>Exam Date:</strong> First Sunday of May</li>
+              <li><i class="fas fa-poll"></i> <strong>Result Declaration:</strong> June</li>
+              <li><i class="fas fa-user-friends"></i> <strong>Counselling:</strong> July-September</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="prep-resources">
+        <h3><i class="fas fa-toolbox"></i> Preparation Resources</h3>
+        <div class="resources-container">
+          <div class="resource-card">
+            <div class="resource-icon"><i class="fas fa-book"></i></div>
+            <h4>Recommended Books</h4>
+            <ul>
+              <li><i class="fas fa-book-open"></i> NCERT Textbooks (Class 11 & 12) - Foundation</li>
+              <li><i class="fas fa-atom"></i> Physics: H.C. Verma, D.C. Pandey</li>
+              <li><i class="fas fa-flask"></i> Chemistry: O.P. Tandon, Morrison & Boyd (Organic)</li>
+              <li><i class="fas fa-dna"></i> Biology: Trueman's, Pradeep's Guide</li>
+            </ul>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon"><i class="fas fa-laptop"></i></div>
+            <h4>Online Platforms</h4>
+            <ul>
+              <li><i class="fas fa-video"></i> NEET Prep by Unacademy</li>
+              <li><i class="fas fa-tablet-alt"></i> Allen Digital</li>
+              <li><i class="fas fa-chalkboard"></i> Physics Wallah</li>
+              <li><i class="fas fa-users"></i> Vedantu NEET Preparation</li>
+              <li><i class="fas fa-play-circle"></i> Khan Academy (for basic concepts)</li>
+            </ul>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+            <h4>Coaching Institutes</h4>
+            <ul>
+              <li><i class="fas fa-building"></i> Allen Career Institute</li>
+              <li><i class="fas fa-university"></i> Aakash Institute</li>
+              <li><i class="fas fa-school"></i> PACE IIT & Medical</li>
+              <li><i class="fas fa-graduation-cap"></i> Resonance</li>
+              <li><i class="fas fa-user-tie"></i> Career Point</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="prep-strategy">
+        <h3><i class="fas fa-chess"></i> Study Strategy & Timeline</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-hourglass-start"></i> 2 Years Before NEET</h4>
+              <ul>
+                <li><i class="fas fa-hammer"></i> Build strong fundamentals in 11th standard subjects</li>
+                <li><i class="fas fa-book-reader"></i> Focus on NCERT textbooks thoroughly</li>
+                <li><i class="fas fa-user-graduate"></i> Join a coaching program or self-study with structure</li>
+                <li><i class="fas fa-edit"></i> Practice basic problems regularly</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-hourglass-half"></i> 1 Year Before NEET</h4>
+              <ul>
+                <li><i class="fas fa-tasks"></i> Complete 12th standard curriculum by December</li>
+                <li><i class="fas fa-clipboard-check"></i> Take chapter-wise and subject-wise tests</li>
+                <li><i class="fas fa-sync-alt"></i> Revision of 11th standard topics</li>
+                <li><i class="fas fa-file-alt"></i> Start solving previous years' question papers</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-clock"></i> 6 Months Before NEET</h4>
+              <ul>
+                <li><i class="fas fa-check-circle"></i> Complete full syllabus revision once</li>
+                <li><i class="fas fa-search-plus"></i> Focus on weaker topics and subjects</li>
+                <li><i class="fas fa-clipboard"></i> Take regular full-length mock tests</li>
+                <li><i class="fas fa-chart-line"></i> Analyze performance and work on weak areas</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-stopwatch"></i> 3 Months Before NEET</h4>
+              <ul>
+                <li><i class="fas fa-redo"></i> Second complete revision of the entire syllabus</li>
+                <li><i class="fas fa-file-medical-alt"></i> Take at least 1-2 full mock tests weekly</li>
+                <li><i class="fas fa-star"></i> Focus on high-yield topics and frequently asked questions</li>
+                <li><i class="fas fa-tachometer-alt"></i> Work on test-taking strategies and time management</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-hourglass-end"></i> 1 Month Before NEET</h4>
+              <ul>
+                <li><i class="fas fa-bolt"></i> Quick revision of complete syllabus</li>
+                <li><i class="fas fa-diagnoses"></i> Practice 3-4 mock tests weekly</li>
+                <li><i class="fas fa-list-alt"></i> Revise formulas, diagrams, chemical equations</li>
+                <li><i class="fas fa-heartbeat"></i> Maintain healthy routine and mental well-being</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-stethoscope"></i> MedDomain Explorer</h3>
+        <p>Your comprehensive guide to medical education in India</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#specialties"><i class="fas fa-chevron-right"></i> Medical Specialties</a></li>
+          <li><a href="#india-colleges"><i class="fas fa-chevron-right"></i> Top Colleges - India</a></li>
+          <li><a href="#tn-colleges"><i class="fas fa-chevron-right"></i> Top Colleges - Tamil Nadu</a></li>
+          <li><a href="#exams"><i class="fas fa-chevron-right"></i> NEET & Preparations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3><i class="fas fa-address-card"></i> Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> info@meddomain.com</p>
+        <p><i class="fas fa-phone"></i> +91 9876543210</p>
+        <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu, India</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2023 MedDomain Explorer. All rights reserved. <i class="fas fa-heart pulse-icon"></i></p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- JavaScript -->
+  <script src="/public/js/public/js/public/js/f.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Fields Explorer</title>
+  <link rel="stylesheet" href="/public/css/eng.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-container">
+      <h1>Explore the World of Engineering</h1>
+      <p class="hero-subtitle">Discover various engineering disciplines, career paths, and educational requirements</p>
+      <button id="explore-btn" class="btn btn-primary">Explore Fields</button>
+    </div>
+    <div class="particles-container" id="hero-particles"></div>
+  </header>
+
+  <section id="branches" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Engineering Branches</h2>
+        <p>Explore the diverse fields of engineering and discover which path aligns with your interests and strengths.</p>
+      </div>
+      
+      <div class="fields-grid" id="branches-grid">
+        <!-- Fields will be inserted here by JavaScript -->
+      </div>
+    </div>
+    <div class="particles-container" id="branches-particles"></div>
+  </section>
+
+  <section id="why-study" class="section dark-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Why Study Engineering?</h2>
+        <p>Engineering offers exciting career opportunities and the chance to make a real impact on the world.</p>
+      </div>
+      
+      <div class="reasons-grid" id="reasons-grid">
+        <!-- Reasons will be inserted here by JavaScript -->
+      </div>
+    </div>
+    <div class="particles-container" id="reasons-particles"></div>
+  </section>
+
+  <section id="fields" class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>All Engineering Fields</h2>
+        <p>Browse through various engineering fields to find detailed information about domains, career opportunities, educational pathways, and industry trends.</p>
+      </div>
+      
+      <div class="fields-grid" id="all-fields-grid">
+        <!-- All fields will be inserted here by JavaScript -->
+      </div>
+    </div>
+    <div class="particles-container" id="fields-particles"></div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Engineering Explorer</h2>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#branches">Engineering Branches</a></li>
+            <li><a href="#why-study">Why Study Engineering</a></li>
+            <li><a href="#fields">All Fields</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Contact</h3>
+          <p>Email: info@engineeringexplorer.com</p>
+          <p>Phone: +1 (555) 123-4567</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Engineering Explorer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Templates -->
+  <div id="modal-container" class="modal-container hidden">
+    <div id="field-detail-modal" class="modal hidden">
+      <button class="modal-close" id="detail-modal-close">Ã—</button>
+      <div class="modal-content">
+        <h2 id="detail-title" class="modal-title"></h2>
+        <p id="detail-description" class="modal-description"></p>
+        
+        <div class="modal-grid">
+          <div class="modal-overview">
+            <h3>Overview</h3>
+            <p id="detail-overview"></p>
+          </div>
+          
+          <div class="modal-domains">
+            <h3>Key Domains</h3>
+            <ul id="detail-domains"></ul>
+          </div>
+        </div>
+        
+        <h3 class="section-title">Career Paths</h3>
+        <div id="detail-careers" class="careers-grid"></div>
+        
+        <h3 class="section-title">Education Pathway</h3>
+        <div id="detail-education" class="education-list"></div>
+
+        <div class="modal-actions">
+          <button id="detail-back-btn" class="btn btn-primary">Back to Fields</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="domain-modal" class="modal hidden">
+      <button class="modal-close" id="domain-modal-close">Ã—</button>
+      <div class="modal-content">
+        <h2 id="domain-title" class="modal-title"></h2>
+        <p class="modal-description">Explore the specialized domains within this field. Each domain represents a unique area of focus with specific applications and career paths.</p>
+        
+        <div id="domain-visualizer" class="domain-visualizer"></div>
+        
+        <div id="domain-grid" class="domain-grid"></div>
+
+        <div class="modal-actions">
+          <button id="domain-back-btn" class="btn btn-primary">Back to Fields</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/public/js/eng.js"></script>
+</body>
+</html>

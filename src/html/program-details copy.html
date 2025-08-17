@@ -1,0 +1,64 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Colleges - NIRF Rankings</title>
+  <link rel="stylesheet" href="/public/css/program-details.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Engineering Colleges in India</h1>
+      <h3>NIRF Top Rankings</h3>
+      
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by college name, city...">
+        <button id="searchButton">Search</button>
+      </div>
+      
+      <div id="filterContainer" class="filter-container">
+        <button id="allCollegesFilter" class="filter-button active-filter">All Colleges</button>
+        <button id="tamilNaduFilter" class="filter-button">Tamil Nadu Colleges</button>
+        <button id="allIndiaFilter" class="filter-button">All India Colleges</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="colleges-container">
+        <table id="collegesTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Website</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="collegesList">
+            <!-- College data will be inserted here by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <div id="collegeModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div id="modalContent">
+          <!-- College details will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2023 NIRF College Compass | All Rights Reserved</p>
+    </footer>
+  </div>
+
+  <script src="/public/js/program-details.js"></script>
+</body>
+</html>

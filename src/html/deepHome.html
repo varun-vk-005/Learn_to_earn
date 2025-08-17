@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Predictor | College Cutoff Ranking System</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #5e72e4;
+            box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.3);
+        }
+
+        select option {
+            background-color: #302b63;
+            color: white;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #5e72e4, #825ee4);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .prediction-result {
+            margin-top: 30px;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #5e72e4;
+        }
+
+        .course-card h3 {
+            color: #5e72e4;
+            margin-bottom: 10px;
+        }
+
+        .confidence-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #5e72e4, #825ee4);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .confidence-text {
+            font-size: 14px;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #f5365c, #f56036);
+            box-shadow: 0 7px 14px rgba(245, 54, 92, 0.3);
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Course Predictor</h1>
+            <p>Enter your cutoff marks to see predicted courses</p>
+        </header>
+
+        <div class="card">
+            <div class="form-group">
+                <label for="cutoff">Your Cutoff Marks (Out of 200)</label>
+                <input type="number" id="cutoff" min="0" max="200" step="0.5" placeholder="Enter your cutoff marks">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value="OC">OC</option>
+                    <option value="BC">BC</option>
+                    <option value="MBC">MBC</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="BCM">BCM</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" id="predict-btn">Predict Courses</button>
+        </div>
+
+        <div class="prediction-result" id="prediction-result">
+            <!-- Results will be populated here -->
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Show notification function
+        function showNotification(message, type = 'error') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Calculate standard deviation
+        function calculateStandardDeviation(values) {
+            const avg = values.reduce((a, b) => a + b, 0) / values.length;
+            const squareDiffs = values.map(value => {
+                const diff = value - avg;
+                return diff * diff;
+            });
+            const avgSquareDiff = squareDiffs.reduce((a, b) => a + b, 0) / squareDiffs.length;
+            return Math.sqrt(avgSquareDiff);
+        }
+
+        // Calculate confidence score
+        function calculateConfidence(cutoffData, userCutoff) {
+            if (cutoffData.length < 2) return 0;
+
+            // Sort data by year (newest first)
+            cutoffData.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+
+            // Get cutoffs and years
+            const cutoffs = cutoffData.map(item => parseFloat(item.cutoff));
+            const years = cutoffData.map(item => parseInt(item.year));
+
+            // Calculate standard deviation to measure data consistency
+            const stdDev = calculateStandardDeviation(cutoffs);
+
+            // Get latest cutoff (most recent year)
+            const latestCutoff = cutoffs[0];
+
+            // Calculate trend consistency (how well the data follows a trend)
+            let trendConsistency = 1.0;
+            if (cutoffData.length >= 3) {
+                // Check if cutoffs are consistently increasing or decreasing
+                let increases = 0;
+                let decreases = 0;
+
+                for (let i = 1; i < cutoffs.length; i++) {
+                    if (cutoffs[i-1] > cutoffs[i]) increases++;
+                    else if (cutoffs[i-1] < cutoffs[i]) decreases++;
+                }
+
+                // Higher consistency if trend is more uniform
+                const totalChanges = increases + decreases;
+                if (totalChanges > 0) {
+                    trendConsistency = Math.max(increases, decreases) / totalChanges;
+                }
+            }
+
+            // Calculate how close the user's cutoff is to the latest cutoff
+            // This is more relevant than distance from mean
+            const distanceFromLatest = Math.abs(userCutoff - latestCutoff);
+
+            // Normalize the distance (closer = higher confidence)
+            // Use a reasonable range (10 points) for normalization
+            const normalizedDistance = Math.min(1, distanceFromLatest / 10);
+            const proximityFactor = 1 - normalizedDistance;
+
+            // Data quality factors
+            const dataConsistency = Math.max(0, 1 - (stdDev / 15)); // Lower stdDev = more consistent
+            const dataSizeFactor = Math.min(1, cutoffData.length / 5); // More data = better
+            const recencyFactor = Math.min(1, cutoffData.length / 3); // More recent years = better
+
+            // Calculate final confidence
+            // Weight factors by importance
+            const confidence = (
+                proximityFactor * 0.4 +      // How close user's cutoff is to latest
+                dataConsistency * 0.2 +      // How consistent the data is
+                trendConsistency * 0.2 +     // How consistent the trend is
+                dataSizeFactor * 0.1 +       // How much data we have
+                recencyFactor * 0.1          // How recent the data is
+            ) * 100;
+
+            return Math.round(confidence);
+        }
+
+        // Predict courses
+        function predictCourses() {
+            const userCutoff = parseFloat(document.getElementById('cutoff').value);
+            const category = document.getElementById('category').value;
+
+            if (!userCutoff || userCutoff < 0 || userCutoff > 200) {
+                showNotification('Please enter a valid cutoff value between 0 and 200');
+                return;
+            }
+
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            const resultContainer = document.getElementById('prediction-result');
+            resultContainer.innerHTML = '';
+
+            // Group data by college/course
+            const collegeData = {};
+            cutoffData.forEach(item => {
+                if (item.category === category) {
+                    // Use college field as the key (which contains course codes like CSE, CCE, etc.)
+                    const courseKey = item.college;
+                    if (!collegeData[courseKey]) {
+                        collegeData[courseKey] = [];
+                    }
+                    collegeData[courseKey].push(item);
+                }
+            });
+
+            // Get course names mapping
+            const courseNames = {
+                'CSE': 'Computer Science Engineering',
+                'IT': 'Information Technology',
+                'ECE': 'Electronics and Communication',
+                'CCE': 'Computer and Communication',
+                'AIDS': 'AI & Data Science',
+                'AIML': 'AI & Machine Learning',
+                'cyber': 'Cyber Security',
+                'CSBS': 'CS & Business Systems',
+                'mech': 'Mechanical Engineering',
+                'EEE': 'Electrical & Electronics'
+            };
+
+            // Sort courses by average cutoff (highest first)
+            const sortedCourses = Object.entries(collegeData)
+                .map(([courseCode, data]) => {
+                    // Calculate average cutoff for this course
+                    const avgCutoff = data.reduce((sum, item) => sum + parseFloat(item.cutoff), 0) / data.length;
+
+                    // Get the latest year's cutoff for more accurate comparison
+                    data.sort((a, b) => parseInt(b.year) - parseInt(a.year));
+                    const latestCutoff = parseFloat(data[0].cutoff);
+
+                    return {
+                        courseCode,
+                        courseName: courseNames[courseCode] || courseCode,
+                        data,
+                        avgCutoff,
+                        latestCutoff
+                    };
+                })
+                .sort((a, b) => b.latestCutoff - a.latestCutoff);
+
+            if (sortedCourses.length === 0) {
+                resultContainer.innerHTML = '<div class="no-data">Insufficient data for prediction. Please try a different category.</div>';
+                return;
+            }
+
+            // Generate predictions
+            sortedCourses.forEach(({ courseCode, courseName, data, avgCutoff, latestCutoff }) => {
+                // Calculate confidence based on data consistency and user's cutoff
+                const confidence = calculateConfidence(data, userCutoff);
+
+                // Only show predictions with confidence > 20%
+                if (confidence > 20) {
+                    const card = document.createElement('div');
+                    card.className = 'course-card';
+
+                    // Determine chance of admission based on comparison with latest cutoff
+                    // Higher user cutoff = better chance
+                    let chance;
+                    if (userCutoff >= latestCutoff + 2) {
+                        chance = 'High';
+                    } else if (userCutoff >= latestCutoff - 3) {
+                        chance = 'Medium';
+                    } else {
+                        chance = 'Low';
+                    }
+
+                    // Display course name and code
+                    const displayName = courseName ? `${courseName} (${courseCode})` : courseCode;
+
+                    card.innerHTML = `
+                        <h3>${displayName}</h3>
+                        <p>Latest Cutoff: ${latestCutoff.toFixed(2)}</p>
+                        <p>Your Cutoff: ${userCutoff.toFixed(2)}</p>
+                        <p>Chance of Admission: ${chance}</p>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" style="width: ${confidence}%"></div>
+                        </div>
+                        <div class="confidence-text">Prediction Confidence: ${confidence}%</div>
+                    `;
+
+                    resultContainer.appendChild(card);
+                }
+            });
+
+            if (resultContainer.children.length === 0) {
+                resultContainer.innerHTML = '<div class="no-data">Based on your cutoff marks, there are no suitable courses available.</div>';
+            }
+        }
+
+        // Event listeners
+        document.getElementById('predict-btn').addEventListener('click', predictCourses);
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if cutoff data exists
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            if (cutoffData.length === 0) {
+                showNotification('No cutoff data available. Please add data in the admin panel first.');
+            }
+        });
+    </script>
+</body>
+</html>

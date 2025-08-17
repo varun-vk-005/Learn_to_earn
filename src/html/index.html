@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn2Earn - Empower Your Educational Journey</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Learn2Earn</span>
+        </div>
+        <div class="nav-links">
+            <div class="dropdown">
+                <button class="dropbtn">Domain Navigator <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="DomainNavigator.html">Domain Navigator</a>
+                    <a href="DomainNavigator.html">Affordability of college &Skill Match</a>
+                    <a href="aboutv.html">About Us</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">LinkedIn Edge <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="Linkedin.html">Profile Optimization</a>
+                    <a href="Linkedin.html">Job Search Tools</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Gamified Learning & Colloboration<i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="interhub.html">InterConnectivity Hub</a>
+                    <a href="/src/html/game.html">Entrance Preparation</a>
+                    <a href="drone-arvr.html">Drone & AR/VR Tech</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Code starter&Guidance<i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="Codestarter.html">Bio Students</a>
+                    <a href="/src/html/resources.html">Parental Guidance</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">More<i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="Innovation.html">Innovation Zone</a>
+                    <a href="futureclaud.html">Speak with your future</a>
+                    <a href="/src/html/deepHome.html">Course Predictor 2025</a>
+                    <a href="counselling.html">Counselling Updates</a>
+                </div>
+            </div>
+            <a href="cutoffcalculator.html" class="nav-item">Cutoff Calculator</a>
+        </div>
+        <button class="login-btn">Log In</button>
+    </nav>
+     <!-- Login/Signup Modal -->
+     <div class="auth-modal" id="authModal">
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="/post" method="post" id="signup-form">
+                    <h1>Create Account</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your email for registration</span>
+                    <label>
+                        <input type="text" name="username" placeholder="Name" >
+
+                    <input type="email" name="email"  placeholder="Email" >
+                    <input type="password"  name="password" placeholder="Password" />
+                    <div id="signup-message"></div>
+                        </label>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form id="signin-form">
+                    <h1>Sign in</h1>
+                    <div class="social-container">
+                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social"><i class="fab fa-google"></i></a>
+                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <span>or use your account</span>
+                    <label for="email"></label><input type="email" name="email" id="email" placeholder="Email" />
+                    <label for="password"></label><input type="password" name="password" id="password" placeholder="Password" />
+                    <a href="#" class="forgot-password">Forgot your password?</a>
+                    <div id="signin-message"></div>
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Hero Section with Slider -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empower Your <br>Educational Journey <br>with <span class="highlight">Learn2Earn</span></h1>
+            <p>Your comprehensive platform for career guidance, college selection, skill development, and professional networking.</p>
+            <div class="cta-buttons">
+                <button class="explore-btn">Explore Pathways <i class="fas fa-arrow-right"></i></button>
+                <button class="assessment-btn">Take Assessment</button>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <h2>500<span class="plus">+</span></h2>
+                    <p>Partner Colleges</p>
+                </div>
+                <div class="stat-item">
+                    <h2>50K<span class="plus">+</span></h2>
+                    <p>Students Guided</p>
+                </div>
+                <div class="stat-item">
+                    <h2>95%</h2>
+                    <p>Success Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h2>200<span class="plus">+</span></h2>
+                    <p>Industry Partners</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide active">
+                    <div class="slide-background" style="background-image: url('https://thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg')"></div>
+                    <div class="slide-content">
+                        <h2>Connect With Industry Professionals</h2>
+                        <p>Build your network and gain industry insights from experienced professionals.</p>
+                        <button class="learn-more-btn" data-image="https://via.placeholder.com/1200x800/4a6bff/ffffff">Learn More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-background" style="background-image: url('https://cdn.pixabay.com/photo/2024/02/28/11/07/woman-8601818_1280.jpg')"></div>
+                    <div class="slide-content">
+                        <h2>Discover Scholarship Opportunities</h2>
+                        <p>Find and apply for scholarships tailored to your academic profile and aspirations.</p>
+                        <button class="learn-more-btn" data-image="https://via.placeholder.com/1200x800/ff6b4a/ffffff">Learn More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-background" style="background-image: url('https://th.bing.com/th/id/R.aeced419dc05b697f7d987c71096871c?rik=2YhvdlEZllSIpg&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2fe%2f2%2f0%2f52558.jpg&ehk=s%2bZr67xJO8OOT76WJLCjv3s8h0tIrgBdsVIpYOlkIkE%3d&risl=&pid=ImgRaw&r=0')"></div>
+                    <div class="slide-content">
+                        <h2>Enhance Your Skills</h2>
+                        <p>Access courses and resources to develop the skills most relevant to your career path.</p>
+                        <button class="learn-more-btn" data-image="https://via.placeholder.com/1200x800/4aff6b/ffffff">Learn More <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="image-modal">
+        <span class="close-image-modal">&times;</span>
+        <img class="modal-image-content" id="full-image" src="">
+        <div class="image-caption"></div>
+    </div>
+
+
+    <section class="features">
+        <h2 class="section-title">Comprehensive Career Guidance</h2>
+        <p class="section-description">Learn2Earn provides the tools and resources you need to make informed decisions about your educational and professional future.</p>
+        
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="fas fa-compass"></i>
+                </div>
+                <h3>Comprehensive Career Guidance</h3>
+                <p>Expert advice to help you navigate educational and professional pathways with confidence.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>College Selection Assistance</h3>
+                <p>Find the perfect college based on your preferences, academic performance, and career goals.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Scholarship Opportunities</h3>
+                <p>Discover and apply for scholarships tailored to your academic profile and aspirations.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="fab fa-linkedin"></i>
+                </div>
+                <h3>LinkedIn Profile Perfector</h3>
+                <p>Optimize your professional online presence to stand out to recruiters and potential employers.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Global Industry Collaboration</h3>
+                <p>Connect with industry leaders and organizations worldwide for internships and job opportunities.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="icon-container">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Interactive Skill Match</h3>
+                <p>Identify and develop the skills most relevant to your chosen career path.</p>
+            </div>
+        </div>
+    </section>
+
+    
+        <!-- Educational Paths Section -->
+        <section class="educational-paths">
+            <h2 class="section-title">Choose Your Path to Higher Education</h2>
+            <p class="section-description">Explore different routes to college admission and find the option that best fits your academic profile and career goals.</p>
+            
+            <div class="path-tabs">
+                <button class="path-tab active" data-tab="entrance-exams">
+                    <i class="fas fa-book"></i> Entrance Exams
+                </button>
+                <button class="path-tab" data-tab="counselling">
+                    <i class="fas fa-users"></i> Counselling
+                </button>
+                <button class="path-tab" data-tab="management">
+                    <i class="fas fa-briefcase"></i> Management
+                </button>
+            </div>
+            
+            <div class="path-content">
+                <!-- Entrance Exams Content -->
+                <div class="tab-content active" id="entrance-exams">
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>JEE Main & Advanced</h3>
+                            <p>National level engineering entrance examination for admission to IITs, NITs, and other top engineering colleges.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-benefits">
+                            <h4>Key Benefits</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Gateway to premier engineering institutions</li>
+                                <li><i class="fas fa-check-circle"></i> Wide recognition across universities</li>
+                                <li><i class="fas fa-check-circle"></i> Multiple attempts allowed per year</li>
+                                <li><i class="fas fa-check-circle"></i> Comprehensive coverage of subjects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>BITSAT</h3>
+                            <p>Online computer-based test for admission to integrated first degree programs of BITS Pilani campuses.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-benefits">
+                            <h4>Key Benefits</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Computer-based adaptive testing</li>
+                                <li><i class="fas fa-check-circle"></i> Admission to all BITS campuses</li>
+                                <li><i class="fas fa-check-circle"></i> No subjective questions</li>
+                                <li><i class="fas fa-check-circle"></i> Time flexibility within test duration</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>VITEE, SRMJEE & MET</h3>
+                            <p>University-specific entrance exams for VIT, SRM, and Manipal respectively, offering engineering programs.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-benefits">
+                            <h4>Key Benefits</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> University-specific preparation</li>
+                                <li><i class="fas fa-check-circle"></i> Multiple exam dates available</li>
+                                <li><i class="fas fa-check-circle"></i> Direct admission to respective institutions</li>
+                                <li><i class="fas fa-check-circle"></i> Specialized program options</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Counselling Content -->
+                <div class="tab-content" id="counselling">
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>TNEA</h3>
+                            <p>Tamil Nadu Engineering Admissions for engineering colleges in Tamil Nadu based on qualifying examination marks.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-steps">
+                            <h4>Counselling Steps</h4>
+                            <ol>
+                                <li><span class="step-number">1</span> Registration and fee payment</li>
+                                <li><span class="step-number">2</span> Document verification</li>
+                                <li><span class="step-number">3</span> Choice filling and locking</li>
+                                <li><span class="step-number">4</span> Seat allocation and confirmation</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>TNAU</h3>
+                            <p>Tamil Nadu Agricultural University counselling for agricultural programs in the state.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-steps">
+                            <h4>Counselling Steps</h4>
+                            <ol>
+                                <li><span class="step-number">1</span> Online application submission</li>
+                                <li><span class="step-number">2</span> Merit list preparation</li>
+                                <li><span class="step-number">3</span> Counselling session attendance</li>
+                                <li><span class="step-number">4</span> Provisional admission</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>JoSAA</h3>
+                            <p>Joint Seat Allocation Authority coordinating admissions to IITs, NITs, IIITs and other GFTIs.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-steps">
+                            <h4>Counselling Steps</h4>
+                            <ol>
+                                <li><span class="step-number">1</span> Registration and choice filling</li>
+                                <li><span class="step-number">2</span> Mock seat allocation</li>
+                                <li><span class="step-number">3</span> Multiple allocation rounds</li>
+                                <li><span class="step-number">4</span> Physical reporting at allotted institute</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Management Content -->
+                <div class="tab-content" id="management">
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>Direct Admission</h3>
+                            <p>Apply directly to the institution of your choice based on their management quota availability.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-process">
+                            <h4>Application Process</h4>
+                            <ol>
+                                <li><span class="step-number">1</span> Contact college admission office</li>
+                                <li><span class="step-number">2</span> Submit application with required documents</li>
+                                <li><span class="step-number">3</span> Attend interview if required</li>
+                                <li><span class="step-number">4</span> Pay fees and confirm admission</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>Management Quota</h3>
+                            <p>A percentage of seats reserved by colleges for admission at their discretion.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-process">
+                            <h4>Application Process</h4>
+                            <ol>
+                                <li><span class="step-number">1</span> Early application submission</li>
+                                <li><span class="step-number">2</span> Profile assessment by institution</li>
+                                <li><span class="step-number">3</span> Financial documentation</li>
+                                <li><span class="step-number">4</span> Merit-based selection within quota</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="path-card">
+                        <div class="path-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="path-details">
+                            <h3>NRI/Foreign Quota</h3>
+                            <p>Special quota for Non-Resident Indians and foreign nationals at many institutions.</p>
+                            <button class="learn-more-btn">Learn More</button>
+                        </div>
+                        <div class="path-process">
+                            <h4>Application Process</h4>
+                            <ol>
+                                <li><span class="step-number">1</span> Eligibility verification</li>
+                                <li><span class="step-number">2</span> Special application process</li>
+                                <li><span class="step-number">3</span> Document authentication</li>
+                                <li><span class="step-number">4</span> Different fee structure</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+    <!-- Research Section -->
+    <section class="research">
+        <h2 class="section-title">Excellent Research by Learn2Earn</h2>
+        <p class="section-description">Our team conducts groundbreaking research to enhance educational methodologies and career guidance practices.</p>
+        
+        <div class="research-container">
+            <!-- Research item with video on left -->
+            <div class="research-row">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <!-- Replace the src with your actual video file path -->
+                        <video width="100%" controls poster="">
+                            <source src="/public/videos/Demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                
+                <div class="research-content">
+                    <h3>The Impact of Personalized Learning on Student Achievement</h3>
+                    <p>Our study reveals how customized educational approaches lead to significant improvements in student performance across all disciplines.</p>
+                    
+                    <ul class="research-highlights">
+                        <li><i class="fas fa-circle"></i> Data-driven insights from over 10,000 students</li>
+                        <li><i class="fas fa-circle"></i> Collaborated with 50+ educational institutions</li>
+                        <li><i class="fas fa-circle"></i> Peer-reviewed methodologies and findings</li>
+                    </ul>
+                    
+                    <a href="#" class="research-btn">Read Full Research <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Second research item - Video on right -->
+            <div class="research-row reverse">
+                <div class="research-content">
+                    <h3>Career Readiness: Bridging Academic Knowledge and Industry Requirements</h3>
+                    <p>Exploring the essential skills gap between traditional education and workplace demands in the modern economy.</p>
+                    
+                    <ul class="research-highlights">
+                        <li><i class="fas fa-circle"></i> Data-driven insights from over 10,000 students</li>
+                        <li><i class="fas fa-circle"></i> Collaborated with 50+ educational institutions</li>
+                        <li><i class="fas fa-circle"></i> Peer-reviewed methodologies and findings</li>
+                    </ul>
+                    
+                    <a href="#" class="research-btn">Read Full Research <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <!-- HTML5 video player -->
+                        <video width="100%" controls poster="https://via.placeholder.com/600x350">
+                            <source src="/public/videos/WebUi.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>>
+    </section>
+
+        <!-- Alumni Testimonials Section -->
+        <section class="alumni-section">
+            <h2 class="section-title">ALUMNI SPEAK</h2>
+            <div class="testimonial-slider-container">
+                <div class="testimonial-slider">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide active">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">Learn2Earn transformed my college application journey. Their guidance on JEE preparation and college selection was invaluable. The LinkedIn profile optimization helped me secure internships even before graduation.</p>
+                        <div class="alumni-profile">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Priya Sharma" class="alumni-img">
+                            <div class="alumni-info">
+                                <h4>Priya Sharma</h4>
+                                <p>B.Tech Computer Science</p>
+                                <p>IIT Madras</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">The career counseling services at Learn2Earn helped me identify my strengths and choose the right academic path. Their industry connections were instrumental in landing my dream job right after graduation.</p>
+                        <div class="alumni-profile">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Rahul Verma" class="alumni-img">
+                            <div class="alumni-info">
+                                <h4>Rahul Verma</h4>
+                                <p>B.E. Mechanical Engineering</p>
+                                <p>BITS Pilani</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">I was confused about which stream to choose after 12th. Learn2Earn's assessment tools and personalized guidance helped me discover my passion for biotechnology. Now I'm pursuing research at a top university.</p>
+                        <div class="alumni-profile">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Ananya Patel" class="alumni-img">
+                            <div class="alumni-info">
+                                <h4>Ananya Patel</h4>
+                                <p>M.Sc. Biotechnology</p>
+                                <p>VIT University</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-slide">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-text">The scholarship guidance from Learn2Earn saved me lakhs in tuition fees. Their mentorship program connected me with industry professionals who guided me throughout my academic journey.</p>
+                        <div class="alumni-profile">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Vikram Singh" class="alumni-img">
+                            <div class="alumni-info">
+                                <h4>Vikram Singh</h4>
+                                <p>MBA Finance</p>
+                                <p>IIM Ahmedabad</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Navigation buttons -->
+                <button class="testimonial-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="testimonial-nav next-btn"><i class="fas fa-chevron-right"></i></button>
+    
+                <!-- Dots indicator -->
+                <div class="testimonial-dots">
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
+                    <span class="testimonial-dot" data-index="3"></span>
+                </div>
+            </div>
+        </section>
+            <!-- Features Section -->
+ 
+
+    <!-- What Makes Us Unique Section -->
+    <section class="unique-programs">
+        <div class="unique-header">
+            <span class="unique-tagline">ONLINE LEARNING DONE BETTER</span>
+            <h2 class="unique-title">Discover what makes our programs unique</h2>
+        </div>
+        
+        <div class="unique-grid">
+            <!-- First unique feature -->
+            <div class="unique-item">
+                <div class="unique-image">
+                    <img src="/public/images/ready bammer.jpg" alt="Best-in-class instructors" style="width: 100%; height: auto;">
+                </div>
+                <div class="unique-content">
+                    <span class="unique-category">INNOVATIVE IDEA CAN BE SUBMITTED</span>
+                    <h3>Renowned professors with proven track records</h3>
+                    <p>Interact with and learn from esteemed professors who've taught some of today's greatest minds in the fields of technology, business, and beyond.</p>
+                </div>
+            </div>
+            
+            <!-- Second unique feature -->
+            <div class="unique-item">
+                <div class="unique-image">
+                    <img src="/public/images/Business-Meeting.jpg" alt="Industry mentors" style="width: 100%; height: auto;">
+                </div>
+                <div class="unique-content">
+                    <span class="unique-category">EXPERIENCED INDUSTRY MENTORS</span>
+                    <h3>Industry experts who already work in your desired field</h3>
+                    <p>Great Learning programs go beyond theory. Our network of professional mentors guide and support you, helping you to land the job and achieve remarkable success.</p>
+                </div>
+            </div>
+            
+            <!-- Third unique feature -->
+            <div class="unique-item">
+                <div class="unique-image">
+                    <img src="/public/images/job expose's.png" alt="LinkedIn optimization" style="width: 100%; height: auto;">
+                </div>
+                <div class="unique-content">
+                    <span class="unique-category">LINKEDIN PROFILE OPTIMIZATION</span>
+                    <h3>Stand out to recruiters with a professional online presence</h3>
+                    <p>Our LinkedIn experts help you craft a compelling profile that highlights your skills and experiences, increasing your visibility to potential employers and industry connections.</p>
+                </div>
+            </div>
+            
+            <!-- Fourth unique feature -->
+            <div class="unique-item">
+                <div class="unique-image">
+                    <img src="/public/images/banner.png" alt="Engineering domains visualization" style="width: 100%; height: auto;">
+                </div>
+                <div class="unique-content">
+                    <span class="unique-category">VISUAL DOMAIN EXPLORATION</span>
+                    <h3>Interactive visualization of engineering domains</h3>
+                    <p>Explore different engineering specializations through our interactive visual tools that help you understand the scope, opportunities, and requirements of each domain.</p>
+                </div>
+            </div>
+            
+            <!-- Fifth unique feature -->
+            <div class="unique-item">
+                <div class="unique-image">
+                    <img src="/public/images/Back to school.png" alt="College selection" style="width: 100%; height: auto;">
+                </div>
+                <div class="unique-content">
+                    <span class="unique-category">PERFECT COLLEGE MATCH</span>
+                    <h3>Data-driven college selection tailored to your profile</h3>
+                    <p>Our advanced algorithm analyzes your academic performance, interests, and career goals to recommend colleges that best match your profile and maximize your chances of success.</p>
+                </div>
+            </div>
+            
+            <!-- Sixth unique feature -->
+            <div class="unique-item">
+                <div class="unique-image">
+                    <img src="/public/images/Robo_AI.png" alt="Future conversations" style="width: 100%; height: auto;">
+                </div>
+                <div class="unique-content">
+                    <span class="unique-category">SPEAK WITH YOUR FUTURE</span>
+                    <h3>Connect with professionals in your dream role</h3>
+                    <p>Our platform facilitates conversations with professionals who are currently in the roles you aspire to, giving you realistic insights into your future career path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        <!-- Premium Consultation Section -->
+        <section class="premium-consultation">
+            <div class="consultation-container">
+                <div class="consultation-content">
+                    <h2>Stay on top of your professional game</h2>
+                    <p>Start your skill development journey today.</p>
+                    <a href="#payment-modal" class="explore-programs-btn" id="open-payment-btn">
+                        Explore Programs <i class="fas fa-search"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Payment Modal -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                
+                <div class="payment-header">
+                    <h2>Payment Details</h2>
+                </div>
+                
+                <div class="payment-details">
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Full price</span>
+                            <span>$155.88 USD</span>
+                        </div>
+                        <div class="price-row discount">
+                            <span>Yearly discount</span>
+                            <span>-$56.89 USD</span>
+                        </div>
+                        <div class="price-row total">
+                            <span>Total to be charged</span>
+                            <span id="final-price">$99.00 USD</span>
+                        </div>
+                    </div>
+                    
+                    <div class="referral-section">
+                        <label for="referral-code">Have a referral code?</label>
+                        <div class="referral-input">
+                            <input type="text" id="referral-code" placeholder="Enter referral code">
+                            <button id="apply-code">Apply</button>
+                        </div>
+                        <p id="referral-message"></p>
+                    </div>
+                    
+                    <div class="payment-timeline">
+                        <div class="timeline-item active">
+                            <div class="timeline-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Now</h4>
+                                <p>Enjoy full access, no payment needed.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="far fa-calendar-alt"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Day 14</h4>
+                                <p>Your account is charged <span id="timeline-price">$99.00 USD</span>. Cancel anytime before this day.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-methods">
+                        <button class="payment-method paypal">
+                            <i class="fab fa-paypal"></i> PayPal
+                        </button>
+                        
+                        <div class="payment-divider">
+                            <span>or</span>
+                        </div>
+                        
+                        <div class="card-details">
+                            <div class="form-row">
+                                <div class="form-group full-width">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" placeholder="1111 2222 3333 4444">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiration">Expiration</label>
+                                    <input type="text" id="expiration" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="***">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <select id="country">
+                                        <option value="usa">USA, UK, Canada</option>
+                                        <option value="india">India</option>
+                                        <option value="other">Other Countries</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">Zip code</label>
+                                    <input type="text" id="zip" placeholder="0020">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="subscribe-btn" class="subscribe-btn">SUBSCRIBE NOW</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Expert Consultation Portal (Initially Hidden) -->
+        <div id="expert-portal" class="expert-portal">
+            <div class="portal-header">
+                <h2>Welcome to Learn2Earn Expert Consultation</h2>
+                <p>Connect with our experts through multiple channels</p>
+            </div>
+            
+            <div class="communication-options">
+                <div class="comm-option">
+                    <div class="comm-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Chat with Experts</h3>
+                    <p>Get instant answers to your questions through our chat platform</p>
+                    <button class="comm-btn chat-btn">Start Chat</button>
+                </div>
+                
+                <div class="comm-option">
+                    <div class="comm-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call an Expert</h3>
+                    <p>Schedule a call with our education and career counselors</p>
+                    <button class="comm-btn call-btn">Schedule Call</button>
+                </div>
+                
+                <div class="comm-option">
+                    <div class="comm-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Consultation</h3>
+                    <p>Face-to-face guidance from our expert counselors</p>
+                    <button class="comm-btn video-btn">Book Session</button>
+                </div>
+                
+                <div class="comm-option">
+                    <div class="comm-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>In-Person Meeting</h3>
+                    <p>Meet our experts at a location convenient for you</p>
+                    <button class="comm-btn meeting-btn">Schedule Meeting</button>
+                </div>
+            </div>
+            
+            <div class="social-integration">
+                <h3>Connect on Social Media</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <p class="faq-description">Find answers to common questions about our platform and services.</p>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>How does Learn2Earn help me choose the right college?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Learn2Earn uses a data-driven approach to match you with colleges that align with your academic profile, career goals, and personal preferences. Our algorithm considers factors like:</p>
+                        <ul>
+                            <li>Your academic performance and standardized test scores</li>
+                            <li>Your career interests and aspirations</li>
+                            <li>Geographic preferences and budget constraints</li>
+                            <li>Campus culture and extracurricular opportunities</li>
+                        </ul>
+                        <p>We also provide personalized counseling sessions with education experts who can guide you through the decision-making process and help you weigh the pros and cons of different institutions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>What entrance exams should I prepare for?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The entrance exams you should prepare for depend on your desired field of study and target institutions. Here are some common entrance exams based on different disciplines:</p>
+                        <ul>
+                            <li><strong>Engineering:</strong> JEE Main, JEE Advanced, BITSAT, VITEEE, MET, SRMJEEE</li>
+                            <li><strong>Medical:</strong> NEET, AIIMS, JIPMER</li>
+                            <li><strong>Management:</strong> CAT, XAT, SNAP, MAT, CMAT</li>
+                            <li><strong>Law:</strong> CLAT, AILET, LSAT</li>
+                            <li><strong>Design:</strong> UCEED, NID, NIFT</li>
+                        </ul>
+                        <p>Our assessment tools can help identify which exams align with your strengths and career goals, and our preparation resources can help you excel in them.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>How can I improve my LinkedIn profile for better opportunities?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our LinkedIn Profile Perfector service helps you optimize your profile through:</p>
+                        <ul>
+                            <li><strong>Professional headline crafting</strong> that captures attention and highlights your expertise</li>
+                            <li><strong>Keyword optimization</strong> to ensure your profile appears in relevant searches</li>
+                            <li><strong>Experience descriptions</strong> that showcase achievements rather than just responsibilities</li>
+                            <li><strong>Skills section enhancement</strong> with industry-relevant competencies</li>
+                            <li><strong>Recommendation strategies</strong> to build credibility through endorsements</li>
+                            <li><strong>Content creation guidance</strong> to establish thought leadership</li>
+                        </ul>
+                        <p>Our LinkedIn experts will review your profile, suggest improvements, and help you implement changes that significantly increase your visibility to recruiters and potential employers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>What scholarships are available for my course?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Learn2Earn maintains a comprehensive database of scholarships across various disciplines, institutions, and eligibility criteria. We help you discover scholarships through:</p>
+                        <ul>
+                            <li><strong>Personalized scholarship matching</strong> based on your academic profile, field of study, and background</li>
+                            <li><strong>Merit-based scholarship opportunities</strong> from universities and private organizations</li>
+                            <li><strong>Need-based financial aid options</strong> that consider your economic circumstances</li>
+                            <li><strong>Specialized scholarships</strong> for women in STEM, minority students, and other specific groups</li>
+                            <li><strong>Application assistance</strong> to maximize your chances of securing funding</li>
+                        </ul>
+                        <p>Our scholarship experts can guide you through the entire application process, from identifying opportunities to crafting compelling essays and preparing for scholarship interviews.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>How do I prepare for college counseling sessions?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To make the most of your college counseling sessions with Learn2Earn experts, we recommend:</p>
+                        <ul>
+                            <li>Completing our comprehensive assessment to help us understand your academic strengths, interests, and goals</li>
+                            <li>Preparing a list of questions and concerns you'd like to address during the session</li>
+                            <li>Gathering your academic records, standardized test scores, and extracurricular achievements</li>
+                            <li>Researching colleges and programs you're interested in to have informed discussions</li>
+                            <li>Being open about your preferences, constraints, and aspirations</li>
+                        </ul>
+                        <p>Our counselors will review your profile before the session and come prepared with personalized recommendations and insights tailored to your unique situation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Can Learn2Earn help with international university admissions?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, Learn2Earn provides comprehensive support for international university admissions through:</p>
+                        <ul>
+                            <li><strong>Country-specific guidance</strong> for popular destinations like the US, UK, Canada, Australia, and more</li>
+                            <li><strong>Standardized test preparation</strong> for international exams like SAT, ACT, GRE, GMAT, IELTS, and TOEFL</li>
+                            <li><strong>Application strategy development</strong> tailored to each country's unique requirements</li>
+                            <li><strong>Essay and personal statement review</strong> by experts familiar with international admissions</li>
+                            <li><strong>Visa application assistance</strong> and pre-departure orientation</li>
+                            <li><strong>Scholarship and financial aid guidance</strong> for international students</li>
+                        </ul>
+                        <p>Our international education consultants have helped thousands of students secure admissions to prestigious universities worldwide and can guide you through every step of the process.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>How does the "Speak with Your Future" feature work?</h3>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our innovative "Speak with Your Future" feature connects you with professionals who are currently working in roles you aspire to. Here's how it works:</p>
+                        <ul>
+                            <li>Based on your career interests, we match you with professionals from our extensive network</li>
+                            <li>You can schedule one-on-one virtual meetings to discuss career paths, day-to-day responsibilities, and industry insights</li>
+                            <li>Professionals share their educational journey, challenges they faced, and advice for aspiring students</li>
+                            <li>You can ask specific questions about skills, qualifications, and experiences that helped them succeed</li>
+                            <li>Follow-up mentorship opportunities may be available with professionals you connect with</li>
+                        </ul>
+                        <p>This feature provides invaluable real-world perspectives that help you make more informed decisions about your educational and career path.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Learn2Earn</span>
+                <p>Your comprehensive platform for career guidance, college selection, skill development, and professional networking.</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Career Opportunities</a></li>
+                        <li><a href="#">Partner With Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">College Selection</a></li>
+                        <li><a href="#">Entrance Exam Preparation</a></li>
+                        <li><a href="#">LinkedIn Profile Optimization</a></li>
+                        <li><a href="#">Scholarship Guidance</a></li>
+                        <li><a href="#">Career Counseling</a></li>
+                        <li><a href="#">Skill Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Kinathukadavu,via vadasithur kondapatti</li>
+                        <li><i class="fas fa-phone-alt"></i> +91 8807715828</li>
+                        <li><i class="fas fa-envelope"></i> learn2Earn@gmail.com</li>
+                    </ul>
+                    <div class="newsletter">
+                        <h4>Subscribe to our newsletter</h4>
+                        <div class="newsletter-form">
+                            <label>
+                                <input type="email" placeholder="Your email">
+                            </label>
+                            <button type="submit" class="subscribe-btn">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 Learn2Earn. All rights reserved.</p>
+            </div>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>    
+<script src="/public/js/script.js"></script>
+<script type="text/javascript">window.DocsBotAI=window.DocsBotAI||{}th,DocsBotAI.init=function(e){return new Promise((t,r)=>{var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src="/public/js/public/js/public/js/https://widget.docsbot.ai/chat.js";let o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(n,o),n.addEventListener("load",()=>{let n;Promise.all([new Promise((t,r)=>{window.DocsBotAI.mount(Object.assign({}, e)).then(t).catch(r)}),(n=function e(t){return new Promise(e=>{if(document.querySelector(t))return e(document.querySelector(t));let r=new MutationObserver(n=>{if(document.querySelector(t))return e(document.querySelector(t)),r.disconnect()});r.observe(document.body,{childList:!0,subtree:!0})})})("#docsbotai-root"),]).then(()=>t()).catch(r)}),n.addEventListener("error",e=>{r(e.message)})})};</script>
+<script type="text/javascript">
+  DocsBotAI.init({id: "7VLa3Uqu93VhBqqioeo7/ytkGuNzb5SqvKndjKNGU"});
+</script>
+</body>
+</html>

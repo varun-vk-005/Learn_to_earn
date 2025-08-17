@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Panel | College Cutoff Ranking System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #5e72e4, #825ee4);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-danger {
+            background: linear-gradient(45deg, #f5365c, #f56036);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-container {
+            margin-top: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 10px 10px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #5e72e4;
+            box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.3);
+        }
+
+        select option {
+            background-color: #302b63;
+            color: white;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        table th {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            height: 400px;
+            position: relative;
+        }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .two-cols {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .notification.success {
+            background: linear-gradient(45deg, #2dce89, #2dcecc);
+            box-shadow: 0 7px 14px rgba(45, 206, 137, 0.3);
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #f5365c, #f56036);
+            box-shadow: 0 7px 14px rgba(245, 54, 92, 0.3);
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prediction-result {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .prediction-result h4 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .prediction-result .result-value {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #5e72e4;
+            text-shadow: 0 0 10px rgba(94, 114, 228, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Designer Panel</h1>
+            <button class="btn btn-secondary" id="logout-btn">Log Out</button>
+        </header>
+
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="add-cutoff">Add Cutoff Data</div>
+                <div class="tab" data-tab="upload-ranks">Upload Ranks</div>
+                <div class="tab" data-tab="paper-toughness">Question Paper Toughness</div>
+                <div class="tab" data-tab="analytics">Analytics</div>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="add-cutoff">
+                    <div class="card">
+                        <h3 class="card-title">Add New Cutoff Data</h3>
+                        <div class="form-group">
+                            <label for="college">College</label>
+                            <select id="college">
+                                <option value="">Select College</option>
+                                <option value="CSE">College of Engineering (CSE)</option>
+                                <option value="IT">Information Technology (IT)</option>
+                                <option value="ECE">Electronics and Communication (ECE)</option>
+                                <option value="CCE">Computer and Communication (CCE)</option>
+                                <option value="AIDS">AI & Data Science (AIDS)</option>
+                                <option value="AIML">AI & Machine Learning (AIML)</option>
+                                <option value="cyber">Cyber Security (Cyber)</option>
+                                <option value="CSBS">CS & Business Systems (CSBS)</option>
+                                <option value="mech">Mechanical Engineering (Mech)</option>
+                                <option value="EEE">Electrical & Electronics (EEE)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <select id="year">
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option value="">Select Category</option>
+                                <option value="OC">OC</option>
+                                <option value="BC">BC</option>
+                                <option value="MBC">MBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="BCM">BCM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cutoff-value">Cutoff Value (Out of 200)</label>
+                            <input type="number" id="cutoff-value" min="0" max="200" step="0.5" placeholder="Enter cutoff value">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rank-value">Rank Value</label>
+                            <input type="number" id="rank-value" placeholder="Enter rank value">
+                        </div>
+
+                        <div class="btn-row">
+                            <button class="btn btn-secondary" id="clear-cutoff">Clear</button>
+                            <button class="btn btn-primary" id="save-cutoff">Save Data</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Recent Cutoff Entries</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>Year</th>
+                                    <th>Category</th>
+                                    <th>Cutoff</th>
+                                    <th>Rank</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cutoff-entries">
+                                <!-- Entries will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="upload-ranks">
+                    <div class="card">
+                        <h3 class="card-title">Upload Ranks Data</h3>
+                        <div class="form-group">
+                            <label for="rank-file">Upload CSV/JSON File</label>
+                            <input type="file" id="rank-file" accept=".csv, .json">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rank-year">Year</label>
+                            <select id="rank-year">
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+
+                        <div class="btn-row">
+                            <button class="btn btn-primary" id="upload-rank-data">Upload</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Manual Entry</h3>
+                        <div class="form-group">
+                            <label for="rank-data">Enter Rank Data (JSON format)</label>
+                            <textarea id="rank-data" placeholder='[{"college": "CSE", "category": "BC", "cutoff": 195.5, "rank": 1560}]'></textarea>
+                        </div>
+
+                        <div class="btn-row">
+                            <button class="btn btn-secondary" id="clear-rank-data">Clear</button>
+                            <button class="btn btn-primary" id="save-rank-data">Save Data</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Uploaded Rank Data</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>College</th>
+                                    <th>Year</th>
+                                    <th>Category</th>
+                                    <th>Cutoff</th>
+                                    <th>Rank</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rank-data-entries">
+                                <!-- Entries will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="paper-toughness">
+                    <div class="card">
+                        <h3 class="card-title">Question Paper Toughness Analysis</h3>
+                        <div class="form-group">
+                            <label for="paper-year">Year</label>
+                            <select id="paper-year">
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="toughness-score">Toughness Score (1-10)</label>
+                            <input type="number" id="toughness-score" min="1" max="10" step="0.1" placeholder="Enter toughness score">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total-participants">Total Participants</label>
+                            <input type="number" id="total-participants" placeholder="Enter total participants">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass-percentage">Pass Percentage</label>
+                            <input type="number" id="pass-percentage" min="0" max="100" step="0.01" placeholder="Enter pass percentage">
+                        </div>
+
+                        <div class="btn-row">
+                            <button class="btn btn-secondary" id="clear-toughness">Clear</button>
+                            <button class="btn btn-primary" id="save-toughness">Save Data</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Toughness Records</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Toughness Score</th>
+                                    <th>Total Participants</th>
+                                    <th>Pass Percentage</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="toughness-entries">
+                                <!-- Entries will be populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="analytics">
+                    <div class="card">
+                        <h3 class="card-title">Statistical Analysis</h3>
+                        <div class="chart-container">
+                            <canvas id="main-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="two-cols mt-4">
+                        <div class="card">
+                            <h3 class="card-title">Year-wise Analysis</h3>
+                            <div class="chart-container">
+                                <canvas id="year-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3 class="card-title">Category-wise Analysis</h3>
+                            <div class="chart-container">
+                                <canvas id="category-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <h3 class="card-title">Prediction Model</h3>
+                        <div class="form-group">
+                            <label for="prediction-year">Year</label>
+                            <select id="prediction-year">
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prediction-category">Category</label>
+                            <select id="prediction-category">
+                                <option value="OC">OC</option>
+                                <option value="BC">BC</option>
+                                <option value="MBC">MBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="BCM">BCM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prediction-course">Course</label>
+                            <select id="prediction-course">
+                                <option value="CSE">Computer Science (CSE)</option>
+                                <option value="IT">Information Technology (IT)</option>
+                                <option value="ECE">Electronics and Communication (ECE)</option>
+                                <option value="CCE">Computer and Communication (CCE)</option>
+                                <option value="AIDS">AI & Data Science (AIDS)</option>
+                                <option value="AIML">AI & Machine Learning (AIML)</option>
+                                <option value="cyber">Cyber Security (Cyber)</option>
+                                <option value="CSBS">CS & Business Systems (CSBS)</option>
+                            </select>
+                        </div>
+
+                        <div class="btn-row">
+                            <button class="btn btn-primary" id="generate-prediction">Generate Prediction</button>
+                        </div>
+
+                        <div class="prediction-result" id="prediction-result" style="display: none;">
+                            <h4>Predicted Cutoff Range</h4>
+                            <div class="result-value" id="prediction-value"></div>
+                            <div class="text-center">
+                                <p>Confidence: <span id="prediction-confidence"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script src="public/js/https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize localStorage if needed
+        if (!localStorage.getItem('cutoffData')) {
+            localStorage.setItem('cutoffData', JSON.stringify([
+{id: 1, college: 'CSE', year: '2024', category: 'OC', cutoff: 191, rank: 6774},
+{id: 2, college: 'CSE', year: '2023', category: 'OC', cutoff: 186, rank: 11562},
+{id: 3, college: 'CSE', year: '2022', category: 'OC', cutoff: 189, rank: 9084},
+{id: 4, college: 'CSE', year: '2021', category: 'OC', cutoff: 187.38, rank: 12093},
+{id: 5, college: 'CSE', year: '2020', category: 'OC', cutoff: 159.5, rank: 23222},
+{id: 6, college: 'CSE', year: '2024', category: 'BC', cutoff: 188, rank: 1170},
+{id: 7, college: 'CSE', year: '2023', category: 'BC', cutoff: 179.5, rank: 19308},
+{id: 8, college: 'CSE', year: '2022', category: 'BC', cutoff: 182.78, rank: 16988},
+{id: 9, college: 'CSE', year: '2021', category: 'BC', cutoff: 185.775, rank: 15162},
+{id: 10, college: 'CSE', year: '2020', category: 'BC', cutoff: 150.5, rank: 30677},
+{id: 11, college: 'CSE', year: '2024', category: 'MBC', cutoff: 181, rank: 22755},
+{id: 12, college: 'CSE', year: '2023', category: 'MBC', cutoff: 178, rank: 21425},
+{id: 13, college: 'CSE', year: '2022', category: 'MBC', cutoff: 178.56, rank: 22191},
+{id: 14, college: 'CSE', year: '2021', category: 'MBC', cutoff: 187.075, rank: 12526},
+{id: 15, college: 'CSE', year: '2020', category: 'MBC', cutoff: 126.5, rank: 53855},
+{id: 16, college: 'IT', year: '2024', category: 'OC', cutoff: 188, rank: 11161},
+{id: 17, college: 'IT', year: '2023', category: 'OC', cutoff: 182.5, rank: 15277},
+{id: 18, college: 'IT', year: '2022', category: 'OC', cutoff: 184, rank: 15512},
+{id: 19, college: 'IT', year: '2021', category: 'OC', cutoff: 185.67, rank: 15317},
+{id: 20, college: 'IT', year: '2020', category: 'OC', cutoff: 148.5, rank: 32334},
+{id: 21, college: 'IT', year: '2024', category: 'BC', cutoff: 186.5, rank: 13192},
+{id: 22, college: 'IT', year: '2023', category: 'BC', cutoff: 177.5, rank: 21524},
+{id: 23, college: 'IT', year: '2022', category: 'BC', cutoff: 181.5, rank: 18354},
+{id: 24, college: 'IT', year: '2021', category: 'BC', cutoff: 184.535, rank: 17671},
+{id: 25, college: 'IT', year: '2020', category: 'BC', cutoff: 143, rank: 37128},
+{id: 26, college: 'IT', year: '2024', category: 'MBC', cutoff: 179.5, rank: 25188},
+{id: 27, college: 'IT', year: '2023', category: 'MBC', cutoff: 175, rank: 25284},
+{id: 28, college: 'CCE', year: '2024', category: 'OC', cutoff: 181, rank: 22360},
+{id: 29, college: 'CCE', year: '2023', category: 'OC', cutoff: 180, rank: 18726},
+{id: 30, college: 'CCE', year: '2022', category: 'OC', cutoff: 186, rank:12892},
+{id: 31, college: 'CCE', year: '2020', category: 'OC', cutoff: 132.5, rank: 47813},
+{id: 32, college: 'CCE', year: '2024', category: 'BC', cutoff: 180, rank: 24716},
+{id: 33, college: 'CCE', year: '2023', category: 'BC', cutoff: 175.5, rank: 24378},
+{id: 34, college: 'CCE', year: '2022', category: 'BC', cutoff: 180, rank: 20322},
+{id: 35, college: 'CCE', year: '2021', category: 'BC', cutoff: 181.78, rank: 24165},
+{id: 36, college: 'CCE', year: '2020', category: 'BC', cutoff: 123.5, rank: 57299},
+{id: 37, college: 'CCE', year: '2024', category: 'MBC', cutoff: 176.5, rank: 30543},
+{id: 38, college: 'CCE', year: '2023', category: 'MBC', cutoff: 168, rank: 36069},
+{id: 39, college: 'CCE', year: '2022', category: 'MBC', cutoff: 166.5, rank: 40031},
+{id: 40, college: 'CCE', year: '2021', category: 'MBC', cutoff: 181.185, rank: 25575},
+{id: 41, college: 'CCE', year: '2020', category: 'MBC', cutoff: 0, rank: 0},
+{id: 42, college: 'ECE', year: '2024', category: 'OC', cutoff: 187, rank: 12804},
+{id: 43, college: 'ECE', year: '2023', category: 'OC', cutoff: 180.5, rank: 17957},
+{id: 44, college: 'ECE', year: '2022', category: 'OC', cutoff: 180, rank: 20209},
+{id: 45, college: 'ECE', year: '2021', category: 'OC', cutoff: 183.505, rank: 19938},
+{id: 46, college: 'ECE', year: '2020', category: 'OC', cutoff: 143.5, rank: 36828},
+{id: 47, college: 'ECE', year: '2024', category: 'BC', cutoff: 183.5, rank: 18246},
+{id: 48, college: 'ECE', year: '2023', category: 'BC', cutoff: 175, rank: 24963},
+{id: 49, college: 'ECE', year: '2022', category: 'BC', cutoff: 177, rank: 24411},
+{id: 50, college: 'ECE', year: '2021', category: 'BC', cutoff: 181.98, rank: 23725},
+{id: 51, college: 'ECE', year: '2020', category: 'BC', cutoff: 132.5, rank: 47449},
+{id: 52, college: 'ECE', year: '2024', category: 'MBC', cutoff: 177.5, rank: 29025},
+{id: 53, college: 'ECE', year: '2023', category: 'MBC', cutoff: 169.5, rank: 33181},
+{id: 54, college: 'ECE', year: '2022', category: 'MBC', cutoff: 168, rank: 37872},
+{id: 55, college: 'ECE', year: '2021', category: 'MBC', cutoff: 179.285, rank: 30596},
+{id: 56, college: 'ECE', year: '2020', category: 'MBC', cutoff: 97, rank: 88034},
+{id: 57, college: 'AIDS', year: '2024', category: 'OC', cutoff: 187.5, rank: 12008},
+{id: 58, college: 'AIDS', year: '2023', category: 'OC', cutoff: 182.5, rank: 15361},
+{id: 59, college: 'AIDS', year: '2022', category: 'OC', cutoff: 185, rank: 14145},
+{id: 60, college: 'AIDS', year: '2021', category: 'OC', cutoff: 185.35, rank: 16053},
+{id: 61, college: 'AIDS', year: '2020', category: 'OC', cutoff: 140.5, rank: 39485},
+{id: 62, college: 'AIDS', year: '2024', category: 'BC', cutoff: 184, rank: 17178},
+{id: 63, college: 'AIDS', year: '2023', category: 'BC', cutoff: 177, rank: 22681},
+{id: 64, college: 'AIDS', year: '2022', category: 'BC', cutoff: 179.5, rank: 20988},
+{id: 65, college: 'AIDS', year: '2021', category: 'BC', cutoff: 183.43, rank: 20279},
+{id: 66, college: 'AIDS', year: '2020', category: 'BC', cutoff: 126, rank: 54524},
+{id: 67, college: 'AIDS', year: '2024', category: 'MBC', cutoff: 179, rank: 26547},
+{id: 68, college: 'AIDS', year: '2023', category: 'OC', cutoff: 174, rank: 26691},
+{id: 69, college: 'AIDS', year: '2022', category: 'MBC', cutoff: 170, rank: 34519},
+{id: 70, college: 'AIDS', year: '2021', category: 'MBC', cutoff: 181.615, rank: 24488},
+{id: 71, college: 'AIDS', year: '2020', category: 'MBC', cutoff: 90, rank: 96095},
+{id: 72, college: 'CSBS', year: '2024', category: 'OC', cutoff: 182.5, rank: 20164},
+{id: 73, college: 'CSBS', year: '2023', category: 'OC', cutoff: 180, rank: 18526},
+{id: 74, college: 'CSBS', year: '2022', category: 'OC', cutoff: 181, rank: 19272},
+{id: 75, college: 'CSBS', year: '2021', category: 'OC', cutoff: 183.5, rank: 20006},
+{id: 76, college: 'CSBS', year: '2020', category: 'OC', cutoff: 138.5, rank: 41453},
+{id: 77, college: 'CSBS', year: '2024', category: 'BC', cutoff: 180.5, rank: 23344},
+{id: 78, college: 'CSBS', year: '2023', category: 'BC', cutoff: 176, rank: 23907},
+{id: 79, college: 'CSBS', year: '2022', category: 'BC', cutoff: 177, rank: 24437},
+{id: 80, college: 'CSBS', year: '2021', category: 'BC', cutoff: 182.11, rank: 23275},
+{id: 81, college: 'CSBS', year: '2020', category: 'BC', cutoff: 115, rank: 66940},
+{id: 82, college: 'CSBS', year: '2024', category: 'MBC', cutoff: 174.5, rank: 34769},
+{id: 83, college: 'CSBS', year: '2023', category: 'MBC', cutoff: 168.5, rank: 35292},
+{id: 84, college: 'CSBS', year: '2022', category: 'MBC', cutoff: 167.5, rank: 38286},
+{id: 85, college: 'CSBS', year: '2021', category: 'MBC', cutoff: 181.21, rank: 25521},
+{id: 86, college: 'mech', year: '2024', category: 'OC', cutoff: 178.5, rank: 27358},
+{id: 87, college: 'mech', year: '2023', category: 'OC', cutoff: 169.5, rank: 33391},
+{id: 88, college: 'mech', year: '2022', category: 'OC', cutoff: 165.5, rank: 41730},
+{id: 89, college: 'mech', year: '2021', category: 'OC', cutoff: 176.065, rank: 39209},
+{id: 90, college: 'mech', year: '2020', category: 'OC', cutoff: 115.5, rank: 65820},
+{id: 91, college: 'mech', year: '2024', category: 'BC', cutoff: 172.5, rank: 38043},
+{id: 92, college: 'mech', year: '2023', category: 'BC', cutoff: 162.5, rank: 45042},
+{id: 93, college: 'mech', year: '2022', category: 'BC', cutoff: 158.5, rank: 52005},
+{id: 94, college: 'mech', year: '2021', category: 'BC', cutoff: 171.635, rank: 52069},
+{id: 95, college: 'mech', year: '2020', category: 'BC', cutoff: 96, rank: 89148},
+{id: 96, college: 'mech', year: '2024', category: 'MBC', cutoff: 166, rank: 51791},
+{id: 97, college: 'mech', year: '2023', category: 'MBC', cutoff: 155.5, rank: 58691},
+{id: 98, college: 'mech', year: '2022', category: 'MBC', cutoff: 152.5, rank: 60794},
+{id: 99, college: 'mech', year: '2021', category: 'MBC', cutoff: 170.315, rank: 55988},
+{id: 100, college: 'mech', year: '2020', category: 'MBC', cutoff: 0, rank: 0},
+{id: 101, college: 'EEE', year: '2024', category: 'OC', cutoff: 179, rank: 25925},
+{id: 102, college: 'EEE', year: '2023', category: 'OC', cutoff: 175, rank: 24931},
+{id: 103, college: 'EEE', year: '2022', category: 'OC', cutoff: 176, rank: 26133},
+{id: 104, college: 'EEE', year: '2021', category: 'OC', cutoff: 180.515, rank: 27242},
+{id: 105, college: 'EEE', year: '2020', category: 'OC', cutoff: 128.5, rank: 51713},
+{id: 106, college: 'EEE', year: '2022', category: 'BC', cutoff: 173.725, rank: 29346},
+{id: 107, college: 'EEE', year: '2021', category: 'BC', cutoff: 179.185, rank: 30772},
+{id: 108, college: 'EEE', year: '2020', category: 'BC', cutoff: 117, rank: 64494},
+{id: 109, college: 'EEE', year: '2024', category: 'MBC', cutoff: 172.5, rank: 38837},
+{id: 110, college: 'EEE', year: '2023', category: 'MBC', cutoff: 163, rank: 44037},
+{id: 111, college: 'EEE', year: '2021', category: 'MBC', cutoff: 171.495, rank: 30465},
+{id: 112, college: 'EEE', year: '2020', category: 'MBC', cutoff: 0, rank: 0},
+{id: 113, college: 'CCE', year: '2021', category: 'OC', cutoff: 182.745, rank: 21842},
+{id: 114, college: 'EEE', year: '2024', category: 'BC', cutoff: 177.5, rank: 28628},
+{id: 115, college: 'EEE', year: '2023', category: 'BC', cutoff: 174.5, rank: 26091},
+
+            ]));
+        }
+
+        if (!localStorage.getItem('toughnessData')) {
+            localStorage.setItem('toughnessData', JSON.stringify([
+                {id: 1, year: '2023', toughness: 7.5, participants: 150000, passPercentage: 72.3},
+                {id: 2, year: '2022', toughness: 6.2, participants: 145000, passPercentage: 78.5},
+                {id: 3, year: '2021', toughness: 8.1, participants: 142000, passPercentage: 68.9}
+            ]));
+        }
+
+        if (!localStorage.getItem('rankData')) {
+            localStorage.setItem('rankData', JSON.stringify([]));
+        }
+
+        // UI Elements
+        const tabs = document.querySelectorAll('.tab');
+        const panes = document.querySelectorAll('.tab-pane');
+        const notification = document.getElementById('notification');
+
+        // Tab Switching
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                const target = tab.getAttribute('data-tab');
+                document.getElementById(target).classList.add('active');
+
+                // Load data when switching to Analytics tab
+                if (target === 'analytics') {
+                    loadAnalytics();
+                }
+            });
+        });
+
+        // Show notification function
+        function showNotification(message, type = 'success') {
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Generate unique ID
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substring(2);
+        }
+
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // ==================== CUTOFF DATA TAB ====================
+        // Load cutoff data
+        function loadCutoffData() {
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            const tbody = document.getElementById('cutoff-entries');
+            tbody.innerHTML = '';
+
+            cutoffData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.college}</td>
+                    <td>${item.year}</td>
+                    <td>${item.category}</td>
+                    <td>${item.cutoff}</td>
+                    <td>${item.rank}</td>
+                    <td><button class="btn btn-danger delete-cutoff" data-id="${item.id}">Delete</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-cutoff').forEach(btn => {
+                btn.addEventListener('click', deleteCutoffEntry);
+            });
+        }
+
+        // Save cutoff data
+        document.getElementById('save-cutoff').addEventListener('click', () => {
+            const college = document.getElementById('college').value;
+            const year = document.getElementById('year').value;
+            const category = document.getElementById('category').value;
+            const cutoff = document.getElementById('cutoff-value').value;
+            const rank = document.getElementById('rank-value').value;
+
+            if (!college || !year || !category || !cutoff || !rank) {
+                showNotification('Please fill in all fields before saving.', 'error');
+                return;
+            }
+
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            const newEntry = {
+                id: generateId(),
+                college,
+                year,
+                category,
+                cutoff: parseFloat(cutoff),
+                rank: parseInt(rank)
+            };
+
+            cutoffData.push(newEntry);
+            localStorage.setItem('cutoffData', JSON.stringify(cutoffData));
+
+            // Clear form and reload data
+            document.getElementById('clear-cutoff').click();
+            loadCutoffData();
+            showNotification('Cutoff data saved successfully!');
+        });
+
+        // Clear cutoff form
+        document.getElementById('clear-cutoff').addEventListener('click', () => {
+            document.getElementById('college').value = '';
+            document.getElementById('year').value = '';
+            document.getElementById('category').value = '';
+            document.getElementById('cutoff-value').value = '';
+            document.getElementById('rank-value').value = '';
+        });
+
+        // Delete cutoff entry
+        function deleteCutoffEntry(e) {
+            const id = e.target.getAttribute('data-id');
+            let cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            cutoffData = cutoffData.filter(item => item.id !== id);
+            localStorage.setItem('cutoffData', JSON.stringify(cutoffData));
+            loadCutoffData();
+            showNotification('Entry deleted successfully!');
+        }
+
+        // ==================== UPLOAD RANKS TAB ====================
+        // Load rank data
+        function loadRankData() {
+            const rankData = JSON.parse(localStorage.getItem('rankData') || '[]');
+            const tbody = document.getElementById('rank-data-entries');
+            tbody.innerHTML = '';
+
+            rankData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.college}</td>
+                    <td>${item.year}</td>
+                    <td>${item.category}</td>
+                    <td>${item.cutoff}</td>
+                    <td>${item.rank}</td>
+                    <td><button class="btn btn-danger delete-rank" data-id="${item.id}">Delete</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-rank').forEach(btn => {
+                btn.addEventListener('click', deleteRankEntry);
+            });
+        }
+
+        // Handle file upload
+        document.getElementById('upload-rank-data').addEventListener('click', () => {
+            const fileInput = document.getElementById('rank-file');
+            const year = document.getElementById('rank-year').value;
+
+            if (!year) {
+                showNotification('Please select a year for the data.', 'error');
+                return;
+            }
+
+            if (!fileInput.files || fileInput.files.length === 0) {
+                showNotification('Please select a file to upload.', 'error');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                try {
+                    let data;
+                    if (file.name.endsWith('.json')) {
+                        data = JSON.parse(e.target.result);
+                    } else if (file.name.endsWith('.csv')) {
+                        // Simple CSV parsing
+                        const rows = e.target.result.split('\n');
+                        const headers = rows[0].split(',');
+
+                        data = [];
+                        for (let i = 1; i < rows.length; i++) {
+                            if (rows[i].trim() === '') continue;
+
+                            const values = rows[i].split(',');
+                            const obj = {};
+
+                            for (let j = 0; j < headers.length; j++) {
+                                obj[headers[j].trim()] = values[j].trim();
+                            }
+
+                            data.push(obj);
+                        }
+                    } else {
+                        showNotification('Unsupported file format.', 'error');
+                        return;
+                    }
+
+                    // Add year to each entry if not present
+                    data = data.map(item => {
+                        return {
+                            ...item,
+                            year: item.year || year,
+                            id: generateId()
+                        };
+                    });
+
+                    // Save to local storage
+                    const rankData = JSON.parse(localStorage.getItem('rankData') || '[]');
+                    localStorage.setItem('rankData', JSON.stringify([...rankData, ...data]));
+
+                    // Reset form and reload data
+                    fileInput.value = '';
+                    document.getElementById('rank-year').value = '';
+                    loadRankData();
+                    showNotification('Rank data uploaded successfully!');
+                } catch (error) {
+                    showNotification('Error parsing file: ' + error.message, 'error');
+                }
+            };
+
+            reader.readAsText(file);
+        });
+
+        // Save rank data from manual entry
+        document.getElementById('save-rank-data').addEventListener('click', () => {
+            const jsonText = document.getElementById('rank-data').value;
+
+            if (!jsonText.trim()) {
+                showNotification('Please enter rank data in JSON format.', 'error');
+                return;
+            }
+
+            try {
+                const data = JSON.parse(jsonText);
+
+                // Ensure data is an array
+                const dataArray = Array.isArray(data) ? data : [data];
+
+                // Add ID to each entry
+                const processedData = dataArray.map(item => ({
+                    ...item,
+                    id: generateId()
+                }));
+
+                // Save to local storage
+                const rankData = JSON.parse(localStorage.getItem('rankData') || '[]');
+                localStorage.setItem('rankData', JSON.stringify([...rankData, ...processedData]));
+
+                // Reset form and reload data
+                document.getElementById('rank-data').value = '';
+                loadRankData();
+                showNotification('Rank data saved successfully!');
+            } catch (error) {
+                showNotification('Invalid JSON format: ' + error.message, 'error');
+            }
+        });
+
+        // Clear rank data form
+        document.getElementById('clear-rank-data').addEventListener('click', () => {
+            document.getElementById('rank-data').value = '';
+        });
+
+        // Delete rank entry
+        function deleteRankEntry(e) {
+            const id = e.target.getAttribute('data-id');
+            let rankData = JSON.parse(localStorage.getItem('rankData') || '[]');
+            rankData = rankData.filter(item => item.id !== id);
+            localStorage.setItem('rankData', JSON.stringify(rankData));
+            loadRankData();
+            showNotification('Entry deleted successfully!');
+        }
+
+        // ==================== PAPER TOUGHNESS TAB ====================
+        // Load toughness data
+        function loadToughnessData() {
+            const toughnessData = JSON.parse(localStorage.getItem('toughnessData') || '[]');
+            const tbody = document.getElementById('toughness-entries');
+            tbody.innerHTML = '';
+
+            toughnessData.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.year}</td>
+                    <td>${item.toughness}</td>
+                    <td>${formatNumber(item.participants)}</td>
+                    <td>${item.passPercentage}%</td>
+                    <td><button class="btn btn-danger delete-toughness" data-id="${item.id}">Delete</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-toughness').forEach(btn => {
+                btn.addEventListener('click', deleteToughnessEntry);
+            });
+        }
+
+        // Save toughness data
+        document.getElementById('save-toughness').addEventListener('click', () => {
+            const year = document.getElementById('paper-year').value;
+            const toughness = document.getElementById('toughness-score').value;
+            const participants = document.getElementById('total-participants').value;
+            const passPercentage = document.getElementById('pass-percentage').value;
+
+            if (!year || !toughness || !participants || !passPercentage) {
+                showNotification('Please fill in all fields before saving.', 'error');
+                return;
+            }
+
+            const toughnessData = JSON.parse(localStorage.getItem('toughnessData') || '[]');
+            const newEntry = {
+                id: generateId(),
+                year,
+                toughness: parseFloat(toughness),
+                participants: parseInt(participants),
+                passPercentage: parseFloat(passPercentage)
+            };
+
+            toughnessData.push(newEntry);
+            localStorage.setItem('toughnessData', JSON.stringify(toughnessData));
+
+            // Clear form and reload data
+            document.getElementById('clear-toughness').click();
+            loadToughnessData();
+            showNotification('Toughness data saved successfully!');
+        });
+
+        // Clear toughness form
+        document.getElementById('clear-toughness').addEventListener('click', () => {
+            document.getElementById('paper-year').value = '';
+            document.getElementById('toughness-score').value = '';
+            document.getElementById('total-participants').value = '';
+            document.getElementById('pass-percentage').value = '';
+        });
+
+        // Delete toughness entry
+        function deleteToughnessEntry(e) {
+            const id = e.target.getAttribute('data-id');
+            let toughnessData = JSON.parse(localStorage.getItem('toughnessData') || '[]');
+            toughnessData = toughnessData.filter(item => item.id !== id);
+            localStorage.setItem('toughnessData', JSON.stringify(toughnessData));
+            loadToughnessData();
+            showNotification('Entry deleted successfully!');
+        }
+
+        // ==================== ANALYTICS TAB ====================
+        // Load analytics data and charts
+        function loadAnalytics() {
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            const toughnessData = JSON.parse(localStorage.getItem('toughnessData') || '[]');
+
+            if (cutoffData.length === 0) {
+                showNotification('No cutoff data available for analysis.', 'error');
+                return;
+            }
+
+            // Main chart - Cutoff vs Rank correlation
+            const mainCtx = document.getElementById('main-chart').getContext('2d');
+
+            // Process data for main chart
+            const chartData = cutoffData.map(item => ({
+                x: parseFloat(item.cutoff),
+                y: parseInt(item.rank),
+                college: item.college,
+                year: item.year,
+                category: item.category
+            }));
+
+            // Create main chart
+            if (window.mainChart) {
+                window.mainChart.destroy();
+            }
+
+            window.mainChart = new Chart(mainCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Cutoff vs Rank',
+                        data: chartData,
+                        backgroundColor: 'rgba(94, 114, 228, 0.7)',
+                        borderColor: 'rgba(94, 114, 228, 1)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const point = context.raw;
+                                    return `${point.college} (${point.year}) - ${point.category}: Cutoff ${point.x}, Rank ${point.y}`;
+                                }
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Cutoff Value',
+                                color: 'white'
+                            },
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Rank',
+                                color: 'white'
+                            },
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Year-wise chart
+            const yearCtx = document.getElementById('year-chart').getContext('2d');
+
+            // Process data for year chart
+            const years = [...new Set(cutoffData.map(item => item.year))].sort();
+            const colleges = [...new Set(cutoffData.map(item => item.college))];
+
+            const yearDatasets = colleges.map((college, index) => {
+                const color = getColor(index);
+                const data = years.map(year => {
+                    const entries = cutoffData.filter(item => item.year === year && item.college === college && item.category === 'OC');
+                    if (entries.length > 0) {
+                        return entries[0].cutoff;
+                    }
+                    return null;
+                });
+
+                return {
+                    label: college,
+                    data: data,
+                    borderColor: color,
+                    backgroundColor: color.replace('1)', '0.2)'),
+                    tension: 0.2
+                };
+            });
+
+            // Create year chart
+            if (window.yearChart) {
+                window.yearChart.destroy();
+            }
+
+            window.yearChart = new Chart(yearCtx, {
+                type: 'line',
+                data: {
+                    labels: years,
+                    datasets: yearDatasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year',
+                                color: 'white'
+                            },
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Cutoff Value',
+                                color: 'white'
+                            },
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Category-wise chart
+            const categoryCtx = document.getElementById('category-chart').getContext('2d');
+
+            // Process data for category chart
+            const categories = ['OC', 'BC', 'MBC', 'SC', 'ST', 'BCM'];
+
+            // Focus on most recent year data
+            const latestYear = years[years.length - 1];
+
+            const categoryDatasets = colleges.slice(0, 5).map((college, index) => {
+                const color = getColor(index + colleges.length);
+                const data = categories.map(category => {
+                    const entries = cutoffData.filter(item =>
+                        item.year === latestYear &&
+                        item.college === college &&
+                        item.category === category
+                    );
+                    if (entries.length > 0) {
+                        return entries[0].cutoff;
+                    }
+                    return null;
+                });
+
+                return {
+                    label: college,
+                    data: data,
+                    backgroundColor: color.replace('1)', '0.7)'),
+                };
+            });
+
+            // Create category chart
+            if (window.categoryChart) {
+                window.categoryChart.destroy();
+            }
+
+            window.categoryChart = new Chart(categoryCtx, {
+                type: 'bar',
+                data: {
+                    labels: categories,
+                    datasets: categoryDatasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Category',
+                                color: 'white'
+                            },
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Cutoff Value',
+                                color: 'white'
+                            },
+                            ticks: {
+                                color: 'white'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate a color based on index
+        function getColor(index) {
+            const colors = [
+                'rgba(94, 114, 228, 1)',
+                'rgba(45, 206, 137, 1)',
+                'rgba(255, 171, 0, 1)',
+                'rgba(245, 54, 92, 1)',
+                'rgba(161, 106, 236, 1)',
+                'rgba(25, 175, 245, 1)',
+                'rgba(255, 119, 130, 1)',
+                'rgba(0, 234, 211, 1)',
+                'rgba(255, 195, 0, 1)',
+                'rgba(170, 70, 240, 1)'
+            ];
+
+            return colors[index % colors.length];
+        }
+
+        // Generate prediction
+        document.getElementById('generate-prediction').addEventListener('click', () => {
+            const year = document.getElementById('prediction-year').value;
+            const category = document.getElementById('prediction-category').value;
+            const course = document.getElementById('prediction-course').value;
+
+            const cutoffData = JSON.parse(localStorage.getItem('cutoffData') || '[]');
+            const toughnessData = JSON.parse(localStorage.getItem('toughnessData') || '[]');
+
+            if (cutoffData.length === 0) {
+                showNotification('Insufficient data for prediction.', 'error');
+                return;
+            }
+
+            // Filter relevant data
+            const relevantData = cutoffData.filter(item =>
+                item.college === course &&
+                item.category === category
+            );
+
+            if (relevantData.length < 2) {
+                showNotification('Insufficient historical data for this course and category.', 'error');
+                return;
+            }
+
+            // Sort by year (oldest to newest)
+            relevantData.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+
+            // Get the latest data for reference
+            const latestData = relevantData[relevantData.length - 1];
+            const latestCutoff = parseFloat(latestData.cutoff);
+            const latestYear = parseInt(latestData.year);
+
+            // Calculate trend using weighted linear regression
+            // More recent years have higher weight
+            let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0, sumW = 0;
+
+            relevantData.forEach((item, index) => {
+                const x = parseInt(item.year);
+                const y = parseFloat(item.cutoff);
+                // Weight more recent years higher
+                const weight = Math.pow(1.2, index);
+
+                sumW += weight;
+                sumX += x * weight;
+                sumY += y * weight;
+                sumXY += x * y * weight;
+                sumXX += x * x * weight;
+            });
+
+            // Calculate slope (m) and intercept (b) for weighted linear regression: y = mx + b
+            const m = (sumXY - (sumX * sumY) / sumW) / (sumXX - (sumX * sumX) / sumW);
+            const b = (sumY - m * sumX) / sumW;
+
+            // Calculate prediction for target year
+            const targetYear = parseInt(year);
+            const predictedCutoff = m * targetYear + b;
+
+            // Consider paper toughness trend if available
+            let toughnessAdjustment = 0;
+            if (toughnessData.length >= 2) {
+                // Sort toughness data by year
+                toughnessData.sort((a, b) => parseInt(a.year) - parseInt(b.year));
+
+                // Calculate average toughness change
+                let totalToughnessChange = 0;
+                for (let i = 1; i < toughnessData.length; i++) {
+                    totalToughnessChange += toughnessData[i].toughness - toughnessData[i-1].toughness;
+                }
+
+                const avgToughnessChange = totalToughnessChange / (toughnessData.length - 1);
+
+                // Adjust prediction based on toughness trend (higher toughness = lower cutoffs)
+                // Use a small factor to avoid overadjustment
+                toughnessAdjustment = -avgToughnessChange * 0.5;
+            }
+
+            // Calculate prediction error based on historical accuracy
+            const historicalErrors = [];
+            for (let i = 1; i < relevantData.length; i++) {
+                const prevYear = parseInt(relevantData[i-1].year);
+                const currentYear = parseInt(relevantData[i].year);
+                const actualCutoff = parseFloat(relevantData[i].cutoff);
+
+                // Predict what this year's cutoff would have been using previous years
+                const predictedPastCutoff = m * currentYear + b;
+
+                // Calculate error
+                historicalErrors.push(Math.abs(predictedPastCutoff - actualCutoff));
+            }
+
+            // Average prediction error
+            const avgError = historicalErrors.length > 0
+                ? historicalErrors.reduce((a, b) => a + b, 0) / historicalErrors.length
+                : 1.0;
+
+            // Final prediction with adjustments
+            const adjustedPrediction = predictedCutoff + toughnessAdjustment;
+
+            // Create range based on prediction error and years into future
+            const yearsFactor = Math.max(1, targetYear - latestYear);
+            const range = Math.max(1, avgError * yearsFactor * 0.8);
+
+            // Ensure prediction is within valid range (0-200)
+            const lowerBound = Math.max(0, Math.min(200, adjustedPrediction - range)).toFixed(1);
+            const upperBound = Math.max(0, Math.min(200, adjustedPrediction + range)).toFixed(1);
+
+            // Calculate confidence based on multiple factors
+            const dataConsistency = Math.max(0, 1 - (calculateStandardDeviation(relevantData.map(item => parseFloat(item.cutoff))) / 15));
+            const dataSizeFactor = Math.min(1, relevantData.length / 5);
+            const yearGapFactor = Math.max(0, 1 - ((targetYear - latestYear) / 5));
+
+            // Calculate final confidence score
+            const confidence = Math.round((
+                dataConsistency * 0.5 +
+                dataSizeFactor * 0.3 +
+                yearGapFactor * 0.2
+            ) * 100);
+
+            // Display prediction
+            document.getElementById('prediction-value').textContent = `${lowerBound} - ${upperBound}`;
+            document.getElementById('prediction-confidence').textContent = `${confidence}%`;
+            document.getElementById('prediction-result').style.display = 'block';
+        });
+
+        // Calculate standard deviation
+        function calculateStandardDeviation(values) {
+            const avg = values.reduce((a, b) => a + b, 0) / values.length;
+            const squareDiffs = values.map(value => {
+                const diff = value - avg;
+                return diff * diff;
+            });
+            const avgSquareDiff = squareDiffs.reduce((a, b) => a + b, 0) / squareDiffs.length;
+            return Math.sqrt(avgSquareDiff);
+        }
+
+        // Logout button
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            // In a real app, this would handle proper logout
+            showNotification('Logged out successfully!');
+            // Redirect to login page (commented for demo purposes)
+             window.location.href = "login.html";
+        });
+
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCutoffData();
+            loadRankData();
+            loadToughnessData();
+        });
+    </script>
+</body>
+</html>

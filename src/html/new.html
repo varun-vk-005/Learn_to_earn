@@ -1,0 +1,1366 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Education & Specialties Hub</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #0066cc;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: #0066cc;
+        }
+        
+        /* Medical Specialties Section */
+        .specialties-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .specialty-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .specialty-img {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #999;
+        }
+        
+        .specialty-content {
+            padding: 20px;
+        }
+        
+        .specialty-content h3 {
+            margin-bottom: 10px;
+            color: #0066cc;
+        }
+        
+        /* Top Colleges Section */
+        .college-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:first-child {
+            border-radius: 30px 0 0 30px;
+        }
+        
+        .tab-btn:last-child {
+            border-radius: 0 30px 30px 0;
+        }
+        
+        .tab-btn.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .college-content {
+            display: none;
+        }
+        
+        .college-content.active {
+            display: block;
+        }
+        
+        .college-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .college-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .college-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .college-rank {
+            background-color: #0066cc;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .college-info {
+            flex-grow: 1;
+        }
+        
+        .college-info h3 {
+            margin-bottom: 10px;
+            color: #0066cc;
+            display: flex;
+            align-items: center;
+        }
+        
+        .college-info h3 span {
+            background-color: #ffcc00;
+            color: #333;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        
+        /* NEET Section */
+        .exam-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .exam-info h3 {
+            color: #0066cc;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #0066cc;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -13px;
+            background-color: white;
+            border: 4px solid #ffcc00;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-item.right::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Crash Courses Section */
+        .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .course-header {
+            padding: 20px;
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .course-price {
+            float: right;
+            background-color: white;
+            color: #0066cc;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .course-body {
+            padding: 20px;
+        }
+        
+        .course-details {
+            margin: 15px 0;
+        }
+        
+        .course-details li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .course-btn {
+            display: block;
+            background-color: #ffcc00;
+            color: #333;
+            text-align: center;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .course-btn:hover {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 20px;
+            color: #ffcc00;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Animation for specialty cards */
+        .specialty-card {
+            opacity: 0;
+            animation: fadeInCard 0.5s ease forwards;
+        }
+        
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Animation Delays */
+        .specialty-card:nth-child(1) { animation-delay: 0.1s; }
+        .specialty-card:nth-child(2) { animation-delay: 0.2s; }
+        .specialty-card:nth-child(3) { animation-delay: 0.3s; }
+        .specialty-card:nth-child(4) { animation-delay: 0.4s; }
+        .specialty-card:nth-child(5) { animation-delay: 0.5s; }
+        .specialty-card:nth-child(6) { animation-delay: 0.6s; }
+        .specialty-card:nth-child(7) { animation-delay: 0.7s; }
+        .specialty-card:nth-child(8) { animation-delay: 0.8s; }
+        .specialty-card:nth-child(9) { animation-delay: 0.9s; }
+        .specialty-card:nth-child(10) { animation-delay: 1s; }
+        .specialty-card:nth-child(11) { animation-delay: 1.1s; }
+        .specialty-card:nth-child(12) { animation-delay: 1.2s; }
+        .specialty-card:nth-child(13) { animation-delay: 1.3s; }
+        .specialty-card:nth-child(14) { animation-delay: 1.4s; }
+        .specialty-card:nth-child(15) { animation-delay: 1.5s; }
+        .specialty-card:nth-child(16) { animation-delay: 1.6s; }
+        .specialty-card:nth-child(17) { animation-delay: 1.7s; }
+        .specialty-card:nth-child(18) { animation-delay: 1.8s; }
+        .specialty-card:nth-child(19) { animation-delay: 1.9s; }
+        .specialty-card:nth-child(20) { animation-delay: 2s; }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .specialty-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .footer-column {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Med<span>Hub</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#specialties">Specialties</a></li>
+                    <li><a href="#colleges">Top Colleges</a></li>
+                    <li><a href="#neet">NEET Preparation</a></li>
+                    <li><a href="#courses">Crash Courses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Journey to Medical Excellence</h1>
+                <p>Discover comprehensive information about medical specialties, top colleges, exam preparation, and more to help you navigate your medical career path.</p>
+                <a href="#specialties" class="btn">Explore Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Medical Specialties Section -->
+    <section id="specialties">
+        <div class="container">
+            <div class="section-title">
+                <h2>Medical Specialties</h2>
+                <p>Explore different domains in the medical field to find your passion</p>
+            </div>
+            
+            <div class="specialties-container">
+                <!-- Specialty 1 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Dermatology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Dermatology</h3>
+                        <p>Specializes in diagnosing and treating conditions related to skin, hair, nails, and mucous membranes. Dermatologists handle everything from acne to skin cancer and cosmetic concerns.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 2 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Cardiology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Cardiology</h3>
+                        <p>Focuses on diagnosing and treating heart disorders including coronary artery disease, heart rhythm disorders, and heart failure. Cardiologists perform various tests and procedures to maintain heart health.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 3 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Neurology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Neurology</h3>
+                        <p>Deals with disorders of the nervous system, including the brain, spinal cord, and peripheral nerves. Neurologists treat conditions like strokes, epilepsy, Alzheimer's, and migraines.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 4 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Orthopedics">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Orthopedics</h3>
+                        <p>Focuses on the musculoskeletal system including bones, joints, ligaments, tendons, and muscles. Orthopedic surgeons treat fractures, joint problems, sports injuries, and more.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 5 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Ophthalmology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Ophthalmology</h3>
+                        <p>Specializes in eye and vision care, diagnosing and treating eye diseases, performing surgeries, and prescribing corrective lenses. They handle conditions from cataracts to glaucoma.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 6 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Pediatrics">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Pediatrics</h3>
+                        <p>Focuses on the health and medical care of infants, children, and adolescents. Pediatricians provide preventive care and treat childhood illnesses and developmental issues.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 7 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Psychiatry">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Psychiatry</h3>
+                        <p>Deals with the diagnosis, prevention, and treatment of mental disorders. Psychiatrists use various treatments including medications and psychotherapy.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 8 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Gastroenterology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Gastroenterology</h3>
+                        <p>Focuses on the digestive system and its disorders. Gastroenterologists diagnose and treat conditions affecting the esophagus, stomach, intestines, liver, and pancreas.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 9 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Endocrinology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Endocrinology</h3>
+                        <p>Specializes in disorders of the endocrine system and its hormones. Endocrinologists treat conditions like diabetes, thyroid disorders, and hormonal imbalances.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 10 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Oncology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Oncology</h3>
+                        <p>Focused on the diagnosis and treatment of cancer. Oncologists may specialize in medical, surgical, or radiation oncology to provide comprehensive cancer care.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 11 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Trichology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Trichology</h3>
+                        <p>Specializes in the study of the hair and scalp. Trichologists diagnose and treat various hair and scalp disorders, including hair loss, dandruff, and scalp infections.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 12 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Urology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Urology</h3>
+                        <p>Focuses on the urinary tract system and male reproductive organs. Urologists treat conditions like urinary tract infections, kidney stones, and prostate disorders.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 13 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Obstetrics & Gynecology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Obstetrics & Gynecology</h3>
+                        <p>Specializes in women's health, particularly pregnancy, childbirth, and disorders of the reproductive system. OB/GYNs provide care from puberty through menopause.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 14 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Pulmonology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Pulmonology</h3>
+                        <p>Focuses on diseases of the respiratory system. Pulmonologists diagnose and treat conditions affecting the lungs, such as asthma, COPD, and pulmonary fibrosis.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 15 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Nephrology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Nephrology</h3>
+                        <p>Specializes in kidney care and treating diseases of the kidneys. Nephrologists manage conditions like kidney disease, kidney stones, and hypertension.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 16 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Rheumatology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Rheumatology</h3>
+                        <p>Focuses on diagnosing and treating rheumatic diseases, which affect joints, muscles, and bones. Rheumatologists treat conditions like arthritis and autoimmune disorders.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 17 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Hematology">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Hematology</h3>
+                        <p>Specializes in the study of blood, blood-forming organs, and blood diseases. Hematologists treat conditions like anemia, hemophilia, and blood cancers.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 18 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="ENT">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>ENT (Otolaryngology)</h3>
+                        <p>Focuses on disorders of the ear, nose, and throat. ENT specialists treat conditions ranging from hearing loss and sinusitis to throat cancer and voice disorders.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 19 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Infectious Disease">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Infectious Disease</h3>
+                        <p>Specializes in diagnosing and treating infections caused by bacteria, viruses, fungi, and parasites. These specialists are crucial in managing outbreaks and complex infections.</p>
+                    </div>
+                </div>
+                
+                <!-- Specialty 20 -->
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="/api/placeholder/300/200" alt="Plastic Surgery">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Plastic Surgery</h3>
+                        <p>Focuses on reconstructive and cosmetic procedures to restore function and appearance. Plastic surgeons perform procedures from burn treatment to aesthetic enhancements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Top Colleges Section -->
+    <section id="colleges" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Top Medical Colleges</h2>
+                <p>Discover the best institutions for medical education in India</p>
+            </div>
+            
+            <div class="college-tabs">
+                <button class="tab-btn active" onclick="showCollegeTab('india')">All India</button>
+                <button class="tab-btn" onclick="showCollegeTab('tamilnadu')">Tamil Nadu</button>
+            </div>
+            
+            <div id="india-colleges" class="college-content active">
+                <div class="college-list">
+                    <!-- College 1 -->
+                    <div class="college-item">
+                        <div class="college-rank">1</div>
+                        <div class="college-info">
+                            <h3>All India Institute of Medical Sciences (AIIMS), New Delhi <span>Government</span></h3>
+                            <p>Established in 1956, AIIMS New Delhi is consistently ranked as the top medical institution in India. It offers excellent education, research facilities, and clinical exposure.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category (40% for SC/ST/OBC). Entrance through AIIMS entrance examination.</p>
+                            <p><strong>MBBS Seats:</strong> 100 | <strong>Fee Structure:</strong> â‚¹1,628 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 2 -->
+                    <div class="college-item">
+                        <div class="college-rank">2</div>
+                        <div class="college-info">
+                            <h3>Christian Medical College (CMC), Vellore <span>Private</span></h3>
+                            <p>Established in 1900, CMC Vellore is known for its ethical approach to medical education, excellent clinical training, and community-based learning.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate in PCB. Selection through institutional entrance exam.</p>
+                            <p><strong>MBBS Seats:</strong> 100 | <strong>Fee Structure:</strong> â‚¹3.5 lakhs per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 3 -->
+                    <div class="college-item">
+                        <div class="college-rank">3</div>
+                        <div class="college-info">
+                            <h3>Armed Forces Medical College (AFMC), Pune <span>Government</span></h3>
+                            <p>AFMC provides medical education specifically designed for the armed forces. Known for its disciplined approach and comprehensive medical training.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate. Selection through SSB interview and medical fitness tests.</p>
+                            <p><strong>MBBS Seats:</strong> 150 | <strong>Fee Structure:</strong> â‚¹32,000 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 4 -->
+                    <div class="college-item">
+                        <div class="college-rank">4</div>
+                        <div class="college-info">
+                            <h3>King George's Medical University (KGMU), Lucknow <span>Government</span></h3>
+                            <p>Established in 1911, KGMU is one of the oldest medical institutions in India with excellent infrastructure and research facilities.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹25,000 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 5 -->
+                    <div class="college-item">
+                        <div class="college-rank">5</div>
+                        <div class="college-info">
+                            <h3>Jawaharlal Institute of Postgraduate Medical Education & Research (JIPMER), Puducherry <span>Government</span></h3>
+                            <p>JIPMER is known for its excellent academic standards and clinical training. It functions under the Ministry of Health and Family Welfare.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through NEET counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 200 | <strong>Fee Structure:</strong> â‚¹7,800 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 6 -->
+                    <div class="college-item">
+                        <div class="college-rank">6</div>
+                        <div class="college-info">
+                            <h3>Seth GS Medical College & KEM Hospital, Mumbai <span>Government</span></h3>
+                            <p>One of the premier medical institutions in Mumbai offering excellent clinical exposure and research opportunities.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 200 | <strong>Fee Structure:</strong> â‚¹70,000 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 7 -->
+                    <div class="college-item">
+                        <div class="college-rank">7</div>
+                        <div class="college-info">
+                            <h3>Maulana Azad Medical College, New Delhi <span>Government</span></h3>
+                            <p>One of the top medical colleges in Delhi with a strong focus on clinical training and research.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹16,000 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 8 -->
+                    <div class="college-item">
+                        <div class="college-rank">8</div>
+                        <div class="college-info">
+                            <h3>Grant Medical College & Sir JJ Hospital, Mumbai <span>Government</span></h3>
+                            <p>One of the oldest medical institutions in India, known for its clinical exposure and experienced faculty.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 200 | <strong>Fee Structure:</strong> â‚¹65,000 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 9 -->
+                    <div class="college-item">
+                        <div class="college-rank">9</div>
+                        <div class="college-info">
+                            <h3>St. John's Medical College, Bangalore <span>Private</span></h3>
+                            <p>Established in 1963, St. John's is known for its value-based medical education and strong focus on clinical skills.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate in PCB. Selection through institutional criteria.</p>
+                            <p><strong>MBBS Seats:</strong> 150 | <strong>Fee Structure:</strong> â‚¹5.5 lakhs per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- College 10 -->
+                    <div class="college-item">
+                        <div class="college-rank">10</div>
+                        <div class="college-info">
+                            <h3>Kasturba Medical College (KMC), Manipal <span>Private</span></h3>
+                            <p>Part of Manipal Academy of Higher Education, KMC is known for its modern infrastructure and international exposure.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate in PCB. Admission through NEET counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹9.5 lakhs per annum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tamilnadu-colleges" class="college-content">
+                <div class="college-list">
+                    <!-- TN College 1 -->
+                    <div class="college-item">
+                        <div class="college-rank">1</div>
+                        <div class="college-info">
+                            <h3>Madras Medical College, Chennai <span>Government</span></h3>
+                            <p>Established in 1835, it's one of the oldest medical colleges in India with excellent faculty and clinical exposure.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. 85% seats reserved for state quota.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 2 -->
+                    <div class="college-item">
+                        <div class="college-rank">2</div>
+                        <div class="college-info">
+                            <h3>Christian Medical College (CMC), Vellore <span>Private</span></h3>
+                            <p>One of the top medical institutions in India known for its ethical approach and excellent clinical training.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate in PCB. Selection through institutional entrance exam.</p>
+                            <p><strong>MBBS Seats:</strong> 100 | <strong>Fee Structure:</strong> â‚¹3.5 lakhs per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 3 -->
+                    <div class="college-item">
+                        <div class="college-rank">3</div>
+                        <div class="college-info">
+                            <h3>Stanley Medical College, Chennai <span>Government</span></h3>
+                            <p>Established in 1938, offering excellent clinical exposure and affordable medical education.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 4 -->
+                    <div class="college-item">
+                        <div class="college-rank">4</div>
+                        <div class="college-info">
+                            <h3>Kilpauk Medical College, Chennai <span>Government</span></h3>
+                            <p>Known for its quality education, experienced faculty, and excellent hospital facilities.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 5 -->
+                    <div class="college-item">
+                        <div class="college-rank">5</div>
+                        <div class="college-info">
+                            <h3>PSG Institute of Medical Sciences & Research, Coimbatore <span>Private</span></h3>
+                            <p>Known for its excellent infrastructure, quality education, and modern teaching methodologies.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate in PCB. Admission through NEET counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 150 | <strong>Fee Structure:</strong> â‚¹20 lakhs per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 6 -->
+                    <div class="college-item">
+                        <div class="college-rank">6</div>
+                        <div class="college-info">
+                            <h3>Tirunelveli Medical College, Tirunelveli <span>Government</span></h3>
+                            <p>Established in 1965, offering quality medical education with focus on rural healthcare.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 200 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 7 -->
+                    <div class="college-item">
+                        <div class="college-rank">7</div>
+                        <div class="college-info">
+                            <h3>Madurai Medical College, Madurai <span>Government</span></h3>
+                            <p>One of the oldest medical colleges in Tamil Nadu with excellent clinical exposure and experienced faculty.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 8 -->
+                    <div class="college-item">
+                        <div class="college-rank">8</div>
+                        <div class="college-info">
+                            <h3>Coimbatore Medical College, Coimbatore <span>Government</span></h3>
+                            <p>Established in 1966, known for its good infrastructure and clinical training.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 150 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 9 -->
+                    <div class="college-item">
+                        <div class="college-rank">9</div>
+                        <div class="college-info">
+                            <h3>Sri Ramachandra Medical College and Research Institute, Chennai <span>Private</span></h3>
+                            <p>Known for its world-class infrastructure, quality education, and research opportunities.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% aggregate in PCB. Admission through NEET counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 250 | <strong>Fee Structure:</strong> â‚¹22 lakhs per annum</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TN College 10 -->
+                    <div class="college-item">
+                        <div class="college-rank">10</div>
+                        <div class="college-info">
+                            <h3>Thanjavur Medical College, Thanjavur <span>Government</span></h3>
+                            <p>Established in 1959, offering affordable medical education with good clinical exposure.</p>
+                            <p><strong>Eligibility:</strong> NEET-UG with minimum 50% for general category. Admission through state counseling.</p>
+                            <p><strong>MBBS Seats:</strong> 150 | <strong>Fee Structure:</strong> â‚¹13,610 per annum</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NEET Exam Section -->
+    <section id="neet">
+        <div class="container">
+            <div class="section-title">
+                <h2>NEET Examination</h2>
+                <p>Everything you need to know about the National Eligibility cum Entrance Test</p>
+            </div>
+            
+            <div class="exam-info">
+                <h3>About NEET</h3>
+                <p>The National Eligibility cum Entrance Test (NEET) is a standardized entrance examination conducted for admission to MBBS, BDS, AYUSH, and other medical courses in India. It is conducted by the National Testing Agency (NTA) once a year.</p>
+                <p>NEET has replaced all other medical entrance examinations in India and is now the single entrance test for admission to medical colleges (except AIIMS and JIPMER until 2019).</p>
+                
+                <h3>Eligibility Criteria</h3>
+                <ul>
+                    <li><strong>Nationality:</strong> Indian nationals, NRIs, OCIs, PIOs, and foreign nationals are eligible.</li>
+                    <li><strong>Age Limit:</strong> Minimum 17 years as of December 31st of the admission year. No upper age limit as per Supreme Court order.</li>
+                    <li><strong>Educational Qualification:</strong> 10+2 or equivalent with Physics, Chemistry, Biology/Biotechnology, and English as core subjects.</li>
+                    <li><strong>Minimum Marks Required:</strong> 50% aggregate in PCB for general category, 40% for SC/ST/OBC-NCL, and 45% for general-PH candidates.</li>
+                </ul>
+                
+                <h3>Exam Pattern</h3>
+                <ul>
+                    <li><strong>Mode of Exam:</strong> Offline (Pen and Paper based)</li>
+                    <li><strong>Duration:</strong> 3 hours (180 minutes)</li>
+                    <li><strong>Total Questions:</strong> 180 Multiple Choice Questions</li>
+                    <li><strong>Subjects:</strong> Physics (45 questions), Chemistry (45 questions), Biology (Botany & Zoology - 90 questions)</li>
+                    <li><strong>Marking Scheme:</strong> +4 marks for each correct answer, -1 mark for each incorrect answer</li>
+                    <li><strong>Maximum Marks:</strong> 720 marks</li>
+                </ul>
+                
+                <h3>Important Dates (Typical Timeline)</h3>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h4>December</h4>
+                            <p>Application form release</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h4>March</h4>
+                            <p>Last date for application submission</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h4>April</h4>
+                            <p>Admit card release</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h4>May</h4>
+                            <p>NEET Examination</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h4>June</h4>
+                            <p>Result declaration</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h4>July-September</h4>
+                            <p>Counseling process</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Preparation Tips</h3>
+                <ul>
+                    <li><strong>Understand the Syllabus:</strong> Thoroughly go through the NEET syllabus and make a study plan accordingly.</li>
+                    <li><strong>Strong Foundation:</strong> Build a strong foundation in basic concepts of Physics, Chemistry, and Biology.</li>
+                    <li><strong>NCERT Books:</strong> NCERT textbooks are essential for NEET preparation. Master them before moving to reference books.</li>
+                    <li><strong>Practice Previous Years' Papers:</strong> Solve at least the last 10 years' question papers to understand the exam pattern.</li>
+                    <li><strong>Regular Mock Tests:</strong> Take regular mock tests to assess your preparation level and improve time management.</li>
+                    <li><strong>Revision:</strong> Regular revision is crucial. Make short notes for quick revision before the exam.</li>
+                    <li><strong>Time Management:</strong> Develop effective time management skills to complete the paper within the given time.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Crash Courses Section -->
+    <section id="courses" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="section-title">
+                <h2>NEET Crash Courses</h2>
+                <p>Accelerate your preparation with intensive crash courses</p>
+            </div>
+            
+            <div class="courses-container">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>NEET Foundation Course</h3>
+                        <span class="course-price">â‚¹15,000</span>
+                    </div>
+                    <div class="course-body">
+                        <p>A comprehensive course designed for students starting their NEET preparation from scratch. Covers the entire syllabus with focus on building strong concepts.</p>
+                        <ul class="course-details">
+                            <li><strong>Duration:</strong> 12 months</li>
+                            <li><strong>Study Material:</strong> Complete study materials, solved examples, practice questions</li>
+                            <li><strong>Tests:</strong> Regular chapter-wise tests, full-length mock tests</li>
+                            <li><strong>Support:</strong> Doubt clearing sessions, one-on-one mentoring</li>
+                        </ul>
+                        <a href="#" class="course-btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>NEET Intensive Crash Course</h3>
+                        <span class="course-price">â‚¹25,000</span>
+                    </div>
+                    <div class="course-body">
+                        <p>An accelerated program for students who have completed their syllabus and need intensive revision and practice before the exam.</p>
+                        <ul class="course-details">
+                            <li><strong>Duration:</strong> 3 months</li>
+                            <li><strong>Study Material:</strong> Revision notes, important formulae, quick recap guides</li>
+                            <li><strong>Tests:</strong> Daily topic-wise tests, weekly full-length mock tests</li>
+                            <li><strong>Support:</strong> 24/7 doubt clearing, performance analysis, personalized strategies</li>
+                        </ul>
+                        <a href="#" class="course-btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>NEET Last Minute Revision</h3>
+                        <span class="course-price">â‚¹10,000</span>
+                    </div>
+                    <div class="course-body">
+                        <p>A short-term course focusing on last-minute revision of high-yield topics, important questions, and exam strategies.</p>
+                        <ul class="course-details">
+                            <li><strong>Duration:</strong> 1 month</li>
+                            <li><strong>Study Material:</strong> Quick revision guides, most expected questions, flashcards</li>
+                            <li><strong>Tests:</strong> Daily mini mock tests, full-length simulated exams</li>
+                            <li><strong>Support:</strong> Instant doubt clearing, exam day strategies, stress management techniques</li>
+                        </ul>
+                        <a href="#" class="course-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have questions? Reach out to our team for assistance</p>
+            </div>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p>Feel free to contact us for any queries regarding medical specialties, college admissions, NEET preparation, or crash courses. Our team is here to guide you through your medical education journey.</p>
+                <div style="margin-top: 30px;">
+                    <p><strong>Email:</strong> info@medhub.edu</p>
+                    <p><strong>Phone:</strong> +91 9876543210</p>
+                    <p><strong>Address:</strong> MedHub Educational Complex, Anna Nagar, Chennai - 600040, Tamil Nadu, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>About MedHub</h4>
+                    <p>MedHub is a comprehensive platform providing information about medical specialties, top medical colleges, entrance exams, and preparation resources.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#specialties">Medical Specialties</a></li>
+                        <li><a href="#colleges">Top Colleges</a></li>
+                        <li><a href="#neet">NEET Examination</a></li>
+                        <li><a href="#courses">Crash Courses</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Connect With Us</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for latest updates about medical education.</p>
+                    <div style="margin-top: 15px;">
+                        <input type="email" placeholder="Your Email" style="padding: 10px; width: 100%; border-radius: 5px; border: none; margin-bottom: 10px;">
+                        <button style="background-color: #ffcc00; border: none; padding: 10px 15px; border-radius: 5px; font-weight: bold; cursor: pointer;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MedHub - Medical Education Portal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Function to show/hide college tabs
+        function showCollegeTab(tab) {
+            // Hide all content
+            document.querySelectorAll('.college-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById(tab + '-colleges').classList.add('active');
+            
+            // Update active button
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Find the button that was clicked and make it active
+            event.target.classList.add('active');
+        }
+        
+        // Animate college items on scroll
+        window.addEventListener('scroll', function() {
+            const collegeItems = document.querySelectorAll('.college-item');
+            
+            collegeItems.forEach((item, index) => {
+                const itemPosition = item.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (itemPosition < screenPosition) {
+                    item.style.animationDelay = (index * 0.1) + 's';
+                    item.style.opacity = '1';
+                }
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

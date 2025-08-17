@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Innovation Idea - Innovation Zone</title>
+    <link rel="stylesheet" href="/public/css/Innovation.css">
+    <link rel="stylesheet" href="/public/css/public/css/public/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Innovation Zone</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#innovations">Innovations</a></li>
+                    <li><a href="index.html#workshops">Workshops</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#" id="dev-login-btn" class="btn-login">Developer Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="submit-idea-hero">
+        <div class="container">
+            <h1>Submit Your Innovation Idea</h1>
+            <p>Share your innovative concepts with our community and get feedback from peers and mentors.</p>
+        </div>
+    </section>
+
+    <section class="submit-idea-form">
+        <div class="container">
+            <form id="innovation-form">
+                <div class="form-group">
+                    <label for="innovation-title">Innovation Title</label>
+                    <input type="text" id="innovation-title" name="innovation-title" placeholder="A clear, descriptive title for your innovation" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" name="category" placeholder="E.g., EdTech, Healthcare, Sustainability, etc." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="problem-statement">Problem Statement</label>
+                    <textarea id="problem-statement" name="problem-statement" rows="5" placeholder="What problem or challenge does your innovation address?" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="proposed-solution">Proposed Solution</label>
+                    <textarea id="proposed-solution" name="proposed-solution" rows="5" placeholder="Describe your innovative solution in detail" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="potential-impact">Potential Impact</label>
+                    <textarea id="potential-impact" name="potential-impact" rows="5" placeholder="How will your innovation make a difference if implemented? What are the expected outcomes?" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="resources-needed">Resources Needed</label>
+                    <textarea id="resources-needed" name="resources-needed" rows="5" placeholder="What resources, collaborators, or support would you need to develop this innovation?" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="attachments">Attachments (Optional)</label>
+                    <input type="file" id="attachments" name="attachments" multiple>
+                    <small>You can upload images, documents, or presentations related to your innovation.</small>
+                </div>
+                
+                <button type="submit" class="btn-primary">Submit Idea</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Innovation Zone</h3>
+                    <p>Empowering students to make informed decisions and explore innovative paths after 12th grade.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#innovations">Innovations</a></li>
+                        <li><a href="index.html#workshops">Workshops</a></li>
+                        <li><a href="submit-idea.html">Submit Idea</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> info@innovationzone.com</p>
+                    <p><i class="fas fa-phone"></i> +91 9876543210</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Innovation Zone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Developer Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h2>Idea Submitted Successfully!</h2>
+                <p>Thank you for sharing your innovative idea. Our team will review it and provide feedback soon.</p>
+                <button class="btn-primary" id="close-success">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/Innoscript.js"></script>
+</body>
+</html>

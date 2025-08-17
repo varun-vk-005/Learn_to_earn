@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ArtsDomain Explorer - Your Guide to Arts & Science Education</title>
+  <link rel="stylesheet" href="/public/css/arts.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav id="navbar">
+    <div class="logo"><i class="fas fa-palette"></i> ArtsDomain Explorer</div>
+    <ul class="nav-links">
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="DomainNavigator.html"><i class="fas fa-graduation-cap"></i> Domain Navigator</a></li>
+      <li><a href="Linkedin.html"><i class="fab fa-linkedin"></i> LinkedIn Edge</a></li>
+      <li><a href="#"><i class="fas fa-university"></i> Top Colleges - India</a></li>
+      <li><a href="interhub.html"><i class="fas fa-landmark"></i> Top Colleges - Tamil Nadu</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="section">
+    <div class="hero">
+      <h1><i class="fas fa-book-open"></i> Explore the World of <span class="highlight">Arts & Science</span></h1>
+      <p><i class="fas fa-lightbulb"></i> Discover diverse academic streams, top institutions, and exciting career opportunities</p>
+      <a href="#specialties" class="btn"><i class="fas fa-compass"></i> Explore Academic Streams</a>
+      <div class="scroll-indicator">
+        <p>Scroll Down</p>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Streams Section -->
+  <section id="specialties" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-stream"></i> Academic Streams</h2>
+      <p>Explore the diverse academic disciplines in Arts & Science</p>
+    </div>
+    
+    <div class="specialties-container">
+      <!-- Academic Stream Cards -->
+      <div class="specialty-card" data-specialty="literature">
+        <div class="specialty-icon"><i class="fas fa-book"></i></div>
+        <h3>Literature & Languages</h3>
+        <p class="specialty-brief">Explore language, literature, and cultural studies</p>
+        <div class="specialty-details hidden">
+          <p>Literature & Languages programs focus on studying various languages, their literature, and cultural contexts. Students develop strong communication, critical thinking, and analytical skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BA in English, Tamil, Hindi, Sanskrit, etc.</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Content Writing, Journalism, Teaching, Translation, Publishing</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-5 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="psychology">
+        <div class="specialty-icon"><i class="fas fa-brain"></i></div>
+        <h3>Psychology</h3>
+        <p class="specialty-brief">Study of human mind and behavior</p>
+        <div class="specialty-details hidden">
+          <p>Psychology programs explore human behavior, cognitive processes, and mental health. Students learn research methods, psychological theories, and therapeutic approaches.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BA/BSc in Psychology, MA/MSc in Clinical/Counseling Psychology</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Counseling, Clinical Psychology, HR, Research, Social Work</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹4-7 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="economics">
+        <div class="specialty-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>Economics</h3>
+        <p class="specialty-brief">Study of resource allocation and market behavior</p>
+        <div class="specialty-details hidden">
+          <p>Economics programs teach students about market dynamics, financial systems, and economic theories. Students develop analytical, mathematical, and problem-solving skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BA/BSc in Economics, MA/MSc in Economics, Econometrics</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Financial Analysis, Economic Research, Banking, Policy Making, Consulting</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹5-10 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="it">
+        <div class="specialty-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Information Technology</h3>
+        <p class="specialty-brief">Computing technologies and systems</p>
+        <div class="specialty-details hidden">
+          <p>IT programs cover computing technologies, programming, systems design, and data management. Students gain technical skills and problem-solving abilities.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BSc in IT, Computer Science, BCA, MSc in IT, MCA</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Software Development, Web Design, IT Support, Data Analysis, Cybersecurity</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3.5-8 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="sociology">
+        <div class="specialty-icon"><i class="fas fa-users"></i></div>
+        <h3>Sociology</h3>
+        <p class="specialty-brief">Study of human society and social behavior</p>
+        <div class="specialty-details hidden">
+          <p>Sociology programs examine human societies, social institutions, and group interactions. Students develop critical thinking and research skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BA/BSc in Sociology, MA/MSc in Sociology/Social Work</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Social Work, NGO Management, Research, Community Development, HR</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-6 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="history">
+        <div class="specialty-icon"><i class="fas fa-landmark"></i></div>
+        <h3>History</h3>
+        <p class="specialty-brief">Study of past events and human civilization</p>
+        <div class="specialty-details hidden">
+          <p>History programs explore past events, cultures, and civilizations. Students develop research, analytical, and writing skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BA in History, MA in History/Archaeology</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Teaching, Research, Archaeology, Museum Curation, Tourism</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-5 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="nursing">
+        <div class="specialty-icon"><i class="fas fa-stethoscope"></i></div>
+        <h3>Nursing</h3>
+        <p class="specialty-brief">Healthcare and patient care</p>
+        <div class="specialty-details hidden">
+          <p>Nursing programs train students in patient care, medical procedures, and healthcare management. Students develop clinical skills and healthcare knowledge.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BSc Nursing, GNM, MSc Nursing</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Clinical Nursing, Healthcare Administration, Public Health, Research</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-7 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="commerce">
+        <div class="specialty-icon"><i class="fas fa-coins"></i></div>
+        <h3>Commerce</h3>
+        <p class="specialty-brief">Business, finance and trade studies</p>
+        <div class="specialty-details hidden">
+          <p>Commerce programs focus on business operations, accounting, finance, and trade. Students develop financial literacy and business acumen.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BCom, MCom, BBA, MBA</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Accounting, Finance, Banking, Marketing, Entrepreneurship</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-8 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="physics">
+        <div class="specialty-icon"><i class="fas fa-atom"></i></div>
+        <h3>Physics</h3>
+        <p class="specialty-brief">Study of matter, energy, and natural forces</p>
+        <div class="specialty-details hidden">
+          <p>Physics programs explore the fundamental principles governing the natural world. Students develop analytical, mathematical, and problem-solving skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BSc in Physics, MSc in Physics, Astrophysics</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Research, Academia, Engineering, Data Science, Meteorology</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-7 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="chemistry">
+        <div class="specialty-icon"><i class="fas fa-flask"></i></div>
+        <h3>Chemistry</h3>
+        <p class="specialty-brief">Study of substances and their properties</p>
+        <div class="specialty-details hidden">
+          <p>Chemistry programs examine matter, its properties, and transformations. Students develop laboratory, analytical, and problem-solving skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BSc in Chemistry, MSc in Chemistry, Biochemistry</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Research, Quality Control, Pharmaceuticals, Environmental Science</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-7 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="botany">
+        <div class="specialty-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Botany</h3>
+        <p class="specialty-brief">Study of plants and plant life</p>
+        <div class="specialty-details hidden">
+          <p>Botany programs focus on plant biology, ecology, and conservation. Students develop laboratory, field research, and analytical skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BSc in Botany, MSc in Botany, Plant Science</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Research, Conservation, Agriculture, Horticulture, Teaching</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-6 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+
+      <div class="specialty-card" data-specialty="zoology">
+        <div class="specialty-icon"><i class="fas fa-paw"></i></div>
+        <h3>Zoology</h3>
+        <p class="specialty-brief">Study of animals and animal life</p>
+        <div class="specialty-details hidden">
+          <p>Zoology programs examine animal biology, behavior, and ecology. Students develop laboratory, field research, and analytical skills.</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Degrees:</strong> BSc in Zoology, MSc in Zoology, Wildlife Biology</p>
+          <p><i class="fas fa-briefcase"></i> <strong>Career Paths:</strong> Research, Wildlife Conservation, Veterinary Science, Fisheries</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Average Starting Salary:</strong> â‚¹3-6 lakhs per annum</p>
+        </div>
+        <button class="read-more"><i class="fas fa-plus-circle"></i> Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Colleges in India Section -->
+  <section id="india-colleges" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-university"></i> Top Arts & Science Colleges in India</h2>
+      <p>Premier institutions for arts and science education across the country</p>
+    </div>
+
+    <div class="colleges-container">
+      <!-- College Cards -->
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-crown"></i> St. Stephen's College, Delhi</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1881</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #4 (College Category)</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc in various disciplines</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Rich heritage, excellent faculty, high placement rates</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 97-99% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.ststephens.edu" target="_blank">www.ststephens.edu</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-landmark"></i> Loyola College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1925</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #6 (College Category)</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, BBA, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Autonomous, excellent infrastructure, strong industry connections</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 85-95% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.loyolacollege.edu" target="_blank">www.loyolacollege.edu</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-school"></i> Christ University, Bangalore</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1969</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #7 (University Category)</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, BBA, MA, MSc, MCom, MBA</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Deemed University, multidisciplinary approach, strong placements</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 85-95% in 12th + entrance test</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.christuniversity.in" target="_blank">www.christuniversity.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-university"></i> Lady Shri Ram College, Delhi</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1956</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #5 (College Category)</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BCom in various disciplines</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Women's college, excellent academic record, great placements</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 97-99% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.lsr.edu.in" target="_blank">www.lsr.edu.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-building"></i> Hindu College, Delhi</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1899</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #3 (College Category)</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom in various disciplines</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Historic institution, renowned faculty, vibrant campus life</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 96-99% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.hinducollege.ac.in" target="_blank">www.hinducollege.ac.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-graduation-cap"></i> Miranda House, Delhi</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1948</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #1 (College Category)</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc in various disciplines</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Women's college, top NIRF ranking, excellent research facilities</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 97-99% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.mirandahouse.ac.in" target="_blank">www.mirandahouse.ac.in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-more-container">
+      <button id="view-more-india" class="view-more-btn"><i class="fas fa-plus"></i> View More Colleges</button>
+    </div>
+
+    <div id="more-india-colleges" class="hidden">
+      <!-- More colleges will be added dynamically with JavaScript -->
+    </div>
+  </section>
+
+  <!-- Top Colleges in Tamil Nadu Section -->
+  <section id="tn-colleges" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-landmark"></i> Top Arts & Science Colleges in Tamil Nadu</h2>
+      <p>Leading academic institutions in the state of Tamil Nadu</p>
+    </div>
+
+    <div class="colleges-container">
+      <!-- Tamil Nadu College Cards -->
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-landmark"></i> Loyola College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1925</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #6 Nationally</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, BBA, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Autonomous, excellent infrastructure, strong industry connections</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 85-95% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.loyolacollege.edu" target="_blank">www.loyolacollege.edu</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-university"></i> Presidency College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1840</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #18 Nationally</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Historic institution, excellent faculty, research-oriented</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 80-90% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.presidencychennai.edu.in" target="_blank">www.presidencychennai.edu.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-school"></i> Women's Christian College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1915</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #22 Nationally</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Women's college, autonomous, holistic education</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 75-85% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.wcc.edu.in" target="_blank">www.wcc.edu.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-book"></i> Madras Christian College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1837</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #20 Nationally</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Historic campus, strong alumni network, research focus</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 75-90% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.mcc.edu.in" target="_blank">www.mcc.edu.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-building"></i> Stella Maris College, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1947</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #23 Nationally</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Women's college, autonomous, excellent placement record</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 80-90% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.stellamariscollege.edu.in" target="_blank">www.stellamariscollege.edu.in</a></p>
+        </div>
+      </div>
+
+      <div class="college-card">
+        <div class="college-header">
+          <h3><i class="fas fa-graduation-cap"></i> Ethiraj College for Women, Chennai</h3>
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+        </div>
+        <div class="college-body">
+          <p><i class="fas fa-calendar-alt"></i> <strong>Established:</strong> 1948</p>
+          <p><i class="fas fa-award"></i> <strong>NIRF Ranking:</strong> #25 Nationally</p>
+          <p><i class="fas fa-graduation-cap"></i> <strong>Courses:</strong> BA, BSc, BCom, MA, MSc, MCom</p>
+          <p><i class="fas fa-star"></i> <strong>Key Highlights:</strong> Women's college, autonomous, strong academic focus</p>
+          <p><i class="fas fa-percentage"></i> <strong>Cut-off:</strong> 80-90% in 12th for most courses</p>
+          <p><i class="fas fa-globe"></i> <strong>Website:</strong> <a href="https://www.ethirajcollege.edu.in" target="_blank">www.ethirajcollege.edu.in</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="view-more-container">
+      <button id="view-more-tn" class="view-more-btn"><i class="fas fa-plus"></i> View More Colleges</button>
+    </div>
+
+    <div id="more-tn-colleges" class="hidden">
+      <!-- More colleges will be added dynamically with JavaScript -->
+    </div>
+  </section>
+
+  <!-- Career Opportunities Section -->
+  <section id="opportunities" class="section">
+    <div class="section-header">
+      <h2><i class="fas fa-briefcase"></i> Career Paths & Opportunities</h2>
+      <p>Explore diverse career options after arts and science education</p>
+    </div>
+
+    <div class="exam-container">
+      <div class="career-info">
+        <h3><i class="fas fa-rocket"></i> Career Opportunities Overview</h3>
+        <p>Arts and Science graduates have access to diverse career paths across multiple industries. Here's a comprehensive look at your options:</p>
+        
+        <div class="exam-details">
+          <div class="exam-detail-card">
+            <h4><i class="fas fa-book-reader"></i> Academic & Research</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> <strong>Teaching:</strong> School, college, or university professor</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Research:</strong> Research associate at universities or research institutions</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Education Management:</strong> School administration, curriculum development</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Library Science:</strong> Librarian, information specialist</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Average Salary Range:</strong> â‚¹3-12 lakhs per annum</li>
+            </ul>
+          </div>
+
+          <div class="exam-detail-card">
+            <h4><i class="fas fa-laptop-code"></i> Technology & IT</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> <strong>Software Development:</strong> Programmer, web developer, app designer</li>
+              <li><i class="fas fa-check-circle"></i> <strong>IT Support:</strong> Technical support, systems administration</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Data Analysis:</strong> Data analyst, data scientist</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Digital Marketing:</strong> SEO specialist, social media manager</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Average Salary Range:</strong> â‚¹3.5-15 lakhs per annum</li>
+            </ul>
+          </div>
+
+          <div class="exam-detail-card">
+            <h4><i class="fas fa-pencil-alt"></i> Media & Communication</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> <strong>Journalism:</strong> Reporter, editor, news analyst</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Content Creation:</strong> Content writer, copywriter, scriptwriter</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Publishing:</strong> Editor, proofreader, publishing assistant</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Public Relations:</strong> PR specialist, corporate communications</li>
+              <li><i class="fas fa-check-circle"></i> <strong>Average Salary Range:</strong> â‚¹3-10 lakhs per annum</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="prep-resources">
+        <h3><i class="fas fa-lightbulb"></i> Emerging Career Fields</h3>
+        <div class="resources-container">
+          <div class="resource-card">
+            <div class="resource-icon"><i class="fas fa-brain"></i></div>
+            <h4>Psychology & Counseling</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Clinical Psychologist</li>
+              <li><i class="fas fa-check-circle"></i> School/College Counselor</li>
+              <li><i class="fas fa-check-circle"></i> HR Counselor</li>
+              <li><i class="fas fa-check-circle"></i> Rehabilitation Specialist</li>
+              <li><i class="fas fa-check-circle"></i> Career Counselor</li>
+            </ul>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon"><i class="fas fa-chart-line"></i></div>
+            <h4>Business & Economics</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Financial Analyst</li>
+              <li><i class="fas fa-check-circle"></i> Market Researcher</li>
+              <li><i class="fas fa-check-circle"></i> Economic Consultant</li>
+              <li><i class="fas fa-check-circle"></i> Banking Professional</li>
+              <li><i class="fas fa-check-circle"></i> Business Analyst</li>
+            </ul>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon"><i class="fas fa-flask"></i></div>
+            <h4>Science & Research</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Lab Scientist</li>
+              <li><i class="fas fa-check-circle"></i> Environmental Scientist</li>
+              <li><i class="fas fa-check-circle"></i> Research Associate</li>
+              <li><i class="fas fa-check-circle"></i> Quality Control Analyst</li>
+              <li><i class="fas fa-check-circle"></i> Scientific Writer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="prep-strategy">
+        <h3><i class="fas fa-road"></i> Career Development Roadmap</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-user-graduate"></i> Undergraduate Level</h4>
+              <ul>
+                <li><i class="fas fa-arrow-right"></i> Focus on building strong fundamental knowledge</li>
+                <li><i class="fas fa-arrow-right"></i> Participate in internships and volunteer work</li>
+                <li><i class="fas fa-arrow-right"></i> Join clubs and student organizations related to your field</li>
+                <li><i class="fas fa-arrow-right"></i> Develop soft skills: communication, teamwork, problem-solving</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-certificate"></i> Post-Graduation & Certification</h4>
+              <ul>
+                <li><i class="fas fa-arrow-right"></i> Pursue Master's degree or specialized diploma</li>
+                <li><i class="fas fa-arrow-right"></i> Obtain professional certifications relevant to your field</li>
+                <li><i class="fas fa-arrow-right"></i> Participate in workshops and training programs</li>
+                <li><i class="fas fa-arrow-right"></i> Build professional network through alumni associations</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-briefcase"></i> Early Career Stage</h4>
+              <ul>
+                <li><i class="fas fa-arrow-right"></i> Apply for entry-level positions or internships</li>
+                <li><i class="fas fa-arrow-right"></i> Develop industry-specific skills and knowledge</li>
+                <li><i class="fas fa-arrow-right"></i> Seek mentorship from experienced professionals</li>
+                <li><i class="fas fa-arrow-right"></i> Attend industry conferences and networking events</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-chart-line"></i> Mid-Career Growth</h4>
+              <ul>
+                <li><i class="fas fa-arrow-right"></i> Take on leadership roles and responsibilities</li>
+                <li><i class="fas fa-arrow-right"></i> Pursue advanced certifications or specialized training</li>
+                <li><i class="fas fa-arrow-right"></i> Develop expertise in niche areas within your field</li>
+                <li><i class="fas fa-arrow-right"></i> Mentor junior colleagues and contribute to team development</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h4><i class="fas fa-star"></i> Advanced Career Options</h4>
+              <ul>
+                <li><i class="fas fa-arrow-right"></i> Pursue senior management or executive positions</li>
+                <li><i class="fas fa-arrow-right"></i> Consider entrepreneurship or consulting opportunities</li>
+                <li><i class="fas fa-arrow-right"></i> Contribute to industry through research or publication</li>
+                <li><i class="fas fa-arrow-right"></i> Explore teaching or training roles to share expertise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-palette"></i> ArtsDomain Explorer</h3>
+        <p>Your comprehensive guide to arts and science education in India</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h3><i class="fas fa-link"></i> Quick Links</h3>
+        <ul>
+          <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#specialties"><i class="fas fa-graduation-cap"></i> Academic Streams</a></li>
+          <li><a href="#india-colleges"><i class="fas fa-university"></i> Top Colleges - India</a></li>
+          <li><a href="#tn-colleges"><i class="fas fa-landmark"></i> Top Colleges - Tamil Nadu</a></li>
+          <li><a href="#opportunities"><i class="fas fa-briefcase"></i> Career Paths</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> info@artsdomain.com</p>
+        <p><i class="fas fa-phone"></i> +91 9876543210</p>
+        <p><i class="fas fa-map-marker-alt"></i> Chennai, Tamil Nadu, India</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2023 ArtsDomain Explorer. All rights reserved. <i class="fas fa-heart pulse-icon"></i></p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- JavaScript -->
+  <script src="/public/js/arts.js"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autono - Redefining the Way We Move</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { color: #333; line-height: 1.6; }
+ 
+        .journey-section { margin:20px;text-align: center; padding: 80px 0; }
+        .section-title { margin:20px; font-size: 48px; font-weight: 600; margin-bottom: 50px; letter-spacing: 2px; }
+        .mission-section { display: flex;margin:10px; padding: 50px 0; border-top: 1px solid #f8cc07;margin-bottom: 10px; }
+        .mission-content { width: 50%; padding-right: 50px; }
+        .mission-content h2 {font-weight: 600; font-size: 36px; margin-bottom: 20px; color: #333; text-transform: uppercase; letter-spacing: 2px; }
+        .mission-image { width: 50%; }
+        .mission-image img { width: 100%; height: 100%; border-radius: 5px; }
+        .mission-title { font-size: 24px; margin-bottom: 30px; font-weight: 500;text-decoration: underline; }
+        .mission-text { margin-bottom: 30px; color: #666; }
+        
+        .timeline {margin:20px;padding:50px 0;} 
+.timeline-title {text-align:center;font-size:36px;margin-bottom:50px;} 
+.timeline-item {display:flex;flex-direction:column;align-items:center;margin-bottom:50px;} 
+.timeline-year {color:#e86c00;font-size:36px;font-weight:bold;margin-bottom:10px;} 
+.timeline-event {font-size:18px;font-weight:500;text-transform:uppercase;margin-bottom:20px;} 
+.timeline-description {text-align:center;max-width:600px;color:#666;} 
+.timeline-container {border:1px solid #e0e0e0;background-color:yellow;border-radius:15px;padding:30px;margin-bottom:50px;width:60%;opacity:0;transform:translateY(100px);transition:opacity 1s ease-out, transform 1s ease-out;} 
+.timeline-nav {display:flex;justify-content:space-between;width:100%;align-items:center;margin:30px 0;} 
+.timeline-dot {width:10px;height:10px;background-color:#999;border-radius:50%;} 
+.timeline-line {height:2px;background-color:#e0e0e0;flex-grow:1;} 
+
+@keyframes bounceEffect {
+  0% {transform:translateY(100px); opacity:0;}
+  25% {transform:translateY(-60px); opacity:1;}
+  50% {transform:translateY(30px); opacity:1;}
+  60% {transform:translateY(-40px); opacity:1;}
+  75% {transform:translateY(20px); opacity:1;}
+  100% {transform:translateY(0); opacity:1;}
+}
+
+
+
+    .team-section { padding: 50px 0; height: 600px; overflow: hidden; position: relative; }
+    .team-image { width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url("/public/images/Business-Meeting.jpg"); background-size: cover; background-position: center; background-attachment: fixed; }
+        
+        /* New mailing section styles */
+    .mailing-section { padding: 80px 0; background-color: #fff; text-align: center; }
+    .mailing-title { font-size: 32px; margin-bottom: 20px; font-weight: 600; }
+    .mailing-text { max-width: 600px; margin: 0 auto 30px; color: #444; font-size: 18px; }
+    .mailing-form { display: flex; flex-direction: column; max-width: 600px; margin: 0 auto; gap: 20px; }
+    .mailing-input, .mailing-textarea { padding: 15px; border: 1px solid #ccc; border-radius: 10px; font-size: 16px; outline: none; width: 100%; }
+    .mailing-textarea { resize: vertical; min-height: 120px; }
+    .mailing-btn { background-color: #000; color: #fff; border: none; padding: 15px; font-size: 16px; border-radius: 10px; cursor: pointer; transition: background-color 0.3s ease; }
+    .mailing-btn:hover { background-color: #333; }
+    .success-msg { color: green; font-weight: bold; margin-top: 20px; }
+    .error-msg { color: red; font-weight: bold; margin-top: 20px; }
+        
+        /* Footer styles */
+        .footer { background-color: #222; color: #fff; padding: 50px 0 20px; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 30px; }
+        .footer-column { width: 25%; padding: 0 15px; margin-bottom: 30px; }
+        .footer-logo { font-weight: bold; font-size: 24px; letter-spacing: 3px; margin-bottom: 20px; }
+        .footer-links { list-style: none; }
+        .footer-link { margin-bottom: 10px; }
+        .footer-link a { color: #aaa; text-decoration: none; transition: color 0.3s; }
+        .footer-link a:hover { color: #fff; }
+        .footer-title { font-size: 18px; margin-bottom: 20px; font-weight: 500; }
+        .footer-social { display: flex; gap: 15px; }
+        .social-icon { width: 36px; height: 36px; background-color: #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; }
+        .copyright { text-align: center; padding-top: 20px; border-top: 1px solid #444; color: #aaa; font-size: 14px; }
+    
+          /* Services Section */
+          services-section { margin-top: 0px; margin: 20px; padding: 80px 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .service-card { background-color: var(--secondary-color); border: 1px solid var(--light-gray); border-radius: 8px; padding: 30px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: transform 0.3s; opacity: 0; transform: translateX(100%); }
+    .service-card.animate { animation: slideInLeft 1s ease forwards; }
+    .service-card:hover { transform: translateY(-10px); }
+    .service-icon { font-size: 40px; margin-bottom: 20px; color: var(--primary-color); }
+    .service-card h3 { font-size: 22px; margin-bottom: 15px; }
+    @keyframes moveLeft { 0% { right: -120px; } 100% { right: 100%; } }
+    @keyframes slideInLeft { 0% { transform: translateX(100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+  
+        /* Team Section */
+        .team-section { margin:20px;background-color: var(--accent-color); padding: 80px 0; }
+    .team-member:hover {transform: translateY(25px);box-shadow: 0 12px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease;}
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+    .team-member { background-color: var(--secondary-color); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); text-align: center; opacity: 0; transform: translateY(100px); }
+    .team-member.animate { animation: slideUp 1s ease forwards; }
+    .member-image { height: 250px; overflow: hidden; }
+    .member-image img { width: 100%; height: 100%; object-fit: cover; }
+    .member-info { padding: 20px; }
+    .member-info h3 { font-size: 20px; margin-bottom: 5px; }
+    .member-info p { color: #666; font-size: 14px; }
+    .rmg{position:relative;left: 40%;}
+
+    @keyframes slideUp { 0% { transform: translateY(100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+
+       #colouy{
+        background-color: #180b39;
+        color:white;
+        padding: 20px;
+        margin-bottom: 50px;
+        }
+   
+    </style>
+</head>
+<body>
+
+<div id="colouy">
+        <section class="journey-section">
+            <h1 class="section-title">Who We Are</h1>
+           
+            <p>Our diverse team combines decades of experience across educational institutions,  and student counseling. We understand both the academic landscape and the evolving job market, allowing us to bridge the gap between education and career opportunities.</p>
+        </section>
+</div>
+        <section class="mission-section">
+            <div class="mission-content">
+                <h2 class="mission-title">OUR MISSION</h2>
+                <h3>To empower students with personalized guidance</h3>
+                <p class="mission-text">Our diverse team combines decades of experience across educational institutions,  and student counseling. We understand both the academic landscape and the evolving job market, allowing us to bridge the gap between education and career opportunities</p>
+               
+            </div>
+            <div class="mission-image">
+                <img src="/public/images/public/images/public/images/ready bammer.jpg" alt="Autono team member">
+            </div>
+        </section>
+
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2  class="section-title">What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Personalized Assessment</h3>
+                    <p>Discover your strengths, interests, and aptitudes through our scientifically-designed evaluation tools.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Career Mapping</h3>
+                    <p>Explore career paths aligned with your profile and understand the educational requirements for each.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-university"></i></div>
+                    <h3>College Guidance</h3>
+                    <p>Navigate admission processes, scholarship opportunities, and institution selection.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Skill Development</h3>
+                    <p>Access resources to build essential skills that complement your academic qualifications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Mentor Connect</h3>
+                    <p>Engage with professionals and seniors from your fields of interest.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-users"></i></div>
+                    <h3>Parent Resources</h3>
+                    <p>Tools to help parents support their children through this crucial transition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Darshan</h3>
+                        <p>Devoloper</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/api/placeholder/300/300" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Gokulnaath</h3>
+                        <p>Devoloper</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/public/images/WhatsApp Image 2025-04-15 at 19.35.40_d3fee73e.jpg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>VarunKumar</h3>
+                        <p>Devoloper</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="/public/images/WhatsApp Image 2025-04-15 at 20.33.26_b797bce0.jpg" alt="Team Member">
+                    </div>
+                    <div class="member-info">
+                        <h3>Jebarson</h3>
+                        <p>Devoloper</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="timeline">
+            <h2 class="timeline-title">WHAT TO DO AFTER EXAM</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <h3 class="timeline-year">SELECTION OF DOMAIN</h3>
+                    <h4 class="timeline-event">MAKE USE OF INTERNET</h4>
+                    <p class="timeline-description">instead of searching via multiple platform explore our wesite fully and get to know about various domains</p>
+                </div>
+            </div>
+            
+            <div class="timeline-nav">
+                <div class="timeline-dot"></div>
+                <div class="timeline-line"></div>
+                <div class="timeline-dot"></div>5
+                <div class="timeline-line"></div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="rmg">
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <h3 class="timeline-year">COLLEGE SELECTION</h3>
+                    <h4 class="timeline-event">AFTERR EXPLORATION OF DOMAIN</h4>
+                    <p class="timeline-description">dive deeper into our website and select the college that has a depatment which enable you to gain knowledge about your domain </p>
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Team section with parallax effect -->
+    <section class="team-section">
+        <div class="team-image"></div>
+    </section>
+
+    <!-- New mailing section -->
+
+    <section class="mailing-section">
+        <h2 class="mailing-title">Talk to Us</h2>
+        <p class="mailing-text">Type your query below. We'll get back to you soon !, dont forget to mention your mail id</p>
+    
+        <form id="contact-form" class="mailing-form" action="https://formspree.io/f/movebylg" method="POST">
+          <textarea name="query" placeholder="Type your query here..." class="mailing-textarea" required></textarea>
+          <button type="submit" class="mailing-btn">Submit</button>
+          <div id="form-message"></div>
+        </form>
+      </section>
+
+    <!-- New footer section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">AUTONO</div>
+                    <p>Redefining the way we move through innovative technology solutions that make transportation safer, smarter, and more sustainable.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Company</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">About Us</a></li>
+                        <li class="footer-link"><a href="#">Careers</a></li>
+                        <li class="footer-link"><a href="#">Press</a></li>
+                        <li class="footer-link"><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Solutions</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Sensor Technology</a></li>
+                        <li class="footer-link"><a href="#">Mobility Systems</a></li>
+                        <li class="footer-link"><a href="#">Smart Infrastructure</a></li>
+                        <li class="footer-link"><a href="#">Research</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">Connect</h3>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Autono. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script>
+        const form = document.getElementById('contact-form');
+        const messageDiv = document.getElementById('form-message');
+    
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+          const plainFormData = Object.fromEntries(formData.entries());
+          const jsonFormData = JSON.stringify(plainFormData);
+    
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              headers: { 'Content-Type': 'application/json' },
+              body: jsonFormData
+            });
+    
+            if (response.ok) {
+              messageDiv.textContent = "Thanks! We got your query";
+              messageDiv.className = "success-msg";
+              form.reset();
+            } else {
+              messageDiv.textContent = "Oops! Something went wrong";
+              messageDiv.className = "error-msg";
+            }
+          } catch (error) {
+            messageDiv.textContent = "Error submitting form. Try again!";
+            messageDiv.className = "error-msg";
+            console.error('Error:', error);
+          }
+        });
+
+
+   
+  window.addEventListener('scroll', () => {
+    // Handling .service-card and .team-member animations
+    document.querySelectorAll('.service-card, .team-member').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('animate');
+      }
+    });
+
+    // Handling .timeline-container animation with bounce effect
+    document.querySelectorAll('.timeline-container').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+        el.style.opacity = 1; 
+        el.style.transform = 'translateY(0)'; 
+        el.style.animation = 'bounceEffect 2s ease-out forwards'; 
+      }
+    });
+  });
+
+
+
+
+      </script>
+    
+</body>
+</html>

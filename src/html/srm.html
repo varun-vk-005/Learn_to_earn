@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRMJEEE Preparation | Exam Arena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="public/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --background: #1A1F2C;
+      --foreground: #ffffff;
+      --primary: #9b87f5;
+      --secondary: #1EAEDB;
+      --accent: #7E69AB;
+      --muted: #8E9196;
+      --card: #222633;
+      --border: rgba(155, 135, 245, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(30, 174, 219, 0.15), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(155, 135, 245, 0.15), transparent 25%);
+      background-size: 100% 100%;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .gaming-font {
+      font-family: 'Orbitron', 'Audiowide', sans-serif;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background-color: rgba(26, 31, 44, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(155, 135, 245, 0.2);
+      padding: 15px 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .logo-text .blue {
+      color: var(--secondary);
+    }
+
+    .logo-text .purple {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-link:hover {
+      color: var(--foreground);
+    }
+
+    .account {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .login-btn {
+      background-color: rgba(30, 174, 219, 0.2);
+      color: var(--secondary);
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .login-btn:hover {
+      background-color: rgba(30, 174, 219, 0.3);
+    }
+
+    .main {
+      margin-top: 80px;
+      padding: 40px 0;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeIn 0.7s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(155, 135, 245, 0.2);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: reveal 0.7s ease-out forwards;
+    }
+
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    .section:nth-child(5) { animation-delay: 0.4s; }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .module-card {
+      background: linear-gradient(135deg, rgba(30, 174, 219, 0.1), rgba(155, 135, 245, 0.1));
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(155, 135, 245, 0.2);
+    }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .module-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .module-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 18px;
+      box-shadow: 0 0 15px rgba(126, 105, 171, 0.5);
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    .module-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .module-subtitle {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .module-badge {
+      background-color: rgba(30, 174, 219, 0.15);
+      color: var(--secondary);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .module-description {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .progress-container {
+      margin-bottom: 15px;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: rgba(30, 30, 30, 0.3);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-value {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      border-radius: 3px;
+      transition: width 0.5s ease-out;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .module-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .continue-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid rgba(155, 135, 245, 0.3);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .continue-btn:hover {
+      background-color: rgba(155, 135, 245, 0.1);
+      transform: translateX(3px);
+    }
+
+    .module-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .rewards-section {
+      background: linear-gradient(135deg, rgba(30, 174, 219, 0.05), rgba(155, 135, 245, 0.05));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 50px;
+    }
+
+    .rewards-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .rewards-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .rewards-title i {
+      color: var(--secondary);
+    }
+
+    .rewards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .reward-card {
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(155, 135, 245, 0.15);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .reward-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(155, 135, 245, 0.1);
+    }
+
+    .reward-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(155, 135, 245, 0.1), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite linear;
+      pointer-events: none;
+    }
+
+    .reward-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--secondary);
+      background: rgba(30, 174, 219, 0.1);
+      border-radius: 50%;
+    }
+
+    .locked .reward-icon {
+      color: var(--muted);
+      background: rgba(142, 145, 150, 0.1);
+    }
+
+    .reward-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .reward-description {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+
+    .reward-progress {
+      margin-top: 15px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .reward-progress span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .locked .reward-progress span {
+      color: var(--muted);
+    }
+
+    .locked {
+      filter: grayscale(0.8);
+      opacity: 0.7;
+    }
+
+    .locked::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .resources-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 15px;
+    }
+
+    .resource-item {
+      background-color: rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(155, 135, 245, 0.15);
+      border-radius: 8px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .resource-item:hover {
+      background-color: rgba(155, 135, 245, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .resource-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(30, 174, 219, 0.1);
+      color: var(--secondary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .resource-content {
+      flex: 1;
+    }
+
+    .resource-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .resource-description {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .resource-badge {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+
+    .leaderboard-section {
+      margin-bottom: 50px;
+    }
+
+    .leaderboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(155, 135, 245, 0.15);
+    }
+
+    .leaderboard-table th {
+      text-align: left;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.2);
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .leaderboard-table td {
+      padding: 12px 15px;
+      border-top: 1px solid rgba(155, 135, 245, 0.1);
+      font-size: 0.9rem;
+    }
+
+    .leaderboard-table tr:hover {
+      background-color: rgba(155, 135, 245, 0.05);
+    }
+
+    .rank {
+      font-weight: 600;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 5px;
+    }
+
+    .rank-1 {
+      background-color: rgba(255, 215, 0, 0.2);
+      color: gold;
+    }
+
+    .rank-2 {
+      background-color: rgba(192, 192, 192, 0.2);
+      color: silver;
+    }
+
+    .rank-3 {
+      background-color: rgba(205, 127, 50, 0.2);
+      color: #cd7f32;
+    }
+
+    .player {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .player-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .player-name {
+      font-weight: 500;
+    }
+
+    .user-rank {
+      background-color: rgba(155, 135, 245, 0.1);
+    }
+
+    .score {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .footer {
+      padding: 30px 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+    }
+
+    .footer-copyright {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      width: 90%;
+      max-width: 700px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background-color: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 25px;
+      position: relative;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .modal.active .modal-content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: var(--foreground);
+    }
+
+    .module-detail-header {
+      margin-bottom: 25px;
+    }
+
+    .module-detail-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+
+    .module-detail-title i {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .module-detail-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .module-detail-content {
+      margin-bottom: 25px;
+    }
+
+    .module-detail-progress {
+      margin-bottom: 25px;
+    }
+
+    .module-lessons {
+      margin-bottom: 25px;
+    }
+
+    .lesson-item {
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.2);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .lesson-item:hover {
+      background-color: rgba(155, 135, 245, 0.1);
+    }
+
+    .lesson-status {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: white;
+    }
+
+    .lesson-status.completed {
+      background-color: #4CAF50;
+    }
+
+    .lesson-status.in-progress {
+      background-color: var(--primary);
+    }
+
+    .lesson-status.locked {
+      background-color: var(--muted);
+    }
+
+    .lesson-content {
+      flex: 1;
+    }
+
+    .lesson-title {
+      font-weight: 500;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .lesson-description {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .lesson-time {
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .module-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .action-btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .primary-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+
+    .primary-btn:hover {
+      background-color: #8874e2;
+    }
+
+    .secondary-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid var(--border);
+    }
+
+    .secondary-btn:hover {
+      background-color: rgba(155, 135, 245, 0.1);
+    }
+
+    .coin-counter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .coin-counter i {
+      color: gold;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(30, 174, 219, 0.5), 0 0 30px rgba(30, 174, 219, 0.3);
+      }
+      50% {
+        opacity: 0.7;
+        box-shadow: 0 0 25px rgba(155, 135, 245, 0.5), 0 0 40px rgba(155, 135, 245, 0.5);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes reveal {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .modules {
+        grid-template-columns: 1fr;
+      }
+
+      .resources-list {
+        grid-template-columns: 1fr;
+      }
+
+      .rewards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .footer-logo {
+        justify-content: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h1 class="logo-text gaming-font"><span class="blue">Exam</span><span class="purple">Arena</span></h1>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" class="nav-link"><i class="fas fa-book"></i> Exams</a>
+        <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> Resources</a>
+      </nav>
+      
+      <div class="account">
+        <div class="coin-counter">
+          <i class="fas fa-coins"></i> 450
+        </div>
+        <button class="login-btn">
+          <i class="fas fa-user"></i> Login
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <!-- Hero Section -->
+      <div class="hero">
+        <h1 class="gaming-font">SRMJEEE Preparation</h1>
+        <p>Your ultimate guide to ace the SRM Joint Engineering Entrance Examination with interactive modules, resources, and gamified learning experience.</p>
+      </div>
+
+      <!-- Modules Section -->
+      <div class="section">
+        <h2 class="section-title gaming-font"><i class="fas fa-layer-group"></i> Study Modules</h2>
+        <div class="modules">
+          <!-- Physics Module -->
+          <div class="module-card" onclick="openModuleDetails('physics')">
+            <div class="module-header">
+              <div class="module-title-area">
+                <div class="module-icon">
+                  <i class="fas fa-atom"></i>
+                </div>
+                <div>
+                  <h3 class="module-title gaming-font">Physics</h3>
+                  <p class="module-subtitle">Core Concepts & Mechanics</p>
+                </div>
+              </div>
+              <div class="module-badge">21 Units</div>
+            </div>
+            <p class="module-description">Master the fundamental concepts of physics including mechanics, electromagnetism, optics, and modern physics with practice problems.</p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-value" style="width: 65%"></div>
+              </div>
+              <div class="progress-label">
+                <span>65% Complete</span>
+                <span>14/21 Units</span>
+              </div>
+            </div>
+            <div class="module-footer">
+              <button class="continue-btn">
+                Continue <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="module-meta">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i> 25 hours
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chemistry Module -->
+          <div class="module-card" onclick="openModuleDetails('chemistry')">
+            <div class="module-header">
+              <div class="module-title-area">
+                <div class="module-icon">
+                  <i class="fas fa-flask"></i>
+                </div>
+                <div>
+                  <h3 class="module-title gaming-font">Chemistry</h3>
+                  <p class="module-subtitle">Organic & Inorganic</p>
+                </div>
+              </div>
+              <div class="module-badge">18 Units</div>
+            </div>
+            <p class="module-description">Cover all aspects of organic, inorganic and physical chemistry with detailed explanations and practice exercises.</p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-value" style="width: 42%"></div>
+              </div>
+              <div class="progress-label">
+                <span>42% Complete</span>
+                <span>8/18 Units</span>
+              </div>
+            </div>
+            <div class="module-footer">
+              <button class="continue-btn">
+                Continue <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="module-meta">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i> 22 hours
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mathematics Module -->
+          <div class="module-card" onclick="openModuleDetails('mathematics')">
+            <div class="module-header">
+              <div class="module-title-area">
+                <div class="module-icon">
+                  <i class="fas fa-square-root-alt"></i>
+                </div>
+                <div>
+                  <h3 class="module-title gaming-font">Mathematics</h3>
+                  <p class="module-subtitle">Algebra & Calculus</p>
+                </div>
+              </div>
+              <div class="module-badge">20 Units</div>
+            </div>
+            <p class="module-description">Strengthen your mathematics foundation with comprehensive coverage of algebra, calculus, trigonometry, and coordinate geometry.</p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-value" style="width: 80%"></div>
+              </div>
+              <div class="progress-label">
+                <span>80% Complete</span>
+                <span>16/20 Units</span>
+              </div>
+            </div>
+            <div class="module-footer">
+              <button class="continue-btn">
+                Continue <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="module-meta">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i> 28 hours
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aptitude Module -->
+          <div class="module-card" onclick="openModuleDetails('aptitude')">
+            <div class="module-header">
+              <div class="module-title-area">
+                <div class="module-icon">
+                  <i class="fas fa-brain"></i>
+                </div>
+                <div>
+                  <h3 class="module-title gaming-font">Aptitude</h3>
+                  <p class="module-subtitle">Logical & Analytical</p>
+                </div>
+              </div>
+              <div class="module-badge">15 Units</div>
+            </div>
+            <p class="module-description">Develop your aptitude skills with practice on logical reasoning, analytical thinking, and problem-solving techniques.</p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-value" style="width: 35%"></div>
+              </div>
+              <div class="progress-label">
+                <span>35% Complete</span>
+                <span>5/15 Units</span>
+              </div>
+            </div>
+            <div class="module-footer">
+              <button class="continue-btn">
+                Continue <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="module-meta">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i> 18 hours
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- English Module -->
+          <div class="module-card" onclick="openModuleDetails('english')">
+            <div class="module-header">
+              <div class="module-title-area">
+                <div class="module-icon">
+                  <i class="fas fa-book"></i>
+                </div>
+                <div>
+                  <h3 class="module-title gaming-font">English</h3>
+                  <p class="module-subtitle">Comprehension & Grammar</p>
+                </div>
+              </div>
+              <div class="module-badge">12 Units</div>
+            </div>
+            <p class="module-description">Improve your English language skills with reading comprehension passages, vocabulary, and grammar practice.</p>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-value" style="width: 10%"></div>
+              </div>
+              <div class="progress-label">
+                <span>10% Complete</span>
+                <span>1/12 Units</span>
+              </div>
+            </div>
+            <div class="module-footer">
+              <button class="continue-btn">
+                Continue <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="module-meta">
+                <div class="meta-item">
+                  <i class="fas fa-clock"></i> 15 hours
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rewards Section -->
+      <div class="section">
+        <div class="rewards-section">
+          <div class="rewards-header">
+            <h2 class="rewards-title gaming-font"><i class="fas fa-trophy"></i> Rewards & Achievements</h2>
+            <div class="coin-counter">
+              <i class="fas fa-coins"></i> 450
+            </div>
+          </div>
+          <div class="rewards-grid">
+            <!-- Reward 1 -->
+            <div class="reward-card">
+              <div class="reward-icon">
+                <i class="fas fa-medal"></i>
+              </div>
+              <h3 class="reward-title">Physics Master</h3>
+              <p class="reward-description">Complete all Physics modules with at least 80% score</p>
+              <div class="reward-progress">Progress: <span>65%</span></div>
+            </div>
+
+            <!-- Reward 2 -->
+            <div class="reward-card">
+              <div class="reward-icon">
+                <i class="fas fa-flask"></i>
+              </div>
+              <h3 class="reward-title">Chemistry Whiz</h3>
+              <p class="reward-description">Complete all Chemistry modules with at least 80% score</p>
+              <div class="reward-progress">Progress: <span>42%</span></div>
+            </div>
+
+            <!-- Reward 3 -->
+            <div class="reward-card">
+              <div class="reward-icon">
+                <i class="fas fa-square-root-alt"></i>
+              </div>
+              <h3 class="reward-title">Math Genius</h3>
+              <p class="reward-description">Complete all Mathematics modules with at least 80% score</p>
+              <div class="reward-progress">Progress: <span>80%</span></div>
+            </div>
+
+            <!-- Reward 4 (Locked) -->
+            <div class="reward-card locked">
+              <div class="reward-icon">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3 class="reward-title">Aptitude Champion</h3>
+              <p class="reward-description">Complete all Aptitude modules with at least 80% score</p>
+              <div class="reward-progress">Progress: <span>35%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources Section -->
+      <div class="section">
+        <h2 class="section-title gaming-font"><i class="fas fa-file-alt"></i> Study Resources</h2>
+        <div class="resources-list">
+          <!-- Resource 1 -->
+          <div class="resource-item">
+            <div class="resource-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="resource-content">
+              <div class="resource-title">
+                <span>SRMJEEE Physics Formula Sheet</span>
+                <span class="resource-badge">PDF</span>
+              </div>
+              <p class="resource-description">Comprehensive collection of all important physics formulas</p>
+            </div>
+          </div>
+
+          <!-- Resource 2 -->
+          <div class="resource-item">
+            <div class="resource-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="resource-content">
+              <div class="resource-title">
+                <span>Organic Chemistry Reactions</span>
+                <span class="resource-badge">Video</span>
+              </div>
+              <p class="resource-description">Video tutorial covering key organic chemistry reactions</p>
+            </div>
+          </div>
+
+          <!-- Resource 3 -->
+          <div class="resource-item">
+            <div class="resource-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="resource-content">
+              <div class="resource-title">
+                <span>Mathematics Problem Bank</span>
+                <span class="resource-badge">PDF</span>
+              </div>
+              <p class="resource-description">Collection of 500+ mathematics problems with solutions</p>
+            </div>
+          </div>
+
+          <!-- Resource 4 -->
+          <div class="resource-item">
+            <div class="resource-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="resource-content">
+              <div class="resource-title">
+                <span>Previous Year Papers (2019-2022)</span>
+                <span class="resource-badge">PDF</span>
+              </div>
+              <p class="resource-description">Solved papers from previous years with detailed solutions</p>
+            </div>
+          </div>
+
+          <!-- Resource 5 -->
+          <div class="resource-item">
+            <div class="resource-icon">
+              <i class="fas fa-link"></i>
+            </div>
+            <div class="resource-content">
+              <div class="resource-title">
+                <span>SRM University Syllabus</span>
+                <span class="resource-badge">Link</span>
+              </div>
+              <p class="resource-description">Official SRMJEEE exam pattern and syllabus guide</p>
+            </div>
+          </div>
+
+          <!-- Resource 6 -->
+          <div class="resource-item">
+            <div class="resource-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="resource-content">
+              <div class="resource-title">
+                <span>Interactive Mock Tests</span>
+                <span class="resource-badge">Online</span>
+              </div>
+              <p class="resource-description">5 full-length interactive mock tests with performance analysis</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leaderboard Section -->
+      <div class="section leaderboard-section">
+        <h2 class="section-title gaming-font"><i class="fas fa-crown"></i> Leaderboard</h2>
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>Progress</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="rank rank-1">1</div></td>
+              <td>
+                <div class="player">
+                  <div class="player-avatar" style="background: linear-gradient(135deg, #FF5C5C, #FF9A5C);">SK</div>
+                  <span class="player-name">ScienceKid</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-value" style="width: 92%;"></div>
+                </div>
+              </td>
+              <td><span class="score">9,245</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank rank-2">2</div></td>
+              <td>
+                <div class="player">
+                  <div class="player-avatar" style="background: linear-gradient(135deg, #5C8AFF, #5CE1FF);">MM</div>
+                  <span class="player-name">MathMaster</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-value" style="width: 88%;"></div>
+                </div>
+              </td>
+              <td><span class="score">8,970</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank rank-3">3</div></td>
+              <td>
+                <div class="player">
+                  <div class="player-avatar" style="background: linear-gradient(135deg, #A05CFF, #5C7BFF);">QS</div>
+                  <span class="player-name">QuantumStudent</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-value" style="width: 85%;"></div>
+                </div>
+              </td>
+              <td><span class="score">8,732</span></td>
+            </tr>
+            <tr class="user-rank">
+              <td><div class="rank">7</div></td>
+              <td>
+                <div class="player">
+                  <div class="player-avatar" style="background: linear-gradient(135deg, var(--secondary), var(--primary));">YO</div>
+                  <span class="player-name">You</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-value" style="width: 68%;"></div>
+                </div>
+              </td>
+              <td><span class="score">6,450</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank">8</div></td>
+              <td>
+                <div class="player">
+                  <div class="player-avatar" style="background: linear-gradient(135deg, #FF5CE1, #FF5C8A);">CP</div>
+                  <span class="player-name">ChemistryPro</span>
+                </div>
+              </td>
+              <td>
+                <div class="progress-bar">
+                  <div class="progress-value" style="width: 65%;"></div>
+                </div>
+              </td>
+              <td><span class="score">6,115</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <div class="logo-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h2 class="logo-text gaming-font"><span class="blue">Exam</span><span class="purple">Arena</span></h2>
+      </div>
+      
+      <div class="footer-links">
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Terms</a>
+        <a href="#" class="footer-link">Privacy</a>
+      </div>
+      
+      <div class="footer-copyright">
+        © 2025 ExamArena. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Module Details Modal -->
+  <div id="moduleModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModuleDetails()"><i class="fas fa-times"></i></button>
+      
+      <div id="moduleDetailContent">
+        <!-- This will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Module details data
+    const moduleDetails = {
+      physics: {
+        title: "Physics",
+        icon: "fas fa-atom",
+        subtitle: "Core Concepts & Mechanics",
+        description: "Master the fundamental concepts of physics including mechanics, electromagnetism, optics, and modern physics with practice problems and interactive simulations.",
+        progress: 65,
+        lessons: [
+          {
+            title: "Units and Measurements",
+            description: "Understanding fundamental and derived units, dimensions, and error analysis.",
+            time: "45 min",
+            status: "completed"
+          },
+          {
+            title: "Kinematics",
+            description: "Motion in one and two dimensions, projectile motion, and relative velocity.",
+            time: "60 min",
+            status: "completed"
+          },
+          {
+            title: "Laws of Motion",
+            description: "Newton's laws, friction, circular motion, and applications.",
+            time: "55 min",
+            status: "completed"
+          },
+          {
+            title: "Work, Energy and Power",
+            description: "Work-energy theorem, potential energy, conservation of energy, and power.",
+            time: "50 min",
+            status: "in-progress"
+          },
+          {
+            title: "Rotational Motion",
+            description: "Rotational kinematics, moment of inertia, and angular momentum.",
+            time: "65 min",
+            status: "locked"
+          }
+        ]
+      },
+      chemistry: {
+        title: "Chemistry",
+        icon: "fas fa-flask",
+        subtitle: "Organic & Inorganic",
+        description: "Cover all aspects of organic, inorganic and physical chemistry with detailed explanations, practice exercises, and interactive molecular visualizations.",
+        progress: 42,
+        lessons: [
+          {
+            title: "Basic Concepts",
+            description: "Atoms, molecules, mole concept, and stoichiometry calculations.",
+            time: "40 min",
+            status: "completed"
+          },
+          {
+            title: "Atomic Structure",
+            description: "Quantum numbers, electronic configuration, and periodic properties.",
+            time: "55 min",
+            status: "completed"
+          },
+          {
+            title: "Chemical Bonding",
+            description: "Ionic, covalent, and metallic bonds, VSEPR theory, and hybridization.",
+            time: "60 min",
+            status: "in-progress"
+          },
+          {
+            title: "States of Matter",
+            description: "Gas laws, liquid state, and solid state structures.",
+            time: "45 min",
+            status: "locked"
+          },
+          {
+            title: "Chemical Thermodynamics",
+            description: "Laws of thermodynamics, enthalpy, entropy, and Gibbs energy.",
+            time: "50 min",
+            status: "locked"
+          }
+        ]
+      },
+      mathematics: {
+        title: "Mathematics",
+        icon: "fas fa-square-root-alt",
+        subtitle: "Algebra & Calculus",
+        description: "Strengthen your mathematics foundation with comprehensive coverage of algebra, calculus, trigonometry, and coordinate geometry through theory and practice.",
+        progress: 80,
+        lessons: [
+          {
+            title: "Functions",
+            description: "Domain, range, composite functions, and inverse functions.",
+            time: "50 min",
+            status: "completed"
+          },
+          {
+            title: "Limits and Continuity",
+            description: "Definition, properties, and continuous functions.",
+            time: "55 min",
+            status: "completed"
+          },
+          {
+            title: "Differentiation",
+            description: "Rules of differentiation and applications.",
+            time: "60 min",
+            status: "completed"
+          },
+          {
+            title: "Integration",
+            description: "Methods of integration and definite integrals.",
+            time: "65 min",
+            status: "completed"
+          },
+          {
+            title: "Differential Equations",
+            description: "First order differential equations and applications.",
+            time: "70 min",
+            status: "in-progress"
+          }
+        ]
+      },
+      aptitude: {
+        title: "Aptitude",
+        icon: "fas fa-brain",
+        subtitle: "Logical & Analytical",
+        description: "Develop your aptitude skills with practice on logical reasoning, analytical thinking, and problem-solving techniques through various exercises and challenges.",
+        progress: 35,
+        lessons: [
+          {
+            title: "Numerical Aptitude",
+            description: "Number systems, arithmetic, and basic algebra.",
+            time: "40 min",
+            status: "completed"
+          },
+          {
+            title: "Data Interpretation",
+            description: "Tables, graphs, charts, and statistical data analysis.",
+            time: "45 min",
+            status: "in-progress"
+          },
+          {
+            title: "Logical Reasoning",
+            description: "Syllogisms, logical deduction, and reasoning problems.",
+            time: "50 min",
+            status: "locked"
+          },
+          {
+            title: "Verbal Ability",
+            description: "Vocabulary, grammar, and reading comprehension.",
+            time: "40 min",
+            status: "locked"
+          },
+          {
+            title: "Problem Solving",
+            description: "Mathematical problem solving and critical thinking.",
+            time: "55 min",
+            status: "locked"
+          }
+        ]
+      },
+      english: {
+        title: "English",
+        icon: "fas fa-book",
+        subtitle: "Comprehension & Grammar",
+        description: "Improve your English language skills with reading comprehension passages, vocabulary building exercises, grammar practice, and writing tasks.",
+        progress: 10,
+        lessons: [
+          {
+            title: "Reading Comprehension",
+            description: "Understanding passages and answering questions based on them.",
+            time: "45 min",
+            status: "in-progress"
+          },
+          {
+            title: "Grammar",
+            description: "Parts of speech, tenses, and sentence structure.",
+            time: "40 min",
+            status: "locked"
+          },
+          {
+            title: "Vocabulary",
+            description: "Word meanings, synonyms, antonyms, and contextual usage.",
+            time: "35 min",
+            status: "locked"
+          },
+          {
+            title: "Verbal Reasoning",
+            description: "Analogies, odd one out, and verbal classification.",
+            time: "50 min",
+            status: "locked"
+          },
+          {
+            title: "Writing Skills",
+            description: "Essay writing and formal communication.",
+            time: "60 min",
+            status: "locked"
+          }
+        ]
+      }
+    };
+
+    // Open module details modal
+    function openModuleDetails(moduleId) {
+      const modal = document.getElementById('moduleModal');
+      const moduleDetailContent = document.getElementById('moduleDetailContent');
+      const moduleData = moduleDetails[moduleId];
+
+      if (!moduleData) return;
+
+      const statusIcons = {
+        completed: '<i class="fas fa-check"></i>',
+        'in-progress': '<i class="fas fa-play"></i>',
+        locked: '<i class="fas fa-lock"></i>'
+      };
+
+      let lessonsList = '';
+      moduleData.lessons.forEach(lesson => {
+        lessonsList += `
+          <div class="lesson-item">
+            <div class="lesson-status ${lesson.status}">${statusIcons[lesson.status]}</div>
+            <div class="lesson-content">
+              <div class="lesson-title">
+                <span>${lesson.title}</span>
+                <span class="lesson-time"><i class="fas fa-clock"></i> ${lesson.time}</span>
+              </div>
+              <p class="lesson-description">${lesson.description}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      const htmlContent = `
+        <div class="module-detail-header">
+          <h2 class="module-detail-title gaming-font"><i class="${moduleData.icon}"></i> ${moduleData.title}</h2>
+          <p class="module-detail-subtitle">${moduleData.subtitle}</p>
+        </div>
+        
+        <div class="module-detail-content">
+          <p>${moduleData.description}</p>
+        </div>
+        
+        <div class="module-detail-progress">
+          <h3 class="gaming-font">Progress (${moduleData.progress}%)</h3>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-value" style="width: ${moduleData.progress}%"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="module-lessons">
+          <h3 class="gaming-font">Lessons</h3>
+          ${lessonsList}
+        </div>
+        
+        <div class="module-actions">
+          <button class="action-btn secondary-btn">
+            <i class="fas fa-list"></i> View All
+          </button>
+          <button class="action-btn primary-btn">
+            <i class="fas fa-play"></i> Continue Learning
+          </button>
+        </div>
+      `;
+
+      moduleDetailContent.innerHTML = htmlContent;
+      modal.classList.add('active');
+    }
+
+    // Close module details modal
+    function closeModuleDetails() {
+      const modal = document.getElementById('moduleModal');
+      modal.classList.remove('active');
+    }
+
+    // Close modal if clicked outside of content
+    window.onclick = function(event) {
+      const modal = document.getElementById('moduleModal');
+      if (event.target === modal) {
+        closeModuleDetails();
+      }
+    }
+  </script>
+</body>
+</html>
